@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,h5,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,button,input,textarea,th,td,*{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px  "微软雅黑","微软雅黑",arial,sans-serif;}
+address,cite,dfn,em,var{font-style:normal;}
+ul,ol{list-style:none;}
+img{border:0;vertical-align:middle; } .dis{ display:block;} 
+a{ color:#b1a5a0; text-decoration:none;}
+a:hover{text-decoration:none;cursor:pointer;}
+.fl{ float:left;} .fr{ float:right;} .fb{ font-weight:bold;} .tr{ text-align:right;}.dis{display:block;}.mr10{margin-right:10px}.pd10{padding:0 10px;}
+.h10{height:10px;font-size:0;overflow:hidden;clear:both;}
+.h5{height:5px;font-size:0;overflow:hidden;clear:both;}
+body{background:#181818;}
+.clear{ clear:both;}
+.w1200{width:1200px; margin:0 auto; overflow:hidden;}
+
+
+
+.main01{ margin:0 auto}
+.pr-sections {position: relative;}
+.pr-sections .section {position: relative;-webkit-font-smoothing: antialiased;}
+.ejbg-1 {background: url("banner01-1.jpg")/*tpa=http://image.kuwo.cn/newvip/questions/banner01.jpg*/ #8933f4 no-repeat 50% 100%;height: 738px;}
+.cjwt_toan{font-size: 42px;color:#fff;padding-top: 485px;text-align:center;}
+.cjwt_tobe{font-size: 18px;color:#fff;padding-top: 15px;text-align:center;}
+.cjwt_toanlu a{font-size: 28px;height: 70px;line-height: 70px;width: 280px;text-align:center;background:#ffd52c;margin: 30px auto 0;color: #333;display: block;border-radius: 10px;}
+.cjwt_toanlu a:hover{background:#fbdf71;} 
+.cjwt_toanlu a:active{background:#fbdf71;} 
+.cjwt_bao{  width:800px; margin:0 auto;}
+.cjwt_bian{height:100px; border-bottom:1px solid #464646; }
+.cjwt_tautn{font-size:30px;color:#fff;margin: 30px 0;float: left;}
+.cjwt_tautnr{float:right;margin: 20px 0;}
+.cjwt_tauimg{margin-left: 40px;}
+.cjwt_tauimg a{background:url("lxwm.png")/*tpa=http://image.kuwo.cn/newvip/questions/lxwm.png*/;width:134px;height:34px;display: block;}
+.cjwt_tauimg a:hover{background:url("lxwmh.png")/*tpa=http://image.kuwo.cn/newvip/questions/lxwmh.png*/;}
+.cjwt_tauimg a:active{background:url("lxwmh.png")/*tpa=http://image.kuwo.cn/newvip/questions/lxwmh.png*/;}
+.cjwt_ngt{color:#999;font-size:12px;padding-top: 10px;}
+.cjwt_bangt{ height:60px; line-height:60px; color:#fff; border-bottom:1px solid #464646; font-size:18px;}
+.cjwt_bangt a{ color:#fff;}
+.cjwt_bangt a:hover{color:#ffd52c;} 
+.cjwt_bangt a:active{color:#ffd52c;} 
+.cjwt_wd{padding:10px 0;border-bottom: 1px solid #464646;}
+.cjwt_wdna{float:left;font-size: 16px;color: #666; line-height:25px;}
+.cjwt_wdnaron{float:left;font-size: 16px;color: #666;line-height:25px;width: 96%;}
+
+
+

@@ -1,0 +1,312 @@
+/*Created By Jiang Wanyu*/
+
+//------------------------
+//		激活码处理 
+//------------------------
+
+var Serial = {
+	twiceClick: false,
+	config: {
+		_Get_Serial: 'gsc',
+		_Get_Serial_new: 'getSerialCodeOrCoupon',
+		_Exchange_Serial: 'eps',
+		_Exchange_Serial_new:'exchangeSerialCodeOrCoupon'
+	},
+	
+	getValidateCode: function () {
+		var uid = PROPERTIES.userinfo.uid;
+		$('#id_img_validate').attr('src',PROPERTIES.projectname+'/v2/validate/imgcode?uid='+uid+'&R='+Math.random());
+	},
+	
+	/**获取激活码信息*/
+	getSerialCode: function (serial) {
+		
+		$.post(PROPERTIES.projectname + '/v2/userbase/vip',{
+			op: Serial.config._Get_Serial_new,
+			uid: PROPERTIES.userinfo.uid,
+			sid: PROPERTIES.userinfo.sid,
+			serial : serial
+		},function(data){
+			var json = eval("("+data+")");
+			if(200 == json.meta.code){
+				var mydata = json.data;
+				if(utils.isEmpty(mydata)) {
+					$('#id_div_serialDesc').text('兑换码不存在或已使用');
+					$('#id_ip_serialCodeT').addClass('redbd');
+					$('#id_div_serialDesc').removeClass('noerror').addClass('error');
+					$('#id_div_serialDesc').show();
+					return false;
+				}
+				var serialKey = mydata.serialKey;
+				var productTypeId = mydata.productTypeId;
+				if(utils.isNotEmpty(productTypeId) && '0' != productTypeId){
+					var product = mydata.product;
+					var days = mydata.days;
+					var desc = '兑换《'+product+'》'+days+'天   本激活码在'+mydata.expireTimeStr+'之前有效';
+					$('#id_div_serialDesc').text(desc);	
+					$('#id_div_serialDesc').removeClass('error').addClass('noerror');
+					$('#id_div_serialDesc').show();
+					
+					var proDesc = '您已成功兑换《'+product+'》'+days+'天';
+					$('#id_p_dg_desc').text(proDesc);
+					
+				}else{
+					/*var desc = '兑换￥'+cash+'   有效期截止至'+mydata.expireTimeStr;
+					$('#id_div_serialDesc').text(desc);*/
+					/* $('#id_div_serialDesc').text('无效激活码, ！激活码区分大小写！');
+					$('#id_ip_serialCodeT').addClass('redbd');
+					$('#id_div_serialDesc').removeClass('noerror').addClass('error');
+					$('#id_div_serialDesc').show();
+					return false; */
+				}
+				Serial.getValidateCode();
+				$('#id_ip_serialCode').val(serial);
+			} else if ('1009' == json.meta.data) {
+				$('#id_div_serialDesc').text('兑换码不存在或已使用');
+				$('#id_ip_serialCodeT').addClass('redbd');
+				$('#id_div_serialDesc').removeClass('noerror').addClass('error');
+				$('#id_div_serialDesc').show();
+			}else{
+				$('#id_div_serialDesc').text(json.meta.desc);
+				$('#id_ip_serialCodeT').addClass('redbd');
+				$('#id_div_serialDesc').removeClass('noerror').addClass('error');
+				$('#id_div_serialDesc').show();
+			}
+		})
+	},
+	
+	/**兑换*/
+	exchang: function (serial, validate) {
+		$.post(PROPERTIES.projectname + '/v2/userbase/vip',{
+				op: Serial.config._Exchange_Serial_new,
+				uid: PROPERTIES.userinfo.uid,
+				sid: PROPERTIES.userinfo.sid,
+				validate: validate,
+				serial : serial
+			},function(data){
+				$("#id_ip_serialCodeT").val("");
+				$("#id_ip_validatecode").val("");
+				$("#id_btn_exchange").text("激 活");
+				Serial.twiceClick = false;
+				var json = eval("("+data+")");
+				if(200 == json.meta.code){
+					var info = json.data;
+					$('.superSuccess').hide();
+					$('.musicSuccess').hide();
+					if(info.isSerial == 1){
+						//服务
+						$('#id_a_menu_serial_success').trigger('click');
+						$('.success-img').show();
+						$('.success-text').show();
+						var serialCode 	= info.serialCode;
+						var days 		= serialCode.days;
+						var length 		= '';
+						switch(days){
+							case 7: length = '7天'; break;
+							case 31: length = '1个月'; break;
+							case 62: length = '2个月'; break;
+							case 93: length = '3个月'; break;
+							case 186: length = '6个月'; break;
+							case 365: length = '12个月'; break;
+							default: langth = '1个月'; break;
+						}
+						if(serialCode.way == 'GIVEVIPLUX'){
+							//豪华VIP GIVEVIPLUX
+							$('.success-img img').attr('src', 'pc-superSuccess.jpg'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/pc-superSuccess.jpg*/);
+							$('.success-text').html('您已兑换'+length+'豪华VIP');
+							$('.superSuccess').show();
+						}else if(serialCode.way == 'GIVEVIP'){
+							//VIP GIVEVIP
+							$('.success-img img').attr('src', 'pc-superSuccess.jpg'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/pc-superSuccess.jpg*/);
+							$('.success-text').html('您已兑换'+length+'VIP');
+							$('.VIPSuccess').show();
+
+						}else{
+							//音乐包 GIVEVIPM
+							$('.success-img img').attr('src', 'pc-musicSuccess.jpg'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/pc-musicSuccess.jpg*/);
+							$('.success-text').html('您已兑换'+length+'音乐包');
+							$('.musicSuccess').show();
+						}
+					}else if(info.isCoupon == 1){
+						//代金券
+						$('#id_a_menu_serial_success').trigger('click');
+						$('.success-img').show();
+						$('.success-text').show();
+						var coupon 		= info.CouponList;
+						if(coupon.length == 1){
+							coupon 		= coupon[0];
+							//单张
+							var worth 		= coupon.worth;
+							var startTime 	= utils.formatDate1(new Date(coupon.startTime));
+							var endTime 	= utils.formatDate1(new Date(coupon.endTime));
+							var restricts 	= coupon.restricts;
+							var service 	= restricts.substring(0, 5);
+							var clickId		= '';
+							if(service.indexOf('vip_7') != -1){
+								//豪华VIP vip_7
+								service = '豪华VIP';
+								clickId = 'id_a_menu_super_open';
+							}else if(service.indexOf('vip_4') != -1){
+								//VIP vip_4
+								service = 'VIP';
+								clickId = 'id_a_menu_super_open';
+							}else{
+								//音乐包 VIPM
+								service = '音乐包';
+								clickId = 'id_a_menu_music_open2';
+							}
+
+							$('.success-img img').attr('src', 'dhcg-coupon.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/dhcg-coupon.png*/);
+							$('.success-text').html('恭喜您获得酷我'+worth+'元'+service+'的代金券，<br/>有效期：'+startTime+'至'+endTime+',<span class="blue">现在立享优惠</span>');
+							$('.success-text').on('click', '.blue', function(){
+								$('#' + clickId).trigger('click');
+							});
+							Coupon.initCoupons();	//兑换成功，重新加载代金券
+						}else{
+							//多张
+							$('.couponListTitle').html('恭喜您获得酷我代金券礼包');
+							$('#id_a_menu_couponList').trigger('click');
+							// $('.f_page').hide();
+							// $('#id_div_couponList_page').show();
+							// Coupon.initCoupons('initPage');	//兑换成功，重新加载代金券
+						}
+					}else{
+						$('#id_div_validateDesc').text("兑换码不存在或已使用");
+						$('#id_ip_validatecode').addClass('redbd');
+						$('#id_div_validateDesc').show();
+						$('#id_btn_exchange').text('激 活');
+						Serial.twiceClick = false;
+						Serial.getValidateCode();
+					}
+				} else if ('5002' == json.meta.code) {
+					// $('#id_div_validateDesc').text(json.meta.desc);
+					$('#id_div_validateDesc').text('验证码错误');
+					$('#id_ip_validatecode').addClass('redbd');
+					$('#id_div_validateDesc').show();
+					$('#id_btn_exchange').text('激 活');
+					Serial.twiceClick = false;
+					Serial.getValidateCode();
+				} else{
+					alert('兑换失败！请加群：258126420反应问题！');
+				}
+			}
+		)
+	},
+	
+	goMyAccount: function () {
+		var myl = PROPERTIES.projectname + '/added/vip_2016/index.jsp?page=id_a_menu_account';
+		window.location = myl;			
+	},
+	
+	/**初始化页面事件*/
+	initPageEvent: function () {
+		
+		//处理激活码的展示
+		$('#id_ip_serialCodeT').focus(function(){
+			var oldV = $(this).val();
+			if('请输入激活码（!区分大小写）' == oldV) {
+				$(this).val('');
+			}
+			$(this).css('color','#000');
+			$(this).addClass('bluebd');
+			$('#id_div_serialDesc').text('');
+			$('#id_ip_serialCodeT').removeClass('redbd');
+			$('#id_div_serialDesc').hide();
+			$('#id_ip_serialCode').val('');
+		});
+		$('#id_ip_serialCodeT').blur(function(){
+			var v = $(this).val();
+			if(utils.isNotEmpty(v)){
+				if(15 == v.length || 12 == v.length) Serial.getSerialCode(v);
+				else {
+					$('#id_div_serialDesc').text('激活码不符规则！');
+					$('#id_ip_serialCodeT').addClass('redbd');
+					$('#id_div_serialDesc').removeClass('noerror').addClass('error');
+					$('#id_div_serialDesc').show();
+				} 
+			}else{
+				$(this).val('请输入激活码（!区分大小写）');
+				$(this).css('color','#d9d9d9');
+			}
+			$(this).removeClass('bluebd');
+		});
+		
+		//点击激活按钮
+		$('#id_btn_exchange').click(function(){
+			if(Serial.twiceClick){ return false; }
+			var serialCode = $('#id_ip_serialCode').val();
+			if(utils.isEmpty(serialCode)){
+				alert('请输入正确的激活码！');
+				return false;
+			}
+			var validateC = $('#id_ip_validatecode').val();
+			if(utils.isEmpty(validateC) || '请输入验证码' == validateC){
+				alert('请输入验证码！');
+				return false;
+			}
+			
+			Serial.exchang(serialCode, validateC);
+			
+			$(this).text('加载中,请稍后...');
+			Serial.twiceClick = true;
+		});
+		
+		//“朕已阅”
+		$('#id_btn_dg_cf').click(function(){
+			//$(this).text('状态更新中,稍等1秒...');
+			//setTimeout('Serial.goMyAccount()',2000);
+			$("#id_div_dg_msg").hide();
+			$("#id_ip_serialCodeT").val("");
+			$("#id_ip_validatecode").val("");
+			$("#id_btn_exchange").text("激 活");
+			Serial.twiceClick = false;
+		});
+		
+		//点击刷新验证码图片
+		$('#id_img_val_rf').click(function(){
+			Serial.getValidateCode();
+		});
+		
+		$('#id_ip_validatecode').focus(function(){
+			var oldV = $(this).val();
+			if('请输入验证码' == oldV) {
+				$(this).css('color','black');
+				$(this).val('');
+			}
+			$(this).addClass('bluebd');
+			$(this).removeClass('redbd');
+			$('#id_div_validateDesc').val('');
+			$('#id_div_validateDesc').hide();
+		});
+		$('#id_ip_validatecode').blur(function(){
+			var oldV = $(this).val();
+			if(utils.isEmpty(oldV)) {
+				$(this).css('color','#d9d9d9');
+				$(this).val('请输入验证码');
+			}
+			$(this).removeClass('bluebd');
+		});
+		
+	},
+	
+	initPage: function () {
+		
+		/*$('#id_div_serial_unlogin').hide();
+		$('#id_div_serial_login').show();*/
+		
+		if (UserInfo.checkLogin()) {
+			$('#id_div_serial_unlogin').hide();
+			$('#id_div_serial_login').show();
+		}else{
+			$('#id_div_serial_login').hide();
+			$('#id_div_serial_unlogin').show();
+		}
+	},
+	
+	init: function () {
+		this.initPageEvent();
+		this.initPage();
+		Serial.getValidateCode();
+	}
+}
+

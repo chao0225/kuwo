@@ -1,0 +1,39 @@
+
+var QA = {
+	initPageEvent: function () {
+		$('#vipService').click(function() {
+			$('#musicService').removeClass('active');
+			$('#vipService').addClass('active');
+			
+			$('#musicQuestionTitle').hide();
+			$('#vipQuestionTitle').show();
+			
+			//去除所有问题菜单和问题内容的焦点状态
+			$('.f_btn_qa').removeClass('active');
+			$('.f_qaas p').removeClass('active');
+		});
+		
+		$('#musicService').click(function() {
+			$('#vipService').removeClass('active');
+			$('#musicService').addClass('active');
+			
+			$('#vipQuestionTitle').hide();
+			$('#musicQuestionTitle').show();
+			
+			//去除所有问题菜单和问题内容的焦点状态
+			$('.f_btn_qa').removeClass('active');
+			$('.f_qaas p').removeClass('active');
+		});
+		
+		$('.f_btn_qa').click(function(){
+			$('.f_btn_qa').removeClass('active');
+			$(this).addClass('active');
+			
+			var qaid = $(this).attr('qaid');
+			$('.f_qaas p').removeClass('active');
+			$('#'+qaid+' p').addClass('active');
+			utils.logTracePc('/vip2016/qa/'+qaid);
+		});
+		
+	}
+};

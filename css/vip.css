@@ -1,0 +1,400 @@
+*{
+    margin:0;
+    padding:0;  
+}
+body{
+    margin:0;
+    padding:0;
+    background:#EFEFEF;
+
+}
+/*顶部的导航栏*/
+#header{
+    background: #000000;
+    height:80px;
+}
+#top{
+    min-width:1200px;
+    margin:0 auto;
+    line-height:80px;
+}
+a{
+    text-decoration:none;
+}
+#top a img{ border:0;
+            vertical-align:middle;
+            margin-bottom:15px;
+            margin-right:30px;
+        }
+#top a:nth-child(2){
+    font-size:17px;
+    color:#FEC43A;
+    margin:0 20px;
+}
+#top a:nth-child(2)~a{
+    font-size:16px;
+    color:#CBCBCB;
+    margin:0 15px;
+}
+#top a:nth-child(2)~a:hover{
+    color:#FEC43A;
+}
+
+#header #top a:last-child{
+    float:right;
+    margin-right:8%;
+}
+#top a:first-child{
+    margin-left:8%;
+}
+
+/*轮播图*/
+.container{
+    margin:0 auto;
+    min-width:1423px;
+    min-height:400px;
+    position: relative;
+    overflow: hidden;
+   }
+   .list{
+    width:6000px;
+    min-height:400px;
+    position: absolute;
+    top:0;
+   }
+   .list img{
+    float:left;
+    width:1440px;
+    min-height:400px;
+   }
+   .dots{
+    position: absolute;
+    left:43%;
+    bottom:30px;
+    list-style: none;
+   }
+   .dots li{
+    float:left;
+    width:15px;
+    height:15px;
+    border-radius: 50%;
+    background: gray;
+    margin-left:10px
+   }
+   .dots .active{
+    background:#F4982B;
+   }
+   .pre,.next{
+    position: absolute;
+    top:38%;
+    font-size:80px;
+    border-radius:5px;
+    color:white;
+    text-align:center;
+    background: rgba(128,128,128,0.3);
+    cursor:pointer;
+     display:none;
+   }
+   .pre{
+    left:30px;
+   }
+   .next{
+    right:30px;
+   }
+   .container:hover .pre{
+     display:block;
+   }
+   .container:hover .next{
+     display:block;
+   }
+
+   /*标签页*/
+.tabs{
+    list-style:none;
+    margin:0 auto; 
+    height:80px; 
+}
+
+.tabs>li{
+    float:left;
+    position:relative;
+    padding-top:20px;
+}
+.tabs li:first-child{
+    left:27%;
+  }
+  .tabs li:last-child{
+    left:55%;
+  }
+.tabs a{
+    text-decoration:none;
+    color:#555555;
+	font-size:30px;
+	display:inline-block;
+    text-align:center;
+    cursor: pointer;
+}
+.tabs li>.active{
+    border-bottom:8px solid red;
+}
+.my-bqy{
+    position: relative;
+}
+.my-bqy #content1,#content2{
+    min-width: 1200px;
+    border-top:3px solid #E9E9E9;
+    margin:0 auto;
+}
+
+#content1 .vip-img{
+    margin-left:15%;
+    float:left;
+}
+div.vip-1{
+    margin: 100px 0 0 80px;
+    float:left;
+}
+.vip-1 p:nth-child(1){
+    font-size:27px;
+}
+.vip-1 p:nth-child(2){
+    font-size:15px;
+    color:#555555;
+}
+.vip-1 p:nth-child(3){
+    font-size:15px;
+    color:white;
+    padding:7px 15px 7px 25px;
+    margin:10px 0;
+    background:red;
+    cursor:pointer;
+    border-radius:5px;
+}
+.vip-1 p:nth-child(4){
+    font-size:12px;
+    color:#555555;
+}
+
+/*豪华特权*/
+#my_luanliu{
+    margin:13% 23%;
+    height:200px;   
+}
+#p1{
+    border-bottom: 5px solid #e4e4e4;
+    height:25px;
+    position:relative;
+    top:200px;
+}
+#p2{
+    font-size:23px;
+    background:white;
+    display:block;
+    text-align:center;
+    line-height:40px;
+    width:150px;
+    height:40px;
+    margin:0 auto;
+    padding:0;
+    z-index:200;
+    position:relative;
+    top:10px;
+}
+ul.img-1{
+    list-style:none;
+    display:block;
+    position: relative;
+    left:10px;
+    top:200px;
+}
+ul.img-1 li:nth-child(1){
+    display: inline-block;
+    padding: 20px;
+    width: 230px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 0 rgba(224, 224, 224, 1);
+    cursor: pointer;
+   position:absolute;
+   left:-50px;
+   top:-50px;
+    margin:50px 100px;
+}
+ul.img-1 li:nth-child(2){
+    display: inline-block;
+    padding: 20px;
+    width: 230px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 0 rgba(224, 224, 224, 1);
+    cursor: pointer;
+   position:absolute;
+   left:350px;
+   top:-50px;
+    margin:50px 100px;
+}
+ul.img-1 li:hover{
+    border:1px solid yellow;
+}
+ul.img-1 li:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+ul.img-1 li p{ 
+    float:right;
+    font-size: 16px;
+    color: #3c4d73;
+    text-align: right;
+    margin:10px 10px;
+}
+ul.img-1 li span{
+    font-size: 14px;
+    color: rgba(51,51,51,0.8);
+    
+}
+/*尊贵身份*/
+ul.img-2 li p{ 
+    font-size: 17px;
+    color: #000;
+    margin:10px 10px;
+    text-align: center;
+}
+ul.img-2 li span{
+    font-size: 14px;
+    color: rgba(51,51,51,0.8);
+}
+ul.img-2{
+    list-style:none;
+    margin:0 12%;
+    height:250px;
+}
+#content1 ul.gaodu{
+    height:500px; 
+}
+
+ul.img-2 li{
+    float:left;
+    width:200px;
+    height:200px;
+    cursor: pointer;
+    margin:10px 0px;
+}
+ul.img-2 li img{
+    width: 82px;
+    height: 82px;
+    text-align: center;
+    margin: 20px 60px;
+}
+ul.img-2 li:hover{
+    box-shadow: 0px 1px 3px 2px #b9b9b9;
+    cursor: pointer;
+}
+/*身份标识*/
+.biaoshi{
+    margin-left:15%;
+}
+div.zgvip{
+    font-size:18px;
+}
+ div.zgvip img{
+    width: 34px;
+    height: 31px;
+ }
+ .p3{
+     font-size:15px;
+     color: rgba(51,51,51,0.8);
+    margin:20px 0;
+ }
+ 
+ div.xq_022 img{
+     width:560px;
+     height:380px;
+ }
+ /*footer*/
+ #footer{
+     font-size:16px;
+     background:white;
+     margin:20px 0 10px 0;
+     padding:15px 15px 15px 8%;
+ }
+ 
+ #footer a:nth-child(2)~a{
+     color:#8290B2;
+     display:inline-block;
+     padding:15px 0;
+ }
+ #footer 
+ a:nth-child(2)~a:hover{
+    color:red;
+}
+#footer span:first-child{
+    padding:15px 0;
+
+}
+#footer :nth-child(3){
+    color:black; display:inline-block;
+  
+}
+
+.lianxi{
+    float:right;
+    position:relative;
+    top:-55px;
+    left:-60px;
+}
+.kefu{
+    width: 192px;
+    height: 38px;
+    background: url(../img/newbtn.gif) 0 -54px;
+    display: block;
+    margin:10px 0;
+}
+.kefu:hover {
+    background-position: 0 0;
+}
+
+#content1:after,#content1:after{
+    content:"";
+    display:block;
+    clear:both;
+  }
+
+
+  /*音乐包*/
+
+  #vip-2 img{
+    margin-left:15%;
+  }
+  #vip-3{
+    position:absolute;
+    top:0;
+    left:60%;
+  }
+    .haohua2{
+      margin-bottom: 40px;
+    }
+  .tequan{
+    border-bottom: 5px solid #e4e4e4;
+    position:relative;
+    top:40px;
+  }
+  .tequan2{
+    font-size:23px;
+    background:white;
+    display:block;
+    text-align:center;
+    line-height:40px;
+    width:150px;
+    height:40px;
+    margin:0 auto;
+    padding:0;
+    z-index:200;
+    position:relative;
+    top:20px;
+  }
+  /*清除浮动*/
+  
+  fudong:after{
+    content:"";
+    display:block;
+    clear:both;
+  }

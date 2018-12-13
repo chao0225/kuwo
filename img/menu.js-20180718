@@ -1,0 +1,97 @@
+
+// --------------------------------------------
+// 顶部菜单管理
+// --------------------------------------------
+
+var Menu = {
+	//默认显示页面
+	persentMenu : 'id_a_menu_index',
+	clickVip : function () {
+		//$('#id_a_menu_index').trigger('click');
+		$('#' + Menu.persentMenu).trigger('click');
+	},
+	initPageEvent: function () {
+		if(UserInfo.checkLogin()) {
+			$('#id_a_menu_account').show();
+		}
+		$('.f_menu').click(function(){
+			Paysuper.clearPayPolling();	//清除查询订单状态循环
+			var menuId = $(this).attr('id');
+			Menu.persentMenu = menuId;
+			$('.f_menu').removeClass('cur');
+			
+			// if(menuId.indexOf('id_a_menu_music_vip1_open') == 0) {//普通音乐包
+			// 	SerialKey.initOpenSerials();
+			// 	Pay.initProduct('vip_1');//这个VIP_1 还要再 重构  放到 attr里
+			// 	$('#id_a_menu_music').addClass('cur');
+			// } else if(menuId.indexOf('id_a_menu_music_vip2_open') == 0) {//豪华音乐包
+			// 	SerialKey.initOpenSerials();
+			// 	Pay.initProduct('vip_2');//这个VIP_1 还要再 重构  放到 attr里
+			// 	$('#id_a_menu_music').addClass('cur');
+			// } else if(menuId.indexOf('id_a_menu_music_vip3_open') == 0) {//升级音乐包
+			// 	SerialKey.initOpenSerials();
+			// 	Pay.productType = 'vip_3';
+			// 	Pay.initProduct('vip_3');
+			// 	$('#id_a_menu_music').addClass('cur');
+			// } else if(menuId.indexOf('id_a_menu_vip_open') == 0) {//vip开通
+			// 	SerialKey.initOpenSerials();
+			// 	Pay.initProduct('vip_4');
+			// 	$('#id_a_menu_vip').addClass('cur');
+			// }else 
+			if(menuId.indexOf('id_a_menu_super_open') == 0) {//豪华VIP开通（新
+				//SerialKey.initOpenSerials();
+				if(menuId == 'id_a_menu_super_open4'){
+					$('.closeBtn').trigger('click');
+				}
+				console.log('豪华VIP开通')
+				Paysuper.initProduct('vip_7');
+				$('#id_a_menu_vip').addClass('cur');
+			}else if(menuId.indexOf('id_a_menu_music_open') == 0) {//音乐包开通 （新
+				//SerialKey.initOpenSerials();
+				console.log('音乐包开通')
+				Paysuper.initProduct('vip_1');
+				$('#id_a_menu_music').addClass('cur');
+			}else if(menuId.indexOf('id_a_menu_VIP_open') == 0) {//VIP会员开通 （新
+				//SerialKey.initOpenSerials();
+				Paysuper.initProduct('vip_4');
+				$('#id_a_menu_VIP').addClass('cur');
+			} else if(menuId.indexOf('id_a_menu_account') == 0) {//我的账户
+				Account.initPageEvent();
+				Account.queryOrders();
+				SerialKey.initSerials();
+			} else if(menuId.indexOf('id_a_menu_serial_success') == 0) {//兑换码成功页
+				$('.success-img').hide();
+				$('.success-text').hide();
+			} else if(menuId.indexOf('id_a_menu_question') == 0) {
+				$('#id_a_menu_question').addClass('cur');
+			} else if(menuId.indexOf('id_a_menu_vip') == 0) {
+				$('#id_a_menu_vip').addClass('cur');
+			} else if(menuId.indexOf('id_a_menu_music') == 0) {
+				$('#id_a_menu_music').addClass('cur');
+			} else if(menuId.indexOf('id_a_menu_couponList') == 0) { //代金券列表页
+		        if(!UserInfo.checkLogin()) {
+		            $('#couponListData').html('<div class="djj_wk"><div class="djj_sk"><div style="text-align: center;font-size: 22px;line-height: 90px;">暂无代金券</div></div><span class="djj_antwo">立即使用</span></div>');
+		            $('#openUser').text('未登录');
+		            initLogin();
+		            kuwologin.showLoginBox();
+		            addWechatLogin();
+		        }else{
+					// Coupon.initCouponListPage();
+					Coupon.initCoupons('initPage');
+		        }
+			} else {
+				$(this).addClass('cur');
+			}
+			
+			
+			var pageid = $(this).attr('pageid'); 
+			$('.f_page').hide();
+			//$('#'+pageid).addClass('bounceInUp animated');
+			$('#'+pageid).show();
+			scrollTo(0, 0);
+			var u = PROPERTIES.userinfo.uid?PROPERTIES.userinfo.uid:"nologin";
+			utils.logTracePc('/vip2016/menu/'+pageid + '/' + menuId + '/' + u);
+		});
+
+	}
+};

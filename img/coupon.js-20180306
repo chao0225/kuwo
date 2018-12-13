@@ -1,0 +1,256 @@
+// vip 新版代金券
+var Coupon = {
+    props: {
+        loading: false,//加载数据中...
+        couponList: [],
+        hasGetCoupon: false,
+        coupon: {},
+        ctime: 0
+    },
+    initCoupons: function (initPage) {
+
+        $.post(PROPERTIES.projectname + '/v2/userbase/vip', {
+            'op': 'gcs',
+            'uid': PROPERTIES.userinfo.uid,
+            'sid': PROPERTIES.userinfo.sid
+        }, function (data) {
+            var jdata = utils.parseJSON(data);
+            if ('200' != jdata.meta.code) {
+                Coupon.noCoupons();
+                return false;
+            }
+
+            // jdata = {
+            //     "data":[
+            //         {"id":1001,"createdTime":1472714778000,"updateTime":1472785913000,"serialKey":"8AARZJF7FQOYB3M","name":"EEEE","picUrl":"","type":"VIPM","worth":2.0,"startTime":1472714778000,"endTime":1572714778001,"restricts":"VIPM","used":false,"uid":254410900},
+            //         {"id":1002,"createdTime":1472696432000,"updateTime":1472696432000,"serialKey":"JYGGQLZIHRTRIIA","name":"FFFF","picUrl":"","type":"VIPM","worth":3.0,"startTime":1472696432000,"endTime":1572714778001,"restricts":"VIPM","used":false,"uid":254410900},
+            //         {"id":1003,"createdTime":1472696432000,"updateTime":1472696432000,"serialKey":"JYGGQLZIHRTRIIA","name":"FFFF","picUrl":"","type":"VIPM","worth":3.0,"startTime":1472696432000,"endTime":1572714778001,"restricts":"VIPM","used":false,"uid":254410900},
+            //         {"id":1004,"createdTime":1472696432000,"updateTime":1472696432000,"serialKey":"JYGGQLZIHRTRIIA","name":"FFFF","picUrl":"","type":"VIPM","worth":2.0,"startTime":1472696432000,"endTime":1572714778001,"restricts":"VIPM","used":false,"uid":254410900},
+            //         {"id":1005,"createdTime":1472696432000,"updateTime":1472696432000,"serialKey":"JYGGQLZIHRTRIIA","name":"FFFF","picUrl":"","type":"VIPM","worth":4.0,"startTime":1472696432000,"endTime":1572714778001,"restricts":"VIPM","used":false,"uid":254410900}
+            //         ],
+            //     "ctime":1473216151709,
+            //     "meta":{"desc":"成功","code":200}
+            // }
+            var list = jdata.data;
+            if (list.length == 0) {
+                Coupon.noCoupons();
+                return false;
+            }
+
+            function sortNumber(a, b) {
+                return b['worth'] - a['worth'];
+            }
+
+            Coupon.props.ctime = jdata.ctime;
+            Coupon.props.couponList = list.sort(sortNumber);
+
+            if (initPage == 'initPage') {
+                Coupon.initCouponListPage();
+            }
+        });
+    },
+    initCouponShow: function (productType, month) {
+        month = month ? 'count_' + month : '';
+        if (month == 'count_1') {
+            month = 'count_2';
+        }
+        if (productType == 'vip_1') {
+            productType = 'VIPM';
+        }
+        var couponHtml = '';
+        var worth = {
+            arr: [],
+            index: []
+        };
+        console.log(Coupon.props.couponList)
+        $.each(Coupon.props.couponList, function (i, v) {
+            if (v.endTime < Coupon.props.ctime) {
+                //v.endTime = jdata.ctime;
+                return;
+            }
+            if (v.used) {
+                return;
+            }
+            if (Coupon.ArrayOf(worth.arr, v.worth)) {
+                return;
+            }
+            if (v.restricts.indexOf(productType) == -1) {
+                return;
+            }
+            if (v.restricts.indexOf('count') > -1) {
+                if (v.restricts.indexOf(month) == -1) {
+                    return;
+                }
+            }
+            couponHtml += '<li data-index="' + i + '"><span class="check-box"></span>省' + v.worth + '元</li>';
+            worth.arr.push(v.worth);
+            worth.index.push(i);
+        });
+        if (couponHtml) {
+            $('#id_div_couponBox ul').html(couponHtml);
+            var result = Coupon.checkMax(worth);
+            Coupon.props.coupon = Coupon.props.couponList[result.val] || {};
+            $('#id_div_couponBox ul').children('[data-index = "' + result.val + '"]').addClass('chose');
+            // Coupon.initCash();
+            // Paysuper.checkPlatformCode();
+            $('#id_div_couponBox').show();
+        } else {
+            Coupon.noCoupons();
+        }
+
+        if(productType == 'vip_7' && Paysuper.activityOpen){
+                if(month == 'count_3' || month == 'count_12'){
+                    Coupon.props.coupon = {};
+                    Coupon.noCoupons();
+                }
+        }
+        if (VipSuper.newUser) {
+            $('#payBtnTypeSuper').find('.service-text').html('立赠音乐包(新用户首月9.9元)');
+            if (month == 'count_2') {
+                Coupon.props.coupon = {};
+                Coupon.noCoupons();
+            }
+        }
+        Paysuper.initMonthData();
+        Paysuper.initCash();
+        Paysuper.checkPlatformCode();
+        Paysuper.checkOtherService();
+    },
+    //代金券列表页
+    initCouponListPage: function () {
+
+        var couponHtml = '';
+        var first = true;
+        var exchangeCodeKey = '';
+        $.each(Coupon.props.couponList, function (i, v) {
+            var couponMonth = '';
+            var couponType = '';
+            var couponImg = '';
+            if (v.endTime < Coupon.props.ctime) {
+                //v.endTime = jdata.ctime;
+                return;
+            }
+            if (v.used) {
+                return;
+            }
+            if (v.restricts.indexOf('vip_7') > -1) {
+                couponType = '豪华VIP';
+                couponImg = 'zs.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/zs.png*/;
+            } else {
+                couponType = '音乐包';
+                couponImg = 'zs2.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/zs2.png*/;
+            }
+            if (v.restricts.indexOf('count_12') > -1) {// 12月与1月不好判断，暂时由2表示12月，以后优化
+                couponMonth = '购买12个月可用';
+            } else if (v.restricts.indexOf('count_3') > -1) {
+                couponMonth = '购买3个月可用';
+            } else if (v.restricts.indexOf('count_6') > -1) {
+                couponMonth = '购买6个月可用';
+            } else if (v.restricts.indexOf('count_1') > -1) {
+                couponMonth = '购买1个月可用';
+            } else {
+                couponMonth = '您好幸运，仅3%老用户享受优惠！';
+            }
+
+            var imgHtml = '';
+            if (first || exchangeCodeKey == v.exchangeCodeKey) {
+                first = false;
+                exchangeCodeKey = v.exchangeCodeKey;
+                imgHtml = '<img src="new.png"/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/new.png*/ style="position: absolute;top: -1px;left: -1px;">'
+            }
+
+            couponHtml += '<div class="djj_wk">\
+                            <div class="djj_sk">\
+                              ' + imgHtml + '\
+                              <p class="djj_jei"><span class="spanpone">￥</span><span class="spanptwo">' + v.worth + '</span></p>\
+                              <div class="djj_jsi">\
+                                <p class="pone">' + couponType + '</p>\
+                                <p class="ptwo">' + couponMonth + '</p>\
+                              </div>\
+                              <img class="djj_zaszs" src="' + couponImg + '" /> \
+                            </div>\
+                            <p class="clear"></p>\
+                            <span class="djj_anone useCoupon" data-restrict="' + v.restricts + '">立即使用</span>\
+                          </div>';
+        });
+        if (couponHtml) {
+            $('#couponListData').html(couponHtml);
+
+            //绑定立即使用事件
+            $('.useCoupon').on('click', function () {
+                var _this = $(this);
+                var restrict = _this.attr('data-restrict');
+                if (restrict.indexOf('vip_7') > -1) {
+                    //跳转豪华VIP支付
+                    $('#id_a_menu_super_open').trigger('click');
+                } else {
+                    //跳转音乐包支付
+                    $('#id_a_menu_music_open2').trigger('click');
+                }
+            });
+        } else {
+            //没有可用代金券
+            $('#couponListData').html('<div class="djj_wk"><div class="djj_sk"><div style="text-align: center;font-size: 22px;line-height: 90px;">暂无代金券</div></div><span class="djj_antwo">立即使用</span></div>');
+        }
+    },
+    //数组检索
+    ArrayOf: function (arr, val) {
+        var result = false;
+        $.each(arr, function (i, v) {
+            if (v == val) {
+                result = true;
+            }
+        });
+        return result
+    },
+    //数组最大值位置及索引
+    checkMax: function (obj) {
+        var max = 0,
+            res = {},
+            value = 0
+        $.each(obj.arr, function (i, v) {
+            if (max < v) {
+                max = v;
+                value = i;
+            }
+        });
+        res['index'] = value;
+        res['val'] = obj.index[value];
+        return res;
+    },
+    //没有代金券情况
+    noCoupons: function () {
+        $("#id_div_couponBox").hide();
+    },
+    //计算价格
+    initCash: function () {
+        //做不完了，先对付用，下次优化
+        Paysuper.initCash();
+        Paysuper.checkPlatformCode();
+    },
+    initPageEvent: function () {
+        //代金券选择
+        $('#id_div_couponBox ul').on('click', 'li', function () {
+            var _this = $(this);
+            if (_this.hasClass('chose')) {
+                _this.removeClass('chose');
+            } else {
+                _this.addClass('chose').siblings().removeClass('chose');
+            }
+            var selectCoupon = $('#id_div_couponBox ul .chose');
+            var coupon;
+            if (selectCoupon.size() > 0) {
+                var index = selectCoupon.attr('data-index');
+                coupon = Coupon.props.couponList[index] || {};
+            } else {
+                coupon = {};
+            }
+            Coupon.props.coupon = coupon;
+            Coupon.initCash();
+        });
+    },
+    init: function () {
+        this.initPageEvent();
+
+    }
+};

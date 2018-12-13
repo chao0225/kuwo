@@ -1,0 +1,593 @@
+/**
+ * 2012 login method 
+ * 使用jquery框架
+ * 
+ * ***/
+// 第三方回调url
+var loginUrl = location.protocol+'//kzone.kuwo.cn/mlog/Home';
+// 引用jquery
+if(typeof(jQuery) == 'undefined') {
+	document.writeln('<script type="text/javascript" src="'+location.protocol+'//js.kuwo.cn/jquery-1.7.1.min.js"></script>');
+	document.writeln('<script type="text/javascript">jQuery.noConflict();</script>');
+}
+// 引入cookie.js
+if(typeof(delCookie) == 'undefined') {
+	document.writeln('<script type="text/javascript" src="'+location.protocol+'//js.kuwo.cn/cookie.js"></script>');
+}
+//引用样式
+document.writeln('<link rel="stylesheet" type="text/css" href="http://vip1.kuwo.cn/vip/added/vip_2016/js/'+location.protocol+'//'+location.host+'/vip/added/vip_2016/css/loginBox.css?23">');
+
+/**
+ * @param callBack 默认刷新页面 如果要执行别的操作，可以传进callBack方法
+ * @param hideClose 是否显示关闭按钮 默认显示
+ * @param loginUrl 登陆后跳转的页面
+ * @returns {KWLogin}
+ */
+var KWLogin =  function(callBack,hideClose,loginUrl1) {
+	if(callBack) {
+		this.callBack = callBack;
+	}
+	if(hideClose) {
+		this.hideClose=hideClose;
+	}
+	if(loginUrl1) {
+		this.loginUrl = loginUrl1;
+		loginUrl = loginUrl1;
+	}
+	this.sinaAuth = 'https://api.weibo.com/oauth2/authorize?client_id=2972927130&response_type=code&redirect_uri=http://i.kuwo.cn/US/platform/weibo.jsp&display=popup';
+	this.qqAuth = 'https://graph.qq.com/oauth2.0/authorize?client_id=100243533&response_type=code&scope=get_user_info,add_share&redirect_uri=http://i.kuwo.cn/US/platform/qq.jsp';
+};
+
+/**显示登录窗口*/
+KWLogin.prototype.showLoginBox = function() {
+	var that = this;
+	var player = jQuery('#l_outer_div');
+	if(player[0]){
+		player.show();
+		this.DivSetVisible(true,"login2012_fuceng");
+		jQuery('#login2012_fuceng').show();
+	}else {
+		this.writeLoginBox();
+	}
+	jQuery(window).unbind('resize',function(){
+		that.loginBoxResetDIV();
+	}).bind('resize',function () {
+		that.loginBoxResetDIV();
+	}).unbind('scroll',function (){
+		that.loginBoxResetDIV();
+	}).bind('scroll',function (){
+		that.loginBoxResetDIV();
+	});
+	//window.scrollTo(0,0);
+	that.loginBoxResetDIV();
+	jQuery('#login_name').focus();
+	that.getLoginCode();
+};
+/**生成登录窗口**/
+KWLogin.prototype.writeLoginBox = function(){
+	var html = new Array();
+	// html[html.length] = '<div class="l_loadtop" id="loginBox2012"></div>';
+	// html[html.length] = '<div class="l_loadmiddle">';
+	// html[html.length] = '<div class="bound">';
+	// html[html.length] = '<div class="l_set">';
+	// html[html.length] = '<span>账&nbsp;&nbsp;号：</span>';
+	// html[html.length] = '<div class="input"><em></em><input type="text" id="login_name"/><em class="input_right"></em></div>';
+	// html[html.length] = '<a href="http://vip1.kuwo.cn/vip/added/vip_2016/js/'+location.protocol+'//kzone.kuwo.cn/mlog/Reg" target="_blank">注册账号</a>';
+	// html[html.length] = '</div>';
+	// html[html.length] = '<div class="l_set">';
+	// html[html.length] = '<span>密&nbsp;&nbsp;码：</span>';
+	// html[html.length] = '<div class="input"><em></em><input type="password" id="login_psw"/><em class="input_right"></em></div>';
+	// html[html.length] = '<a href="http://vip1.kuwo.cn/vip/added/vip_2016/js/'+location.protocol+'//i.kuwo.cn/US/FindPassword" target="_blank">忘记密码</a>';
+	// html[html.length] = '</div>';
+	// html[html.length] = '<div class="l_check">';
+	// html[html.length] = '<input type="checkbox" style="visibility:hidden" /><label style="visibility:hidden">记住密码</label> <input type="checkbox" id="login_useCookie" /><label>自动登录</label  for="login_useCookie"><a href="#" class="loginBtn" id="loginBtn" style="margin-left:0px;display:inline-block;float:left;"><em></em>确&nbsp;定<em class="rig"></em></a>';
+	// html[html.length] = '</div>';
+	// html[html.length] = '<div class="tishi undis" id="login_tip"><p>登录成功！</p></div>';
+	// html[html.length] = '<p class="fenxiang2"><span>其他账户登录：</span><a href="#" class="loginBtn "><em></em><strong class="login_qq" id="login3_qq">QQ帐号</strong><em class="rig"></em></a><a href="#" class="loginBtn "><em></em><strong class="login_sina" id="login3_sina"\>新浪微博</strong><em class="rig"></em></a></p>';
+	// html[html.length] = '</div>';
+
+	html[html.length] = '  <div class="l_loadtop" id="loginBox2012">',
+	html[html.length] = '    <h1 class="active">登录</h1>',
+	html[html.length] = '    <h1>注册</h1>',
+	html[html.length] = '  </div>',
+	html[html.length] = '  <div class="l_loadmiddle">',
+	html[html.length] = '    <div class="bound l_loadleft typeLogin">',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <p class="title">酷我账号登录</p>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input"><input type="text" id="login_name" placeholder="酷我账号" /></div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input"><input type="password" id="login_psw" placeholder="密码" /></div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input">',
+	html[html.length] = '        	<input id="imgCodeTmId" type="hidden"/>',
+	html[html.length] = '        	<input id="imgCodeRandomId" type="hidden"/>',
+	html[html.length] = '        	<input id="codeId" type="text" placeholder="验证码" class="codeId"/>',
+	html[html.length] = '        	<img id="imgCodeId" src="" class="codeImg"/>',
+	html[html.length] = '        </div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_check">',
+	html[html.length] = '        <input type="checkbox" id="login_useCookie" />',
+	html[html.length] = '        <label>自动登录</label  for="login_useCookie">',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_check">',
+	html[html.length] = '        <a href="javascript:;" class="loginBtn" id="loginBtn" style="">',
+	html[html.length] = '          登&nbsp;录',
+	html[html.length] = '        </a>',
+	html[html.length] = '      </div>',
+	html[html.length] = '    </div>',
+	html[html.length] = '    <div class="bound l_loadleft typeRegister undis">',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <p class="title">酷我账号注册</p>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input"><input type="text" id="register_phone" placeholder="手机号" style="width:140px;"/><a href="javascript:;" class="registerGetCode">获取验证码</a></div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input"><input type="text" id="register_code" placeholder="验证码" /></div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input"><input type="password" id="register_psw" placeholder="设置密码(6位以上)" /></div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_set">',
+	html[html.length] = '        <div class="input"><input type="password" id="register_psw2" placeholder="确认密码" /></div>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <input/ type="hidden" id="tmNum" value="">',
+	html[html.length] = '      <div class="l_check">',
+	html[html.length] = '        <input name="serviceAgree" class="command" type="checkbox" checked="">同意',
+	html[html.length] = '        <a class="registerService" href="http://www.kuwo.cn/static/page/license/license.html" target="_blank">《酷我音乐用户服务协议》</a>',
+	html[html.length] = '        <a class="registerService" href="http://www.kuwo.cn/static/page/license/license_privacy.html" target="_blank">《隐私政策》</a>',
+	html[html.length] = '      </div>',
+	html[html.length] = '      <div class="l_check">',
+	html[html.length] = '        <a href="javascript:;" class="loginBtn" id="registerBtn" style="">',
+	html[html.length] = '          注&nbsp;册',
+	html[html.length] = '        </a>',
+	html[html.length] = '      </div>',
+	html[html.length] = '    </div>',
+	html[html.length] = '    <div class="bound l_loadright">',
+	html[html.length] = '        <div class="l_set">',
+	html[html.length] = '          <p class="title">其它账号登录</p>',
+	html[html.length] = '        </div>',
+	html[html.length] = '        <a href="javascript:;" class="otherloginBtn">',
+	html[html.length] = '          <i class="qqLogo"></i>',
+	html[html.length] = '          <strong class="login_qq" id="login3_qq">QQ帐号</strong>',
+	html[html.length] = '        </a>',
+	html[html.length] = '        <a href="javascript:;" class="otherloginBtn">',
+	html[html.length] = '          <i class="sinaLogo"></i>',
+	html[html.length] = '          <strong class="login_sina" id="login3_sina">新浪微博</strong>',
+	html[html.length] = '        </a>',
+	html[html.length] = '        <div id="wechatDiv"></div>',
+	html[html.length] = '      <div class="tishi undis" id="login_tip"><p>请填写完整信息</p></div>',
+	html[html.length] = '      <div class="tishi2 undis" id="login_tip2"><p>登录成功！</p></div>',
+	html[html.length] = '    </div>',
+	html[html.length] = '  </div>';
+	html[html.length] = '  <div class="dlzc_yatc" id="validCode_div" style="display: none;"> ',
+	html[html.length] = '   <a href="javascript:void(0);" class="dialog_close"></a> ',
+	html[html.length] = '   <p>输入答案后发送</p> ',
+	html[html.length] = '   <div class="dlzc_yatcCn"> ',
+	html[html.length] = '    <img id="imgRegisterCodeId" src="" title="点击图片更换验证码" /> ',
+	html[html.length] = '    <a href="javascript:;" id="validCode_div_chgimg">换一张</a> ',
+	html[html.length] = '    <div class="dhao">',
+	html[html.length] = '     =',
+	html[html.length] = '    </div> ',
+	html[html.length] = '    <div class="dlzc_yatcCn_ip"> ',
+	html[html.length] = '     <input type="text" value="" placeholder="输入答案" id="validCode_div_code_txt" /> ',
+	html[html.length] = '     <div id="validCode_div_tips" style="display:none;">',
+	html[html.length] = '      <span></span>验证码错误',
+	html[html.length] = '     </div> ',
+	html[html.length] = '    </div> ',
+	html[html.length] = '    <input id="imgRegisterCodeTmId" type="hidden"/>',
+	html[html.length] = '    <input id="imgRegisterCodeRandomId" type="hidden"/>',
+	html[html.length] = '   </div> ',
+	html[html.length] = '   <a class="tj" id="validCode_btn_submit">提交</a>',
+	html[html.length] = '  </div>';
+
+	if(!this.hideClose) {
+		html[html.length] = '<a href="javascript:;" class="login_closed" ></a>';
+	}
+	html[html.length] = '</div>';
+	// html[html.length] = '<div class="l_loadbottom"></div>';
+	var outerDiv =document.createElement("div");
+	var loginbox =document.createElement("div");
+	outerDiv.id="login2012_fuceng";
+	outerDiv.className="login2012_fuceng";
+	outerDiv.style.top='0px';
+	outerDiv.style.left='0px';
+	outerDiv.style.position='absolute';
+	outerDiv.style.zIndex=9999998;
+	loginbox.style.zIndex=9999999;
+	loginbox.id="l_outer_div";
+	loginbox.className="login2012_load";
+	loginbox.innerHTML = html.join('');
+	document.body.appendChild(outerDiv);
+	document.body.appendChild(loginbox);
+
+	$('.l_check').children().show();
+
+	//document.body.appendChild(jQuery('<iframe id="DivShim" src="javascript:false;" scrolling="no" frameborder="0" style="position:absolute; top:0px; left:0px; display:none;"></iframe>')[0]);
+	//this.DivSetVisible(true,"login2012_fuceng");
+	this.addEvent();
+};
+var codeTimer = null;
+KWLogin.prototype.addEvent = function (){
+	var that = this;
+	jQuery("#l_outer_div .login_closed").bind("click",function () {
+		that.hideLogin();
+	});
+	jQuery("#l_outer_div #loginBtn").bind("click",function(){
+		that.doLogin();
+		});
+	jQuery("#l_outer_div #registerBtn").bind("click",function(){
+		that.doRegister();
+		});
+	//确认注册图片验证码
+	jQuery("#l_outer_div #validCode_btn_submit").bind("click",function(){
+		var phoneNumber = $('#register_phone').val();
+		var loginCode = jQuery("#validCode_div_code_txt").val();
+		if(loginCode == ''){
+			jQuery('#validCode_div_tips').show();
+			setTimeout("jQuery('#validCode_div_tips').hide()",2000);
+			return false;
+		}
+		var loginTm = jQuery("#imgRegisterCodeTmId").val();
+		var randomCode = jQuery("#imgRegisterCodeRandomId").val();
+
+		that.getRegisterCode(phoneNumber, loginCode, loginTm, randomCode);
+	});
+	//更换注册图片验证码
+	jQuery("#l_outer_div #validCode_div_chgimg").bind("click",function(){
+		that.getRegisterValidCode();
+	});
+	jQuery("#l_outer_div #imgRegisterCodeId").bind("click",function(){
+		that.getRegisterValidCode();
+	});
+	//关闭注册图片验证码
+	jQuery("#l_outer_div .dialog_close").bind("click",function(){
+		$('#validCode_div').hide();
+	});
+	jQuery("#l_outer_div .registerGetCode").bind("click",function(){
+		
+		if($('.registerGetCode').html() != '获取验证码'){ return false; }
+		var	phoneNumber = $('#register_phone').val(),
+			phoneReg = /^1[0-9]{10}$/;
+
+		if(!phoneReg.test(phoneNumber)){ 
+		    jQuery('#login_tip').html('<p>您输入的电话号码有误！</p>').show();
+			setTimeout("jQuery('#login_tip').hide()",1000);
+		    return false; 
+		} 
+		that.getRegisterValidCode();
+		$('#validCode_div').show();
+
+	});
+	jQuery(".l_loadtop h1").bind("click",function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		if($(this).html() == '登录'){
+			//登录
+			$('.typeLogin').show();
+			$('.typeRegister').hide();
+		}else{
+			//注册
+			$('.typeRegister').show();
+			$('.typeLogin').hide();
+		}
+	});
+	
+	jQuery("#l_outer_div #login_psw").bind('keypress',function(event){
+		var keycode = event.which;
+		if(keycode == 13) {
+			that.doLogin();
+		}
+	});
+	//获取图片验证码 登录
+	jQuery("#l_outer_div #imgCodeId").bind('click',function(event){
+		that.getLoginCode();
+	});
+	
+	jQuery("#l_outer_div #login_name").bind("keypress",function(){
+		var keycode = event.which;
+		if(keycode == 13) {
+			jQuery("#l_outer_div #login_psw").focus();
+		}
+	});
+	
+	jQuery("#l_outer_div #login3_sina").bind("click",function(){
+		that.login3(that.sinaAuth, 'sina', '新浪微博登录', 620, 491);
+	});
+	jQuery("#l_outer_div #login3_qq").bind("click",function(){
+		that.login3(that.qqAuth, 'QQ账号', 'QQ账号登录', 502, 390);
+	});
+};
+
+//获取图片验证码 注册
+KWLogin.prototype.getRegisterValidCode = function(){
+    var codeTm = new Date().getTime();
+    var codeRandom = parseInt(Math.random()*100000);
+    var codeUrl = '/vip/v2/captcha?op=getImageCode&type=airthCode&tm='+codeTm+'&randomCode=' + codeRandom+'&r='+Math.random();
+    $('#imgRegisterCodeId').attr('src',codeUrl);
+    $('#imgRegisterCodeTmId').val(codeTm);
+    $('#imgRegisterCodeRandomId').val(codeRandom);
+}
+
+//获取图片验证码 登录
+KWLogin.prototype.getLoginCode = function(){
+    var codeTm = new Date().getTime();
+    var codeRandom = parseInt(Math.random()*100000);
+    var codeUrl = '/vip/v2/captcha?op=getImageCode&type=airthCode&tm='+codeTm+'&randomCode=' + codeRandom+'&r='+Math.random();
+    $('#imgCodeId').attr('src',codeUrl);
+    $('#imgCodeTmId').val(codeTm);
+    $('#imgCodeRandomId').val(codeRandom);
+}
+var timeNumber = 60;
+//获取验证码 注册
+KWLogin.prototype.getRegisterCode = function(phoneNumber, loginCode, loginTm, randomCode){
+	var that = this;
+	jQuery.ajax({
+		'type':'POST',
+		'url': "/vip/v2/register",
+		'data': "op=sendsms&mobile="+phoneNumber+'&loginCode='+loginCode+'&loginTm='+loginTm+'&randomCode='+randomCode,
+		'cache': false,
+		'success': function(ret, rstt) {
+			ret = JSON.parse(ret);
+			if(ret && ret.meta && ret.meta.code==200) {
+				if(ret.data.status == 200){
+					$('#validCode_div').hide();
+					$('.registerGetCode').html(timeNumber + 's后重试');
+					codeTimer = setInterval(function(){
+						if(timeNumber == 0){
+							clearInterval(codeTimer);
+							$('.registerGetCode').html('获取验证码');
+						}else{
+							timeNumber --;
+							$('.registerGetCode').html(timeNumber + 's后重试');
+						}
+					}, 1000);
+				}else if(ret.data.status == 300){
+					$('#validCode_div').hide();
+					jQuery('#login_tip').html('<p>'+ret.data.msg+'</p>').show();
+					setTimeout("jQuery('#login_tip').hide()",2000);
+					that.getRegisterValidCode();
+					return;
+				}else{
+					jQuery('#validCode_div_tips').html(ret.data.msg).show();
+					setTimeout("jQuery('#validCode_div_tips').hide()",2000);
+					that.getRegisterValidCode();
+					return;
+				}
+			}else{
+				jQuery('#validCode_div_tips').html('验证码错误').show();
+				setTimeout("jQuery('#validCode_div_tips').hide()",2000);
+				that.getRegisterValidCode();
+				return;
+			}
+			$('#tmNum').val(ret.data.tm);
+		},
+		'error': function(xhr, rstt, err) {
+			alert('系统出错，请稍候再试');
+		}
+	});
+}
+
+//注册
+KWLogin.prototype.doRegister = function(node){
+	var that = this;
+	jQuery("#login_tip").html('').hide();
+
+	if(!$('[name = "serviceAgree"]').attr('checked')){
+		jQuery("#login_tip").html('<p>请同意协议</p>').show();
+		setTimeout("jQuery('#login_tip').hide()",8000);
+		return false;
+	}
+	var phoneNumber = $('#register_phone').val(),
+		code = $('#register_code').val(),
+		psw = $('#register_psw').val(),
+		psw2 = $('#register_psw2').val(),
+		tm = $('#tmNum').val(),
+		pswReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
+
+
+	if(phoneNumber=='' || code=='' || psw=='') {
+		jQuery("#login_tip").html('<p>请填写完整信息</p>').show();
+		setTimeout("jQuery('#login_tip').hide()",8000);
+		return;
+	}
+
+	if(!pswReg.test(psw)) {
+		jQuery("#login_tip").html('<p>密码格式为6-16位的数字+字母组合</p>').show();
+		setTimeout("jQuery('#login_tip').hide()",8000);
+		return;
+	}
+
+	if(psw != psw2) {
+		jQuery("#login_tip").html('<p>两次输入密码不一致</p>').show();
+		setTimeout("jQuery('#login_tip').hide()",8000);
+		return;
+	}
+
+	jQuery.ajax({
+		'type':'POST',
+		'url': "/vip/v2/register",
+		'data': "op=phoneRegister&password="+psw+"&mobile="+phoneNumber+"&nickname="+phoneNumber+"&code="+code+"&tm="+tm,
+		'cache': false,
+		'success': function(ret, rstt) {
+			ret = JSON.parse(ret);
+			if(ret && ret.data && ret.data.status) {
+				if(ret.data.status==200){
+					jQuery('#login_tip').hide();
+					jQuery('#login_tip2').html('<p>您已注册成功,快去登录吧</p>').show();
+					that.hideLogin(4000);
+					setTimeout(function(){
+						that.callBack();
+					}, 4000);
+				}else{
+					jQuery('#login_tip').html('<p>'+ret.data.msg+'</p>').show();
+					setTimeout("jQuery('#login_tip').hide()",8000);
+					return;
+				}
+			}else{
+				jQuery('#login_tip').html('<p>系统异常，请重试</p>').show();
+				setTimeout("jQuery('#login_tip').hide()",8000);
+				return;
+			}
+		},
+		'error': function(xhr, rstt, err) {
+			alert('系统出错，请稍候再试');
+		}
+	});
+};
+
+KWLogin.prototype.loginBoxResetDIV = function (){  
+    var loginBoxFuceng = jQuery('#login2012_fuceng');
+    loginBoxFuceng.width(Math.max(document.documentElement.scrollWidth,document.documentElement.clientWidth)+"px");
+    loginBoxFuceng.height(Math.max(document.documentElement.scrollHeight,document.documentElement.clientHeight)+"px");
+    var top = -200;
+    var left = -289;
+    top = jQuery(window).scrollTop()-200;
+    left = jQuery(window).scrollLeft()-289;
+    jQuery('#l_outer_div').css({"margin-top": ""+top+"px","margin-left":""+left+"px"});
+    //this.DivSetVisible(true,"login2012_fuceng");
+};
+
+KWLogin.prototype.hideLogin = function(time){
+	//this.DivSetVisible(false,"login2012_fuceng");
+	if(time){
+		setTimeout("jQuery('#l_outer_div').hide();jQuery('#login2012_fuceng').hide();jQuery('#login_tip').hide()",time);
+	}else {
+		jQuery('#l_outer_div').hide();
+		jQuery('#login2012_fuceng').hide();
+		jQuery("#login_tip").hide();
+	}
+};
+//登录失败 清空
+KWLogin.prototype.doLoginError = function(type){
+	if('code' !== type){
+		// jQuery("#login_name").val('');
+		jQuery("#login_psw").val('');
+	}
+	jQuery("#codeId").val('');
+	this.getLoginCode();
+};
+//userinfo.js里面重写
+KWLogin.prototype.doLogin = function(node){
+	var that = this;
+	jQuery("#login_tip").html('').hide();
+	var name = jQuery("#login_name").val();
+	var psw = jQuery("#login_psw").val();
+	var loginCode = jQuery("#codeId").val();
+	var loginTm = jQuery("#imgCodeTmId").val();
+	var randomCode = jQuery("#imgCodeRandomId").val();
+	// var useCookie = jQuery("#login_useCookie").attr("checked");
+	if(name=='' || psw=='') {
+		jQuery("#login_tip").html('<p>请填写用户名和密码</p>').show();
+		setTimeout("jQuery('#login_tip').hide()",1000);
+		return;
+	}
+	if(loginCode=='') {
+		jQuery("#login_tip").html('<p>请填写验证码</p>').show();
+		setTimeout("jQuery('#login_tip').hide()",1000);
+		return;
+	}
+	jQuery.ajax({
+		'type':'POST',///vip/v2/user?op=loginBox&username=123&password=123&loginTm=1502259372295&randomCode=15517&loginCode=7
+		'url': "/vip/v2/user",
+		'data': "op=loginBox&username="+name+"&password="+psw+"&loginTm="+loginTm+"&randomCode="+randomCode+"&loginCode="+loginCode,
+		'cache': false,
+		'success': function(ret, rstt) {
+			if(!ret) {
+				jQuery('#login_tip').html('<p>系统异常，请重试</p>').show();
+				// setTimeout("jQuery('#login_tip').hide()",1000);
+				return;
+			}
+			if(ret.indexOf('不存在')>=0 || ret.indexOf('密码错误')>=0) {
+				jQuery('#login_tip').html('<p>用户名或密码错误</p>').show();
+				// setTimeout("jQuery('#login_tip').hide()",1000);
+				return;
+			}
+			if(ret.indexOf('登录成功')>=0) {
+				jQuery('#login_tip').hide();
+				jQuery('#login_tip2').html('<p>登录成功</p>').show();
+				that.hideLogin(1000);
+				that.callBack();
+				return;
+			}
+		},
+		'error': function(xhr, rstt, err) {
+			alert('系统出错，请稍候再试');
+		}
+	});
+};
+KWLogin.prototype.isLoginIn= function(){
+	if(getCookie('userid')!=''){
+		return true;
+	}else{
+		this.showLoginBox();
+		return false;
+	}
+};
+//回车检查
+KWLogin.prototype.checkEnter = function(evt){
+	if (window.event) {
+		evt = window.event;
+	}
+	if( evt.keyCode == 13) {
+		this.doLogin();
+	}
+};
+
+KWLogin.prototype.logout = function(href){
+	delCookie('userid');
+	delCookie('username');
+	delCookie('mlogdomain');
+	delCookie('uph');
+	if(href) {
+		var ind = href.indexOf('#');
+		if(ind >0) {
+			href = href.substring(0,ind);
+		}
+		location.href = href;
+	}else {
+		location.href = location.protocol+'//kzone.kuwo.cn/mlog/';
+	}
+};
+KWLogin.prototype.callBack = function(href){
+	if(href) {
+		var ind = href.indexOf('#');
+		if(ind >0) {
+			href = href.substring(0,ind);
+		}
+		location.href = href;
+	}else {
+		var ind = this.loginUrl.indexOf('#');
+		if(ind >0) {
+			this.loginUrl = this.loginUrl.substring(0,ind);
+		}
+		location.href = this.loginUrl;
+	}
+};
+// 第三方登陆
+KWLogin.prototype.login3 = function(k, type, name, width, height){
+    window.open(k, name, "width=" + width + ",height=" + height + ",menubar=0,scrollbars=1,status=1,titlebar=0,toobar=0,location=1,resizable=yes");
+};
+
+KWLogin.prototype.DivSetVisible = function (state,divStr){
+	return;
+	var DivRef = document.getElementById(divStr);
+	var IfrRef = document.getElementById('DivShim');
+	if(state){
+		DivRef.style.display = "block";
+		IfrRef.style.width = DivRef.offsetWidth;
+		IfrRef.style.height = DivRef.offsetHeight;
+		IfrRef.style.top = DivRef.style.top;
+		IfrRef.style.left = DivRef.style.left;
+		IfrRef.style.zIndex = DivRef.style.zIndex - 1;
+		IfrRef.style.display = "block";
+	}
+	else{
+		DivRef.style.display = "none";
+		IfrRef.style.display = "none";
+	}
+};
+

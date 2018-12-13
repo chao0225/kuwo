@@ -1,0 +1,224 @@
+
+
+var VipSuper = {
+	vipStatus: 'close',//open、close
+	musicStatus: 'close',//open、close
+	props: {
+		debug: false,
+		mod: 0
+	},
+	newUser: false,
+    /**格式化 时间 yyyy-MM-dd */
+    formatDate: function(date){
+        
+        //var year = date. getFullYear();
+        var month = date. getMonth()+1;
+        var day = date. getDate();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+
+        var year = date.getYear()
+        var year = year < 2000 ? year + 1900 : year
+        var yy = year.toString();
+
+        month = month<10 ? '0'+month : month;
+        day = day<10 ? '0'+day : day;
+        
+        var dataStr = yy+'-'+month+'-'+day;
+        return dataStr;
+    },
+	/**初始化用户信息*/
+	// initUserInfo: function () {
+	// 	var name = PROPERTIES.userinfo.username;
+	//     if(PROPERTIES.userinfo.uid && PROPERTIES.userinfo.uid != 0){
+	//     	$('[data-user = "name"]').html(name);
+	//     	$('[data-open = "login"]').hide();
+	// 	    this.initImageInfo();
+	// 	    this.initBiedInfo();
+	//     }else{
+	//     	$('[data-user = "name"]').html('登录后可查看会员状态');
+	//     	$('[data-open = "login"]').show();
+	//     }
+	// },
+	//用户头像
+	// initImageInfo: function () {
+	// 	$.post(PROPERTIES.projectname+'/v2/sysinfo',{
+	// 		op: "gui",
+	// 		sid: PROPERTIES.userinfo.sid,
+	// 		uid: PROPERTIES.userinfo.uid
+	// 	},function(data){
+	// 		var json = eval("("+data+")");
+	// 		if(json.meta.code != 200) return false;
+	// 		var infos = json.data;
+	// 		var img = infos.PIC;
+	// 		//用户头像
+	// 		if(img){
+	// 			$("[data-user = 'img']").attr("src",img);
+	// 		}
+	// 	})
+	// },
+	initBiedInfo: function () {
+		$.post(PROPERTIES.projectname+'/v2/user/vip',{
+			op: "ui",
+			sid: PROPERTIES.userinfo.sid,
+			uid: PROPERTIES.userinfo.uid
+		},function(data){
+			var json = eval("("+data+")");
+			if(json.meta.code != 200) return false;
+			var infos = json.data;
+			$("[data-user='vip-date']").show();
+			$("[data-user='music-date']").show();
+			
+			//是否开通豪华vip判断
+			if(infos.vipLuxuryExpire != "0" && infos.vipLuxuryExpire){
+				var date = new Date();
+				date.setTime(infos.vipLuxuryExpire);
+				var nowDate = json.ctime;
+				var endDate = VipSuper.formatDate(new Date(parseFloat(infos.vipLuxuryExpire)));
+				var lastDate = date - nowDate;
+				var lastDay = Math.ceil(lastDate/1000/60/60/24);
+				var endTxt = '';
+				if(lastDay <= 0){
+					//开通已过期  
+					endTxt = '已过期';
+					$('.f_vip_icon').attr('src', location.protocol + '//image.kuwo.cn/newvip/index2016/v2/super-hui.png');
+				}else if(lastDay > 0){
+					//开通状态  
+					endTxt = '到期';
+					$('[data-user = "vip-logo"]').show();
+
+					$('#id_a_menu_super_open').html("立即续费");
+					VipSuper.vipStatus = 'open';
+					$('.f_vip_icon').attr('src', location.protocol + '//image.kuwo.cn/newvip/index2016/v2/super.png');
+					$('#vip_yes').show();
+					$('.f_vip_expireDate').text(endDate);
+				}
+				$('[data-open = "vip"]').html("立即续费");
+				$("[data-user='vip-date']").html(endDate + endTxt);
+			}else{
+				//未开通过
+				$("[data-user='vip-date']").html('现在开通送音乐包！');
+				$('#vip_no').show();
+                VipSuper.newUser = true;
+                $('#superInfo').html('立赠音乐包(新用户首月9.9元)');
+                try{
+                    var params = document.location.href.substring(document.location.href.lastIndexOf("?") + 1);
+                    var persentMenu = utils.getParamValue(params, 'persentMenu');
+                    var productType = utils.getParamValue(params, 'productType');
+                    var product = utils.getParamValue(params, 'product');
+                    if(persentMenu == 'id_a_menu_super_open' || productType == 'vip_7' || product == 7){
+                        $('#id_a_menu_super_open').trigger('click');
+                    }
+				}catch(e){}
+			}
+
+			//音乐包状态
+			if(infos.vipmExpire != "0" && infos.vipmExpire){
+				var dateI = new Date();
+				dateI.setTime(infos.vipmExpire);
+				var nowDateI = json.ctime;
+				var endDateI = VipSuper.formatDate(new Date(parseFloat(infos.vipmExpire)));
+				var lastDateI = dateI - nowDateI;
+				var lastDayI = Math.ceil(lastDateI/1000/60/60/24);
+				var endTxtI = '';
+				$("[data-user='music-date']").show();
+				$('#music_yes').show();
+				if(lastDayI <= 0){
+					//开通已过期  
+					endTxtI = '已过期';
+					$('.f_music_icon').attr('src', location.protocol + '//image.kuwo.cn/newvip/index2016/v2/ylbkt-hui1.png');
+				}else if(lastDayI > 0){
+					//开通状态  
+					endTxtI = '到期';
+					$('[data-user = "music-logo"]').show();
+					
+					$('#id_a_menu_music_open2').html("立即续费");
+					VipSuper.musicStatus = 'open';
+					$('.f_music_icon').attr('src', location.protocol + '//image.kuwo.cn/newvip/index2016/v2/ylbkt-new1.png');
+					$('.f_music_expireDate').text(endDateI);
+					VipSuper.initDownNumber();
+				}
+				$('[data-open = "music"]').html("立即续费");
+				$("[data-user='music-date']").html(endDateI + endTxtI);
+				VipSuper.initAutoPay();
+			}else{
+				//未开通过
+				$("[data-user='music-date']").html('现在开通立享十大特权');
+				$('#music_no').show();
+			}
+
+
+			Account.initPageEvent();
+		});
+	},
+
+	//查询是否已经开通连续包月
+	initAutoPay: function() {
+		$.post(PROPERTIES.projectname + "/v2/userbase/vip",
+			{
+				'op': 'giap',
+				'uid':PROPERTIES.userinfo.uid,
+				'sid':PROPERTIES.userinfo.sid
+			},function(data){
+				var json = eval("("+data+")");
+				if('200' != json.meta.code) return false;
+				if(json.data){
+					$('.hasAutoPay').show();
+				}
+			}
+		);
+	},
+
+	//查询剩余下载数
+	initDownNumber: function() {
+		$.ajax({
+			url: PROPERTIES.projectname + '/v2/user/vip',
+			data: {
+				'op': 'gul',
+				'uid': PROPERTIES.userinfo.uid,
+				'sid': PROPERTIES.userinfo.sid
+			},
+			success: function (data) {
+				data = eval("("+data+")");
+				var product = eval("("+data.data+")").user[0];
+				if(product) {
+					$('.f_music_remain').text((product.downUpper - product.downCnt));
+				}
+			}
+		});
+	},
+
+	initPageEvent: function() {
+		//豪华vip特权切换
+		$(".privilegeTab").on('click', function() {
+			var _boxName =  $(this).attr("data-boxName");
+			$('.privilege').hide();
+			$('.' + _boxName).show();
+		});
+		//音乐包特权切换
+		$(".privilegeMusicTab").on('click', function() {
+			var _boxName =  $(this).attr("data-boxName");
+			$('.privilegeMusic').hide();
+			$('.' + _boxName).show();
+		});
+		//登录
+		$("[data-open = 'login']").on('click', function() {
+			initLogin();
+			kuwologin.showLoginBox();
+			addWechatLogin();
+		});
+		//常见问题
+		$("[data-open = 'question']").on('click', function() {
+			location.href = location.protocol + '//' + location.hostname + "/vip/added/vip_2016/index.jsp?persentMenu=id_a_menu_question"
+		});
+	},
+	//初始化
+	init: function() {
+		this.initPageEvent();
+	}
+}
+
+$(function(){
+	VipSuper.init();
+});

@@ -1,0 +1,274 @@
+/*Created By guow*/
+/* 主文件 包含整个项目用户信息初始化*/
+var UserInfo = {
+	initPageEvent: function() {
+		if (UserInfo.checkLogin()) {
+			//
+
+		} else {
+	    	$('[data-open = "login"]').show();
+			$('.f_username').text('');
+			$('#loginDiv').hide();
+			$('#logoutBtn').hide();
+			$('#registerDiv').show();
+			try{
+                $('#id_pay_img1').show();
+                $('#id_pay_img2').show();
+                $('.loading').show();
+                $('.loading-img').hide();
+                $('.loading-refresh').show();
+			}catch(e){
+				console.log(e)
+			}
+
+		}
+	
+		$('.f_loginBtn').click(function() {
+			initLogin();
+			kuwologin.showLoginBox();
+			addWechatLogin();
+			utils.logTracePc('/vip2016/login');//登录点击日志记录
+		});
+		$('#logoutBtn').click(function() {
+			initLogin();
+			if(Menu.persentMenu.indexOf('id_a_menu_account') >= 0) {
+				loginUrl = loginUrl.substring(0, loginUrl.indexOf('?'));
+			}
+			kuwologin.logout(loginUrl);
+			UserInfo.deleteCookie('uname3');
+			UserInfo.deleteCookie('pic3');
+			UserInfo.deleteCookie('JSESSIONID');
+			UserInfo.deleteCookie('t3');
+			UserInfo.deleteCookie('userid');
+			UserInfo.deleteCookie('websid');
+			PROPERTIES.userinfo = {};
+			utils.logTracePc('/vip2016/logout');//退出点击日志记录
+		});
+	},
+	initUserTestInfo: function () {
+		addCookie('userid','111111');
+		addCookie('websid','111111');
+		addCookie('uname3','jiangTest');
+		this.initUserInfo();
+	},
+	initUserInfo: function() {
+		// PROPERTIES.userinfo.uid = getCookie('userid');
+		document.domain = 'http://vip1.kuwo.cn/vip/added/vip_2016/js/kuwo.cn';
+		PROPERTIES.userinfo.uid = getCookie('userid');
+		if(PROPERTIES.userinfo.uid){
+			$.fn.cookie('userid', PROPERTIES.userinfo.uid, {expires: 365,domain:document.domain,path:'/'});
+		}
+
+		PROPERTIES.userinfo.sid = getCookie('websid');
+		PROPERTIES.userinfo.username = getCookie('username');
+		PROPERTIES.userinfo.nickname = getCookie('uname3');
+		
+		if(utils.isEmpty(PROPERTIES.userinfo.uid) || utils.isEmpty(PROPERTIES.userinfo.sid)) return false;
+		
+		$.ajax({
+			url: PROPERTIES.projectname + '/v2/sysinfo',
+			data: {
+				'op': 'gui',
+				'uid': PROPERTIES.userinfo.uid,
+				'sid': PROPERTIES.userinfo.sid
+			},
+			success: function (data) {
+				var info = eval('('+data+')');
+				if('200' != info.meta.code) return false;
+				
+				var name = info.data.NAME;
+				var nn = info.data.NICKNAME;
+				if(utils.isNotEmpty(nn)) name = nn; 
+				
+				PROPERTIES.userinfo.username = name;
+				PROPERTIES.userinfo.nickname = name;
+				var picurl = info.data.PIC;
+				if(utils.isNotEmpty(picurl)){
+					$('.f_userPif').attr('src', picurl);
+				}
+	    		$('[data-open = "login"]').hide();
+				$('.f_username').text(name);
+			}
+		});
+    	VipSuper.initBiedInfo();
+		Coupon.initCoupons();
+	    $('#userId').val(PROPERTIES.userinfo.uid);
+		$('#userName').val(PROPERTIES.userinfo.nickname);
+		$('#sessionId').val(PROPERTIES.userinfo.sid);
+	},
+	/**清除cookie**/
+	deleteCookie: function (cookieName) {
+		var exp = new Date();
+		exp.setTime(exp.getTime() - 100);
+		var _delCookie = function (path) {
+			document.cookie = cookieName + "=; path=" + path + "; domain=kuwo.cn; expires=" + exp.toGMTString();
+			document.cookie = cookieName + "=; path=" + path + "; expires=" + exp.toGMTString();
+		};
+		_delCookie('/');
+		_delCookie(PROPERTIES.projectname);//微信登录后会单独添加一个path为/vip的cookie 需要单独清除
+	},
+	checkLogin: function() {
+		if(getCookie('userid')) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+};
+
+
+
+/**
+ * 登录框调用
+ */
+var kuwologin;
+var loginUrl ;
+function initLogin(){
+	loginUrl = location.href;
+	if(loginUrl.indexOf('#') >= 0) {
+		loginUrl = loginUrl.substring(0, loginUrl.indexOf('#'));
+	}
+	if(loginUrl.indexOf('?') >= 0) {
+		loginUrl = loginUrl.substring(0, loginUrl.indexOf('?'));
+	}
+	loginUrl += '?persentMenu=' + Menu.persentMenu + "&productType=" + Pay.productType;
+	console.log(loginUrl)
+	var ind = loginUrl.indexOf('#');
+	if(ind >0) {
+		loginUrl = loginUrl.substring(0,ind);
+	}
+	document.domain = "http://vip1.kuwo.cn/vip/added/vip_2016/js/kuwo.cn";
+	function login_callback () {
+		//trackEvent("loginSuccess", "login_success");
+		location.href = loginUrl;
+	}
+	kuwologin = new KWLogin(null, null,loginUrl);
+	
+	/*
+	 * 修改登录接口
+	 */
+	KWLogin.prototype.doLogin = function(node){
+		UserInfo.deleteCookie('userid');
+		UserInfo.deleteCookie('websid');
+		var that = this;
+		jQuery("#login_tip").html('').hide();
+		var name = jQuery("#login_name").val();
+		var psw = jQuery("#login_psw").val();
+		var loginCode = jQuery("#codeId").val();
+		var loginTm = jQuery("#imgCodeTmId").val();
+		var randomCode = jQuery("#imgCodeRandomId").val();
+		var useCookie = jQuery("#login_useCookie").attr("checked");
+		if(useCookie){
+			useCookie = 1;
+		}else{
+			useCookie = 0;
+		}
+		if(name=='' || psw=='') {
+			jQuery("#login_tip").html('<p>请填写用户名和密码</p>').show();
+			setTimeout("jQuery('#login_tip').hide()",1000);
+			return;
+		}
+		if(loginCode=='') {
+			jQuery("#login_tip").html('<p>请填写验证码</p>').show();
+			setTimeout("jQuery('#login_tip').hide()",1000);
+			return;
+		}
+		jQuery.ajax({
+			'type':'POST',//"op=loginBox&username="+name+"&password="+psw+"&loginTm="+loginTm+"&randomCode="+randomCode+"&loginCode="+loginCode
+			'url': "/vip/v2/user",
+			'data': {
+					'op': 'loginBox',
+					'username': name,
+					'password': psw,
+					'loginTm': loginTm,
+					'randomCode': randomCode,
+					'loginCode': loginCode,
+					'useCookie': useCookie
+				},
+			'cache': false,
+			'success': function(ret, rstt) {
+				
+				if(!ret) {
+					jQuery('#login_tip').html('<p>系统异常，请重试</p>').show();
+					that.doLoginError();
+					return;
+				}
+				ret = eval("("+ret+")");
+				if(!ret.meta || !ret.meta.code || ret.meta.code==999) {
+					jQuery('#login_tip').html('<p>系统异常，请重试</p>').show();
+					that.doLoginError();
+					return;
+				}
+				if(ret.meta.code == 303 || ret.meta.code == 304) {
+					jQuery('#login_tip').html('<p>用户名或密码错误</p>').show();
+					that.doLoginError();
+					return;
+				}
+				if(ret.meta.code == 302 || ret.meta.code == 301 || ret.meta.code == 300) {
+					jQuery('#login_tip').html('<p>验证码错误或失效</p>').show();
+					that.doLoginError('code');
+					return;
+				}
+				if(ret.meta.code == 200) {
+					jQuery('#login_tip').hide();
+					jQuery('#login_tip2').html('<p>登录成功</p>').show();
+					that.hideLogin(1000);
+					that.callBack();
+					return;
+				}
+			},
+			'error': function(xhr, rstt, err) {
+				alert('系统出错，请稍候再试');
+			}
+		});
+	};
+};
+//支持微信登录
+function addWechatLogin() {
+	/*
+	 * 强行添加微信登录链接
+	 */
+	var callbackUrl = window.location.href;
+	var transfer = location.protocol + '//' + location.host + '/fans/wechatLogin?url=';
+	callbackUrl = encodeURIComponent(callbackUrl);
+	callbackUrl = transfer + callbackUrl;
+	callbackUrl = encodeURIComponent(callbackUrl);
+	var wechatUrl = 'https://open.weixin.qq.com/connect/qrconnect?appid=wx41c1275bb3e28427&redirect_uri=https://i.kuwo.cn/US/platform/WeixinCallback.jsp?callbackUrl=' + callbackUrl + '&response_type=code&scope=snsapi_login&state=kuwologin#wechat_redirect';
+	// $('.login2012_load .l_check').find('input:eq(0),label:eq(0)').hide();
+	var pObj = $('.login2012_load .otherloginBtn').eq(1);
+	// pObj.find('span').eq(0).html('其他');
+	$('.login2012_load').find('.wechat').remove();
+	// pObj.after('<a href="' + wechatUrl + '" class="loginBtn wechat"><em></em><strong class="login_wechat" id="login3_wechat" style="background: url(https://image.kuwo.cn/vip/fans/pc/pub/wechat.png) no-repeat 4px 4px!important;">微信</strong><em class="rig"></em></a>');
+	pObj.after('<a href="' + wechatUrl + '" class="otherloginBtn wechat"><i class="wexinLogo"></i><strong class="login_wechat" id="login3_wechat">微信帐号</strong></a>');
+}
+
+$.extend($.fn, {
+	cookie: function (key, value, options) {
+		var days, time, result, decode;
+		if (arguments.length > 1 && String(value) !== "[object Object]") {
+			options = $.extend({}, options);
+			if (value === null || value === undefined) {
+				options.expires = -1;
+			}
+			if (typeof options.expires === 'number') {
+				days = (options.expires * 24 * 60 * 60 * 1000);
+				time = options.expires = new Date();
+				time.setTime(time.getTime() + days);
+			}
+			value = String(value);
+			return (document.cookie = [
+				encodeURIComponent(key), '=',
+				options.raw ? value : encodeURIComponent(value),
+				options.expires ? '; expires=' + options.expires.toUTCString() : '',
+				options.path ? '; path=' + options.path : '',
+				options.domain ? '; domain=' + options.domain : '',
+				options.secure ? '; secure' : ''
+			].join(''));
+		}
+		options = value || {};
+		decode = options.raw ? function (s) {
+			return s
+		} : decodeURIComponent
+		return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+	}
+});

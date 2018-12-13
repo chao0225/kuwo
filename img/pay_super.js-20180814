@@ -1,0 +1,715 @@
+/*Created By guow*/
+/* 支付  */
+/**
+ * vip1：豪华VIP
+ */
+var Paysuper = {
+    //对应客户端type
+    activityOpen:false,
+    type: '0',
+    actMap: {
+        "0": "OPEN_VIP",
+        "1": "UPGRADE_VIP",
+        "2": "RENEW_VIP"
+    },
+    //对应客户端mod
+    mod: '5',
+    clientActMap: {
+        "0": "download",
+        "1": "play",
+        '5': "offical",
+        '6': 'http://vip1.kuwo.cn/vip/added/vip_2016/js/kw.cn'
+    },
+    timer: null,
+    //控制支付页面显示的product
+    productType: 'vip_7',
+    config: {
+        activityIsOpen: false,
+        param: {
+            "month": '1'
+        },
+        vipType: {
+            "vip_7": 12,
+            "vip_1": 1
+        },
+        //vip产品价格策略
+        pricePolicy: {
+            //续费策略处理
+            renewDisc: {
+                doRefresh: true,
+                discount: 1,
+                serial: ''
+            },
+            common: {
+                "vip_7": {
+                    "id_div_month1": {"sin": '15', "tot": '15', "stot": '18'},
+                    "id_div_month3": {"sin": '15', "tot": '45', "stot": '54'},
+                    "id_div_month6": {"sin": '15', "tot": '90', "stot": '108'},
+                    "id_div_month12": {"sin": '12.5', "tot": '180', "stot": '216'}
+                },
+                // "vip_7":{
+                // 	"id_div_month1": {"sin": '12',"tot": '12',"stot":'15'},
+                // 	"id_div_month3":{"sin": '10',"tot": '30',"stot":'45'},
+                // 	"id_div_month6":{"sin": '12.5',"tot": '75',"stot":'90'},
+                // 	"id_div_month12":{"sin": '9',"tot": '108',"stot":'180'}
+                // },
+                "vip_1": {
+                    "id_div_month1": {"sin": '8', "tot": '8'},
+                    "id_div_month3": {"sin": '8', "tot": '24'},
+                    "id_div_month6": {"sin": '7.5', "tot": '45'},
+                    "id_div_month12": {"sin": '7.3', "tot": '88'}
+                },
+                "vip_4": {
+                    "id_div_month1": {"sin": '10', "tot": '10'},
+                    "id_div_month3": {"sin": '10', "tot": '30'},
+                    "id_div_month6": {"sin": '8', "tot": '48'},
+                    "id_div_month12": {"sin": '5', "tot": '60'}
+                }
+            }
+        }
+    },
+    //月份重新赋值
+    initMonthData: function () {
+        var f_month = $('.superTabBox').find('.f_month'),
+            data = Paysuper.config.pricePolicy.common[Paysuper.productType];
+        for (var i = 0; i < f_month.length; i++) {
+            var oDiv = f_month.eq(i);
+            var name = 'id_div_month' + oDiv.attr('month');
+            if (VipSuper.newUser && Paysuper.productType == 'vip_7' && oDiv.attr('month') == 1) {
+                data[name].tot = 9.9;
+            }
+            if(Paysuper.activityOpen && Paysuper.productType == 'vip_7' && oDiv.attr('month') == 3 ){
+                data[name].tot = 45;
+            }
+            if(Paysuper.activityOpen && Paysuper.productType == 'vip_7' && oDiv.attr('month') == 12 ){
+                data[name].tot = 180;
+            }
+            oDiv.attr('price', data[name].tot);
+            // oDiv.children('.gw_font_14').html(data[name].sin + '元/月');
+            if (Paysuper.productType == 'vip_7' && oDiv.attr('month') == 12 && Paysuper.config.activityIsOpen) {
+                oDiv.children('.gw_font_14').html('<span style="color: #ff6800;">感恩礼献，买一年送一年</span>');
+            } else {
+                if (VipSuper.newUser && Paysuper.productType == 'vip_7' && oDiv.attr('month') == 1) {
+                    oDiv.children('.gw_font_14').html('<span style="color: #ff6600;">立省8.1元</span>');
+                } else {
+                    oDiv.children('.gw_font_14').html(data[name].tot + '元');
+                }
+            }
+        }
+        if (Paysuper.productType == 'vip_7' && Paysuper.config.activityIsOpen) {
+            $('.activity-show').show();
+        } else {
+            $('.activity-show').hide();
+        }
+
+    },
+    //检查当前选择月份
+    checkMonth: function () {
+        var month = $('.superTabBox').find('.f_month.active').attr('month');
+        if (month == '12') {
+            month = 12;
+        } // 12月与1月不好判断，暂时由2表示12月，以后优化
+        return month;
+    },
+    //计算价格
+    initCash: function () {
+
+        var f_month = $('.superTabBox').find('.f_month.active'),
+            dccash = f_month.attr('price'), //原价
+            finalPrice = parseFloat(dccash); //最终价格
+
+        try {
+            var coupon = Coupon.props.coupon;
+            var couponInfoHtml = '';
+            if (coupon && coupon.id) {
+                //代金券相关
+                var price = coupon.worth;
+                price = parseFloat(price);
+                finalPrice = dccash - price;
+            }
+        } catch (e) {
+        }
+        $('.superPrice').text(finalPrice);
+        $('#cash_super').val(finalPrice);
+        // $('#id_paysuper_code1').hide();
+        // $('#id_paysuper_code2').hide();
+    },
+    //微信 支付宝 重新获取二维码
+    checkPlatformCode: function () {
+        Paysuper.clearPayPolling();	//清除查询订单状态循环
+        var payType = $('.paySuperType.active');
+        if ($('.paySuperType.active').length == 0) {
+            $('.paySuperType').eq(0).addClass("active");
+            payType = $('.paySuperType.active');
+        }
+        $('.errorTips').hide();
+        if (payType.attr('paytype') == 'wx' || payType.attr('paytype') == 'zfb') {
+            Paysuper.payBtnClick(payType.attr('paytype'));
+            $('.gw_yfsfkt').show();
+        } else {
+            $('.gw_yfsfkt').hide();
+        }
+    },
+    //检查其他服务跳转
+    checkOtherService: function () {
+        var _this = $('#otherService');
+        if (Paysuper.productType == 'vip_4') {
+            // _this.html('豪华VIP特权');
+            // _this.attr('type','payBtnTypeSuper');
+            _this.hide();
+        } else {
+            // _this.html('其他特权服务？');
+            // _this.attr('type','payBtnTypeVIP');
+            _this.show();
+        }
+    },
+
+    initPageEvent: function () {
+        //二维码刷新
+        $('.loading-refresh').on('click', function () {
+            var _loading = $('.loading');
+            _loading.find('.loading-img').show();
+            _loading.find('.loading-refresh').hide();
+            Paysuper.checkPlatformCode();
+        });
+
+        //点击支付按钮
+        $('.payBtnSuper').click(function () {
+            // $('#id_paysuper_code1').hide();
+            // $('#id_paysuper_code2').hide();
+            $('#userName_super').val($('.f_username').html());
+            PROPERTIES.userinfo.name = $('.f_username').html();
+            Paysuper.payBtnClick($(this).attr('data-from'));
+        });
+
+        //选择要购买的服务
+        $('.payBtnType').on('click', function () {
+            var _this = $(this),
+                _id = _this.attr("id");
+
+            $('.payBtnType').removeClass('active');
+            _this.addClass('active');
+
+            if (_id == 'payBtnTypeSuper') {
+                //豪华VIP
+                Paysuper.productType = 'vip_7';
+                $('.img-half-price').show();
+                $('.img-half-price2').hide();
+                //必须是活动已开启并且是豪华VIP的状态下
+                if(!utils.isEmpty(PROPERTIES.userinfo.uid) && !utils.isEmpty(PROPERTIES.userinfo.sid)){
+                    if(Paysuper.activityOpen && $('#payBtnTypeSuper').hasClass('active')){
+                        $('.priceRed').show();
+                    }else{
+                        $('.priceRed').hide();
+                    }
+                }
+
+            } else if (_id == 'payBtnTypeMusic') {
+                //音乐包
+                Paysuper.productType = 'vip_1';
+                $('.img-half-price').hide();
+                $('.img-half-price2').show();
+                $('.priceRed').hide();
+            } else if (_id == 'payBtnTypeVIP') {
+                //VIP
+                Paysuper.productType = 'vip_4';
+                $('.img-half-price').hide();
+                $('.img-half-price2').hide();
+            }
+
+            if (Coupon.props.couponList.length > 0) {
+                Coupon.props.coupon = {};
+                Coupon.initCouponShow(Paysuper.productType, Paysuper.checkMonth());
+            } else {
+                console.log('pay_super')
+                Paysuper.initMonthData();
+                Paysuper.initCash();
+                Paysuper.checkPlatformCode();
+                Paysuper.checkOtherService();
+            }
+
+        });
+
+        //其他特权服务
+        $('#otherService').on('click', function () {
+            var payBtn = $('.payBtnType');
+            // var type 	= $(this).attr('type');
+            payBtn.hide();
+            $('#payBtnTypeVIP').show();
+            $('#payBtnTypeVIP').trigger('click');
+            // if(type == 'payBtnTypeSuper'){$('#payBtnTypeMusic').show();}
+            Paysuper.checkOtherService();
+        });
+
+        //支付方式选择
+        $('.paySuperType').on("click", function (e) {
+            $('.paySuperType').removeClass('active');
+            $(this).addClass('active');
+            $(".paySuperBox").hide();
+            $('.' + $(this).attr('data-boxName')).show();
+
+            // 设置支付参数
+            var ptid = $(this).attr('payTypeId');
+            $('#superPayType').val(ptid);
+            // 酷我币
+            if ($(this).attr('payType') == 'kwb') {
+                Paysuper.getMykwb();
+            }
+
+            if (Coupon.props.couponList.length > 0) {
+                Coupon.props.coupon = {};
+                Coupon.initCouponShow(Paysuper.productType, Paysuper.checkMonth());
+            } else {
+                Paysuper.checkPlatformCode();
+            }
+        });
+
+        //点击要购买的月份
+        $('.superTabBox .f_month').on("click", function () {
+            var thisMonth = $(this).attr('month');
+            var thisPrice = $(this).attr('price');
+            console.log('thisMonth='+thisMonth);
+            console.log('thisPrice='+thisPrice)
+            Paysuper.config.param.month = thisMonth;
+            $('.superTabBox .f_month').removeClass('active');
+            $(this).addClass('active');
+            $('#id_ip_months').val(thisMonth);
+
+            $('.superPrice').text(thisPrice);
+            $('#cash_super').val(thisPrice);
+
+            if (Coupon.props.couponList.length > 0) {
+                Coupon.props.coupon = {};
+                Coupon.initCouponShow(Paysuper.productType, Paysuper.checkMonth());
+            } else {
+                Paysuper.checkPlatformCode();
+            }
+        });
+
+        //银行类型选择
+        $('.f_bank_type_super').click(function () {
+            $('.f_bank_type_super').removeClass('active');
+            $(this).addClass('active');
+
+            //设置支付参数
+            $('#yh_super').val($(this).attr('bankid'));
+        });
+
+        //选择自动续费
+        $('#id_autopay_btn').click(function () {
+            if ($(this).hasClass("gw_yxina")) {
+                //取消自动续费
+                $(this).removeClass("gw_yxina");
+                $(this).addClass("gw_wxina");
+            } else {
+                //勾选自动续费
+                $(this).removeClass("gw_wxina");
+                $(this).addClass("gw_yxina");
+            }
+            console.log('自动续费')
+            Paysuper.checkPlatformCode();
+        })
+
+    }, //end init pageEvent
+
+    //图片错误处理
+    onImgError: function () {
+        console.log(222)
+        var loading = $('.loading');
+        loading.show();
+        loading.find('.loading-img').hide();
+        loading.find('.loading-refresh').show();
+        $('#id_pay_img1').show();
+        $('#id_pay_img2').show();
+        $('.pop_button').show();
+        $('#payImgCode_1').hide();
+        $('#id_pay_img2').hide()
+    },
+    //切换图片处理
+    onChangeImg:function () {
+        console.log(111)
+        var loading = $('.loading');
+        loading.show();
+        loading.find('.loading-img').show();
+        $('#id_pay_img1').show();
+        $('#id_pay_img2').show();
+        $('#payImgCode_1').hide();
+        $('#id_pay_img2').hide()
+    },
+    getMykwb: function () {
+        $.ajax({
+            url: PROPERTIES.projectname + "/user/getkwb?userId=" + PROPERTIES.userinfo.uid + "&sessionId=" + PROPERTIES.userinfo.sid + "&math=" + Math.random(),
+            dataType: "jsonp",
+            jsonp: "jsonpcallback",
+            success: function (data) {
+                console.log(data);
+                var kwb = 0;
+                if (data.meta.code == 200 || 1011 == data.meta.code) { // 账户为空 不需要提示
+                    if (data.data) {
+                        kwb = data.data.kwb;
+                    }
+                    $('#super_mykwb').html(kwb);
+
+                } else if (data.meta.code == 1001) {
+                    alert('您账户状态已更新，请重新登陆！');
+                    initLogin();
+                    kuwologin.showLoginBox();
+                    addWechatLogin()
+                    return;
+                } else {
+                    alert(data.meta.desc);
+                }
+            }
+        });
+    },
+
+    /**
+     * 支付
+     */
+    payBtnClick: function (from) {
+        //$('.loading').hide();
+        if (!UserInfo.checkLogin()) {
+            initLogin();
+            kuwologin.showLoginBox();
+            addWechatLogin();
+            $('.loading-img').hide();
+            $('.loading-refresh').show();
+            return false;
+        }
+        var _from = from || "";
+        var vipType = Paysuper.productType;
+        var vipTypeId = Paysuper.config.vipType[vipType];
+        var price = $('#cash_super').val();
+        var cash = $('#cash_super').val();
+        var month = Paysuper.config.param.month;
+        var payType = $('#superPayType').val();
+
+        //处理自动续费  自动续费只有在用户选择，并且是普通音乐包的时候起作用
+        var autoPay = 'no';
+        if (_from != '') {
+            console.log($('.gw_yfsfkt').css("display"))
+            if('none' != $('.gw_yfsfkt').css("display")){
+                if ($('#id_autopay_btn').hasClass("gw_yxina")) {
+                    if ('wx' == _from) payType = '122';//微信
+                    else if ('zfb' == _from) payType = '39';//支付宝
+                    autoPay = 'yes';
+                } else {
+                    if ('wx' == _from) payType = '31';//微信
+                    else if ('zfb' == _from) payType = '40';//支付宝
+                }
+            }
+        }
+        $('#superPayType').val(payType);
+        $('#id_ip_vipType').val(Paysuper.productType);
+
+        //支付按钮点击
+        LogTraceUtils.doPcPayBtnClick(PROPERTIES.logtrace.pcCurrentVersion,
+            PROPERTIES.logtrace.abtest.DEFAULT, vipType, autoPay);
+
+        var vipJson = '{';
+        vipJson += '"vip":';
+        vipJson += '[{';
+        vipJson += '"cnt":' + month + ',';
+        vipJson += '"id":"' + vipTypeId + '",';
+        vipJson += '"type":"' + vipType + '",';
+        vipJson += '"price":"' + Paysuper.config.pricePolicy.common[vipType]['id_div_month' + month].tot + '"';
+        vipJson += '}]';
+        vipJson += '}';
+
+
+        $('#id_super_json').val(vipJson);
+
+        //vip_1 的时候才往回传checkcode
+        //vip_3的时候记录升级状态
+        var checkCode = '';
+
+        var myact = Paysuper.actMap[Paysuper.type];
+        if (utils.isEmpty(myact)) myact = Paysuper.actMap['0'];
+
+        var src = 'vip_2016';
+
+        if (Paysuper.productType == 'vip_7') {
+            // src = 'summer';
+            // src = 'andrDiscount';	//如果是豪华VIP 采用新价格标识 andrDiscount
+            // src = 'zhangyiAcitivity20171013';
+            if (month == 12 && Paysuper.config.activityIsOpen) {
+                src = 'double11';
+            }
+            if (month == 1 && VipSuper.newUser) {
+                src = 'noviceGift';
+            }
+            if (month == 1 && VipSuper.newUser) {
+                src = 'renewOneLux11.4';
+            }
+            if(month == 3 && Paysuper.activityOpen|| month == 12 && Paysuper.activityOpen){
+                src='sendMonths20180129'
+            }
+        }
+        var jsonParam = '{';
+        jsonParam += '"cash":"' + cash + '",';
+        jsonParam += '"payType":"' + payType + '",';
+        jsonParam += '"platform":"pc",';
+        jsonParam += '"checkCode": "' + checkCode + '",';
+        jsonParam += '"src":"' + src + '",';
+        jsonParam += '"act":"' + myact + '",';
+        jsonParam += '"clientAct":"download",';
+        jsonParam += '"uid":"' + PROPERTIES.userinfo.uid + '",';
+        jsonParam += '"userName":"' + PROPERTIES.userinfo.name + '",';
+        jsonParam += '"autoPay":"' + autoPay + '",';
+        jsonParam += '"products":';
+        jsonParam += vipJson;
+        jsonParam += '}';
+
+        var urlparams = utils.getUrlParams();
+
+        if ($('#superPayType').val() == "1") {//酷我币支付
+            var kwb = parseFloat($('#super_mykwb').text().replace('￥', ''));
+            if (parseFloat($('#cash_super').val()) > kwb) {
+                alert('酷我币不足！');
+                return false;
+            }
+        }
+
+        //走你
+        var postJson = {
+            'op': 'pay',
+            'uid': PROPERTIES.userinfo.uid,
+            'sid': PROPERTIES.userinfo.sid,
+            'jsonStr': jsonParam,
+            'urlparams': utils.getUrlParams(),
+            'math': Math.random()
+        };
+
+        try {
+            var coupon = Coupon.props.coupon;
+            if (coupon && coupon.id) {
+                //使用了代金券
+                postJson['couponId'] = coupon.id;
+            }
+        } catch (e) {
+        }
+        // 支付
+        $.ajax({
+            url: PROPERTIES.projectname + "/v2/userbase/pay",
+            type: 'post',
+            dataType: 'json',
+            data: postJson,
+            success: function (data) {
+                if (data.meta.code == "200") {
+                    var d = data.data;
+                    //日志过时，待删除
+                    utils.logTracePc('/vip2016/payorder/' + vipType + '/' + d.id + '/' + Menu.persentMenu);//点击立即支付 （包含开通哪种类型、支付按钮来源）
+                    //设置支付参数
+                    $("#customerid_super").val(d.id);
+                    $("#form_super").attr("action", d.url);
+                    // if(_from != ''){
+                    console.log(payType);
+                    Paysuper.onChangeImg();
+                    Paysuper.doFormAjax(payType);
+                    // }
+                    //$("#form_super").submit();
+                } else if (data.meta.code == "1001" || data.meta.code == "1004") {
+                    //alert(data.meta.desc);
+                    initLogin();
+                    kuwologin.showLoginBox();
+                    addWechatLogin();
+                    return;
+                } else {
+                    $('.errorTips-text').html(data.meta.desc);
+                    $('.errorTips').show();
+                    $('#id_pay_img1').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/).show();
+                    $('#id_pay_img2').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/).show();
+                    Paysuper.onChangeImg()
+                    //  	if(data.meta.desc == '您已开通连续包月，无需重复订购'){
+                    // $('.errorTips-text').html(data.meta.desc);
+                    // $('.errorTips').show();
+                    // $('#id_pay_img1').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/);
+                    // $('#id_pay_img2').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/);
+                    //  	}else if(data.meta.desc == '代金券不再活动期间'){
+                    // $('.errorTips-text').html(data.meta.desc);
+                    // $('.errorTips').show();
+                    // $('#id_pay_img1').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/);
+                    // $('#id_pay_img2').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/);
+                    //  	}else if(data.meta.desc == '代金券不符合使用范围'){
+                    // $('.errorTips-text').html(data.meta.desc);
+                    // $('.errorTips').show();
+                    // $('#id_pay_img1').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/);
+                    // $('#id_pay_img2').attr('src', 'img-default-1.png'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/js/img/img-default.png*/);
+                    //  	}else{
+                    //  		alert(data.meta.desc);
+                    //  	}
+                }
+            }
+        });
+    },
+
+    /**初始化呢 ajax form 表单*/
+    doFormAjax: function (payType) {
+
+        // var _url = location.protocol + '//'+ location.hostname +'/vip/manage/new';
+        var _url = PROPERTIES.projectname + '/manage/new';
+        var _uri = $("#form_super").attr('action')
+        var _str = $("#form_super input").map(function () {
+            if ($(this).attr("name") == 'payType' && payType) {
+                return ($(this).attr("name") + '=' + payType);
+            } else {
+                return ($(this).attr("name") + '=' + $(this).val());
+            }
+        }).get().join("&");
+
+        $.post(_url, {
+            'op': 'redirectRequest',
+            'uri': _uri,
+            'params': _str
+        }, function (data) {
+            if (!data) {
+                Paysuper.onImgError();
+                return false;
+            }
+            var info = eval("(" + data + ")");
+            if (!info || !info.data || !info.data.returnData) {
+                Paysuper.onImgError();
+                return false;
+            }
+            var jsonPinfo = eval("(" + info.data.returnData + ")");
+
+            if ('200' != jsonPinfo.responseCode) {
+                Paysuper.onImgError();
+                return false;
+            }
+            var returnUrl = jsonPinfo.responseContent1;
+            var myurl = decodeURIComponent(returnUrl);
+            console.log(myurl);
+
+            //网银支付 要弹出网页来
+            if ('AliRmb' == jsonPinfo.responseContent4) {
+                location.href = myurl;
+                return false;
+                //支付宝
+            } else if ('AliScan' == jsonPinfo.responseContent4 || 'AliDaiKou' == jsonPinfo.responseContent4) {
+                myurl || Paysuper.onImgError();
+                $('#id_pay_img2').hide();
+                var ipurl = myurl.replace('http://vip1.kuwo.cn/vip/added/vip_2016/js/pay.kuwo.cn','120.133.22.7');
+                $('#payImgCode_2').attr('onerror',ipurl);
+                $('#payImgCode_2').attr('src', myurl).show();
+                Paysuper.payPolling();
+                //酷我币
+            } else if ('KB' == jsonPinfo.responseContent4) {
+                // $('#id_mask_back').show();
+                // $('#id_div_dg_success').show();
+                // SuperIndex.props.isPied = true;
+                // mboxNativeUtils.succNotify(SuperIndex.props.payResultType);
+
+                // SuperIndex.clearInterval(SuperIndex.props.intervals.A);
+                // SuperIndex.props.intervals.B = setInterval('SuperIndex.stepdownClose()',1000);
+                // return false;
+                Index.showRefreshAlert('开通成功！');
+                //微信
+            } else {
+                myurl || Paysuper.onImgError();
+                $('#id_pay_img1').hide();
+                var ipurl = myurl.replace('http://vip1.kuwo.cn/vip/added/vip_2016/js/pay.kuwo.cn','120.133.22.7');
+                $('#payImgCode_1').attr('onerror',ipurl);
+                $('#payImgCode_1').attr('src', myurl).show();
+                Paysuper.payPolling();
+            }
+            $('#id_ip_payorderid').val(jsonPinfo.responseContent2);
+            $('.loading').hide();
+        });
+
+
+    },
+
+    clearPayPolling: function () {
+        try {
+            clearInterval(Paysuper.timer);
+        } catch (e) {
+        }
+    },
+
+    payPolling: function () {
+        clearInterval(Paysuper.timer);
+        Paysuper.timer = setInterval(function () {
+            var uri = location.href.indexOf('http://vip1.kuwo.cn/vip/added/vip_2016/js/console.ecom') != -1 ? 'https://pay.kuwo.cn/pay_TEST/payorder/wxpaypolling' : 'https://pay.kuwo.cn/pay/payorder/wxpaypolling'
+            $.post(PROPERTIES.projectname + '/manage/new', {
+                'op': 'redirectRequest',
+                'uri': uri,
+                'params': 'orderId=' + $("#id_ip_payorderid").val() + '&service=newvip&pollingTime=' + new Date().getTime()
+            }, function (data) {
+                var info = eval("(" + data + ")");
+                var jsonPinfo = eval("(" + info.data.returnData + ")");
+
+                if (jsonPinfo.state == 1) {
+                    clearInterval(Paysuper.timer);
+                    Index.showRefreshAlert('开通成功！');
+                }
+            });
+        }, 3000);
+    },
+
+    init: function () {
+        this.initPageEvent();
+        this.initActivity();
+        //默认价格
+        $('#cash_super').val(Paysuper.config.pricePolicy.common[Paysuper.productType].id_div_month1.sin);
+        $('#userId_super').val(PROPERTIES.userinfo.uid);
+        $('#sessionId_super').val(PROPERTIES.userinfo.sid);
+    },
+    //初始化活动是否开启
+    initActivity: function () {
+        // try {
+        //     $.post(PROPERTIES.projectname + '/manage/new', {
+        //         op: 'isDouble11Begin'
+        //     }, function (data) {
+        //         var json = eval("(" + data + ")");
+        //         if (json.meta.code != 200) return false;
+        //         Paysuper.config.activityIsOpen = json.data && json.data.isDouble11Begin == 1;
+        //         if (Paysuper.productType == 'vip_7' && Paysuper.config.activityIsOpen) {
+        //             $('.activity-show').show();
+        //         }
+        //     });
+        // } catch (e) {
+        // }
+    },
+
+    initProduct: function (viptype) {
+        // PROPERTIES.userinfo.uid = '245744505'
+        //    PROPERTIES.userinfo.sid = '2549302754'
+        //    PROPERTIES.projectname = 'http://60.28.201.6:9191/vip'
+
+        // this.init();
+        if (!UserInfo.checkLogin()) {
+            $('#openUser').text('未登录');
+            initLogin();
+            kuwologin.showLoginBox();
+            addWechatLogin();
+        }
+
+        // $('.paySuperType').eq(0).addClass("active");
+        $('.payBtnType').hide();
+        if (viptype == 'vip_1') {
+            $('#payBtnTypeMusic').trigger('click');
+            $('#payBtnTypeMusic').show();
+            $('#payBtnTypeSuper').show();
+        } else if (viptype == 'vip_7') {
+            $('#payBtnTypeSuper').trigger('click');
+            $('#payBtnTypeMusic').show();
+            $('#payBtnTypeSuper').show();
+        } else if (viptype == 'vip_4') {
+            $('#payBtnTypeVIP').trigger('click');
+            $('#payBtnTypeVIP').show();
+            // $('#otherService').trigger('click');
+        }
+
+        // Paysuper.checkPlatformCode();
+    }
+};
+
+// //图片加载失败
+// function imgOnError(obj, type) {
+//     obj.onerror = null;
+//     var loading = $('.loading');
+// 	    loading.show();
+// 	    loading.find('.loading-img').hide();
+// 	    loading.find('.loading-refresh').show();
+// }

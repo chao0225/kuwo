@@ -1,0 +1,120 @@
+
+//---------------------------------------------------------------------
+//---	VIP——激活码处理
+//---------------------------------------------------------------------
+
+var SerialKey = {
+		initPageEvent: function() {
+			//添加激活码
+			$('#addSerialBtn').on('click', function(){
+				var serial = $('#serialkey').val();
+				if(utils.isEmpty(serial)) return;
+				
+				$.post(PROPERTIES.projectname + '/v2/userbase/vip',{
+					'op': 'ausk',
+					'uid': PROPERTIES.userinfo.uid,
+					'sid':PROPERTIES.userinfo.sid,
+					'serial': serial
+				},function(data){
+					data = eval("("+data+")");
+					if(data.meta.code == 200) {
+						$('#serialkey').val('');
+						alert('添加成功');
+						SerialKey.initOpenSerials();
+					} else {
+						alert(data.meta.desc);
+					}
+				});
+			});
+		},
+		initSerials: function () {
+			$.post(PROPERTIES.projectname + '/v2/userbase/vip', {
+				'op': 'gusk',
+				'uid': PROPERTIES.userinfo.uid,
+				'sid':PROPERTIES.userinfo.sid
+			},function(data){
+				console.log(data);
+				var jdata = eval("("+data+")");
+				if('200' != jdata.meta.code) return false;
+				
+				var serialCodeList = jdata.data;
+				if(serialCodeList.length == 0) return false;
+				
+				$('#id_div_serials_item').empty();
+				$.each(serialCodeList, function(i, v) {
+					if (v.expireTime < jdata.ctime) return;
+					else if('VIP_M_DISC' != v.way) return;
+					
+					var exdate = utils.formatDate1(new Date(v.expireTime));				
+					var serialCodeHtml = 
+						'<div class="djhxzone" serial="'+v.serialKey+'" discount="'+v.realDisc+'">'+
+						'	<div class="">'+
+						'		<p class="pone" style="font-size: 15px;">'+v.swTitle+'</p>'+
+						'		<img class="imgone" src="'+v.swPic+'" style="width: 60px; height: 60px;">'+
+						'	</div>'+
+						'	<p class="clear"></p>'+
+						'	<div class="">'+
+						'		<p class="pthree">'+exdate+'到期</p>'+
+						'	</div>'+
+						'</div>';
+					$('#id_div_serials_item').append(serialCodeHtml);
+				});
+				var htmlCl = '<p class="clear"></p>';
+				$('#id_div_serials_item').append(htmlCl);
+			});
+		},
+		initOpenSerials: function () {
+			$.post(PROPERTIES.projectname + '/v2/userbase/vip', {
+				'op': 'gusk',
+				'uid': PROPERTIES.userinfo.uid,
+				'sid':PROPERTIES.userinfo.sid
+			},function(data){
+				var jdata = eval("("+data+")");
+				if('200' != jdata.meta.code) return false;
+				
+				var serialCodeList = jdata.data;
+				if(serialCodeList.length == 0) return false;
+				
+				$('#id_div_serials_item_open').empty();
+				$.each(serialCodeList, function(i, v) {
+					if (v.expireTime < jdata.ctime) return;
+					else if('VIP_M_DISC' != v.way) return;
+					
+					var checkClass = 'sptwo';
+					//if(i==0) checkClass = 'spone';	
+					var serialCodeHtml = '<p class="pone"><span serial="'+v.serialKey+'" discount="'+v.realDisc+'" class="'+checkClass+' f_serials_item_open"></span>'+v.swTitle+'</p>';
+					$('#noSerialKeyMsg').hide();
+					$('#id_div_serials_item_open').append(serialCodeHtml);
+				});
+				
+				$('.f_serials_item_open').off().click(function() {
+					$('.f_serials_item_open').removeClass('spone');
+					$('.f_serials_item_open').addClass('sptwo');
+					$(this).removeClass('sptwo');
+					$(this).addClass('spone');
+					
+					//$('.f_serials_item_open.spone')
+					$('#id_ip_serial').val($(this).attr('serial'));
+					$('#id_ip_discount').val($(this).attr('discount'));
+					
+					var thisMonth = $('.f_month.active').attr('month');
+					if(thisMonth != 3) return;
+					var monthId = '#id_div_month'+thisMonth;
+					var price = $(monthId).text();
+					
+					var tprice = parseFloat(price) - parseFloat($('#id_ip_discount').val());
+					
+					$('#cashSpan').text('￥'+ tprice);
+					$('#cashSpanSrc').text('￥'+ price);//原价
+					$('#cash').val(tprice);
+				});
+			});
+		},
+		init: function() {
+			this.initPageEvent();
+		}
+};
+
+$(function() {
+	SerialKey.init();
+});

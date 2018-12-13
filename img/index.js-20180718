@@ -1,0 +1,324 @@
+/*Created By guow*/
+var Index = {
+    from: '0',//统计访问来源   0-vip1.kuwo.cn，1-kuwo.cn
+    initPageEvent: function () {
+        this.initIndexBanner();
+        /*this.initPopup();*/
+        $('.f_customService').click(function () {
+            //记录客服在线点击
+            utils.logTracePc('/vip2016/customService');
+        });
+
+        //弹框关闭
+        $('.closeBtn').on('click', function () {
+            $('.box-shadow').hide();
+            $('.box-tan').hide();
+            $('.tab-btn').hide();
+            $('#tab-btn-default').css("display", 'block');
+        });
+
+        //秀场跳转
+        $('#id_a_gotoJuxing').on('click', function () {
+            LogTraceUtils.root('action=juxingGo&' + LogTraceUtils.getVersionParams('pc'));
+            $('.closeBtn').trigger('click');
+            window.open(location.protocol + '//jx.kuwo.cn/KuwoLive/lb/MyPage?uid=' + PROPERTIES.userinfo.uid + '&rechargeFlag=103');
+        });
+        //首页跳转
+        $('#id_a_refresh').on('click', function () {
+            location.href = 'index.jsp.htm'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/index.jsp*/;
+        });
+
+        //秀场座驾
+        $('.class_btn_goJuxing').on('click', function () {
+            LogTraceUtils.root('action=juxingclick&' + LogTraceUtils.getVersionParams('pc'));
+
+            if (PROPERTIES.userinfo.uid == '0' || !PROPERTIES.userinfo.uid) {
+                initLogin();
+                kuwologin.showLoginBox();
+                addWechatLogin()
+                return false;
+            }
+            // Index.showAlert('敬请期待');
+            // return false;
+            if (VipSuper.vipStatus == 'open') {
+                $.post(PROPERTIES.projectname + "/v2/userbase/vip",
+                    {
+                        'op': 'achieveCar',
+                        'uid': PROPERTIES.userinfo.uid,
+                        'sid': PROPERTIES.userinfo.sid,
+                        'nikename': PROPERTIES.userinfo.nickname
+                    }, function (data) {
+                        var json = eval("(" + data + ")");
+                        if (json.data) {
+                            var info = json.data;
+                            if (info.returnCode == 1) {
+                                Index.showAlert('领取专属座驾成功，快去酷我聚星看看吧！');
+                                $('.tab-btn').hide();
+                                $('#id_a_gotoJuxing').css("display", 'block');
+                            } else if (info.returnCode == 19) {
+                                Index.showAlert('您已经领取过了，快去酷我聚星看看吧！');
+                                $('.tab-btn').hide();
+                                $('#id_a_gotoJuxing').css("display", 'block');
+                            } else if (info.returnCode == 20) {
+                                Index.showAlert('服务端异常，领取失败');
+                            } else {
+                                Index.showAlert('领取失败');
+                            }
+                        } else {
+                            Index.showAlert('服务端异常，领取失败');
+                        }
+                    }
+                );
+            } else {
+                Index.showAlert('开通豪华VIP才有专属座驾哦！');
+                $('.tab-btn').hide();
+                $('#id_a_menu_super_open4').css("display", 'block');
+            }
+        });
+        //酷我耳机
+        $('.class_btn_goHeadset').on('click', function () {
+
+            LogTraceUtils.root('action=Headsetclick&' + LogTraceUtils.getVersionParams('pc'));
+
+            if (PROPERTIES.userinfo.uid == '0' || !PROPERTIES.userinfo.uid) {
+                initLogin();
+                kuwologin.showLoginBox();
+                addWechatLogin();
+                return false;
+            }
+            if (VipSuper.vipStatus == 'open') {
+                window.open(location.protocol + '//kuwosm.tmall.com/p/vip01.htm');
+            } else {
+                Index.showAlert('开通豪华VIP才有耳机代金券哦！');
+                $('.tab-btn').hide();
+                $('#id_a_menu_super_open4').css("display", 'block');
+            }
+        });
+    },
+    /*针对ie低版本浏览器提示用户升级或者检查，只弹出一次*/
+    initPopup:function () {
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
+        var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器
+        var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+        if(isIE) {
+            var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+            reIE.test(userAgent);
+            var fIEVersion = parseFloat(RegExp["$1"]);
+            if(fIEVersion == 7) {
+                return 7;
+            } else if(fIEVersion == 8) {
+                return 8;
+            } else if(fIEVersion == 9) {
+                return 9;
+            } else if(fIEVersion == 10) {
+                return 10;
+            } else {
+                return 6;//IE版本<=7
+            }
+        } else if(isEdge) {
+            return 'edge';//edge
+        } else if(isIE11) {
+            return 11; //IE11
+        }else{
+            return -1;//不是ie浏览器
+        }
+    },
+    btnClose:function () {
+        $('.pop_button').hide();
+    },
+    btnUpdate:function () {
+        window.location.href = 'questions.html'/*tpa=http://vip1.kuwo.cn/vip/added/vip_2016/questions.html*/
+    },
+    //初始化首页焦点图
+    initIndexBanner: function () {
+        var product = utils.getParamValue(utils.getUrlParams(), 'product');
+        var times = utils.getParamValue(utils.getUrlParams(), 'times');
+        var persentMenu = utils.getParamValue(utils.getUrlParams(), 'persentMenu');
+        if ($.browser.msie && ((product && times) || persentMenu)) {
+            return false;
+        }
+        //首页焦点图轮播
+        try {
+            $('.banner').unslider({
+                autoplay: true,
+                fluid: true,
+                dots: true,
+                arrows: {
+                    prev: '<div style="position:absolute; width:1302px; text-align:center; margin:0 auto;  top:250px;left: 50%;margin-left:-654px;"><a class="fl unslider-arrow prev"><img src="' + location.protocol + '//image.kuwo.cn/newvip/index2016/v2/zuo.png"></a></div>',
+                    next: '<div style="position:absolute; width:1302px; text-align:center; margin:0 auto;  top:250px;left: 50%;margin-left:-654px;"><a class="fr unslider-arrow next"><img src="' + location.protocol + '//image.kuwo.cn/newvip/index2016/v2/you.png"></a></div>'
+                }
+            });
+        } catch (e) {
+            $('.banner').hide();
+            $('http://vip1.kuwo.cn/vip/added/vip_2016/js/.fl.unslider-arrow.prev').hide();
+            $('http://vip1.kuwo.cn/vip/added/vip_2016/js/.fr.unslider-arrow.next').hide();
+            $('.unslider-nav').hide();
+        }
+    },
+
+    /**检测IP是否合法*/
+    initIpLimit: function () {
+        //初始化海外限制
+        $.ajax({
+            type: 'GET',
+            dataType: 'text',
+            url: 'http://vip1.kuwo.cn/ip_check.kuwo?type=1',
+            success: function (data) {
+                if (utils.isNotEmpty(data)) {
+                    var s = data.split(",");
+                    if (s.length < 2) return;
+                    var ipAllow = $.trim(s[1]);
+                    if ('ALLOW_IP' != ipAllow)
+                        alert("很抱歉，由于版权合约的限制，暂时无法给位于中国大陆以外的国家或地区提供音乐服务！");
+                }
+            }
+        });
+    },
+
+    //提示弹框
+    showAlert: function (txt) {
+        if (!txt) {
+            return false;
+        }
+        var shadow = $('.box-shadow');
+        var bank = $('.box-tan');
+        shadow.show();
+        bank.show();
+        bank.find('.tan-text').html(txt);
+    },
+    //提示弹框
+    showRefreshAlert: function (txt) {
+        if (!txt) {
+            return false;
+        }
+        var shadow = $('.box-shadow');
+        var bank = $('.box-tan2');
+        shadow.show();
+        bank.show();
+        bank.find('.tan-text2').html(txt);
+    },
+
+    checkAutoPay:function () {
+        if (!PROPERTIES.userinfo.uid || PROPERTIES.userinfo.uid == '0') {
+            Menu.clickVip();
+
+        }else{
+            $.post(PROPERTIES.projectname + "/spi/mservice",
+                {
+                    'op': 'getUserAutoPayState',
+                    'uid': PROPERTIES.userinfo.uid,
+                    'sid': PROPERTIES.userinfo.sid
+                }, function (data) {
+                    var json = eval("("+data+")");
+                    if('200' != json.meta.code) return false;
+                    if(json.data.isVIPLuxAutoPay == 1){
+                        //已开通豪华VIP自动续费 直接隐藏掉音乐包自动续费
+                        $('.gw_yfsfkt').remove();
+                    }
+                    if(json.data.isVIPMAutoPay == 1){
+                        //已开通音乐包自动续费 直接隐藏掉豪华VIP自动续费
+                        $('.gw_yfsfkt').remove();
+                    }
+                    Menu.clickVip();
+                }
+            );
+        }
+    },
+    init: function () {
+
+        //记录日志
+        LogTraceUtils.doInit(PROPERTIES.logtrace.pcCurrentVersion, PROPERTIES.logtrace.abtest.DEFAULT);
+
+        //TODO 需要重头梳理
+        this.initIpLimit();
+
+        Index.initParam();
+        if (PROPERTIES.debug) {
+            UserInfo.initUserTestInfo();
+        } else {
+            UserInfo.initUserInfo();
+        }
+        UserInfo.initPageEvent();
+        // VipSuper.initBiedInfo();
+        Pay.init();
+        Paysuper.init();
+        Menu.initPageEvent();
+        Index.initPageEvent();
+        Index.checkAutoPay();
+        QA.initPageEvent();
+        Serial.init();
+        Coupon.init();
+
+        //不再使用，待作废
+        var u = PROPERTIES.userinfo.uid ? PROPERTIES.userinfo.uid : "nologin";
+        utils.logTracePc('/vip2016/init/' + Index.from + '/' + u);
+
+        //记录来源日志
+        LogTraceUtils.doFromSrcInit(Index.from, PROPERTIES.logtrace.pcCurrentVersion, PROPERTIES.logtrace.abtest.DEFAULT);
+    },
+    /**
+     * 初始化请求参数
+     */
+    initParam: function () {
+        var params = document.location.href.substring(document.location.href.lastIndexOf("?") + 1);
+        var mod = utils.getParamValue(params, 'mod');
+        var type = utils.getParamValue(params, 'type');
+        var product = utils.getParamValue(params, 'product');//1-vip_1 音乐包    7-vip_4会员       未加入-<4-song 6-album 3-vip_3>
+        var from = utils.getParamValue(params, 'from');//统计访问来源   0-vip1.kuwo.cn，1-kuwo.cn, 5-会员minset
+        var page = utils.getParamValue(params, 'page');
+        if (from) {
+            if (from == 1) {
+                //官网
+                PROPERTIES.logtrace.pcCurrentVersion = 'V0001';
+            }
+            Index.from = from;
+        }
+        if (mod) Pay.mod = mod;
+        if (type) {
+            Pay.type = type;
+            if (type == '0') {//OPEN_VIP
+                if (product == 1) {//开音乐包
+                    Pay.productType = 'vip_1';
+                    Menu.persentMenu = 'id_a_menu_music_open2';
+                } else if (product == 7) {//开会员
+                    Pay.productType = 'vip_4';
+                    Menu.persentMenu = 'id_a_menu_super_open';
+                }
+            } else if (type == '1') {//UPGRADE_VIP
+                Menu.persentMenu = 'id_a_menu_music_vip3_open4';
+                Pay.productType = 'vip_2';
+            }
+        }
+
+        var persentMenu = utils.getParamValue(params, 'persentMenu');
+        var productType = utils.getParamValue(params, 'productType');
+        if (persentMenu) {
+            Menu.persentMenu = persentMenu;
+        }
+        if (productType) {
+            if (productType == 'vip_3') {//升级
+                persentMenu = 'id_a_menu_music';
+            }
+            Pay.productType = productType;
+        }
+
+        if (page) {
+            Menu.persentMenu = page;
+        }
+
+        if ('vip' == callbackFlag) {
+            Menu.persentMenu = 'id_a_menu_vip_success';
+        } else if ('music' == callbackFlag) {
+            Menu.persentMenu = 'id_a_menu_music_success';
+        } else if ('song' == callbackFlag) {
+            Menu.persentMenu = 'id_a_menu_song_success';
+        } else if ('album' == callbackFlag) {
+            Menu.persentMenu = 'id_a_menu_album_success';
+        }
+    }
+};
+
+$(function () {
+    Index.init();
+});

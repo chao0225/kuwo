@@ -1,0 +1,2688 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//Dp XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dp/xhtml1-transitional.dp">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="monitor" content="key_top_html_monitor" />
+<title>酷我会员</title>
+<!--[if IE 6]> 
+<script src="DD_belatedPNG_0.0.8a-min.js" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/DD_belatedPNG_0.0.8a-min.js" type="text/javascript" ></script>
+<script type="text/javascript"> 
+//DD_belatedPNG.fix('http://vip1.kuwo.cn/vip/added/vip_2016/img,.lamp,.ejbg-1 .text-wra,.hkt_btn,.hkt_btnc,.sycentbgop,.hkt_bata,.hkt_biao,.hkt_zfysyh,.hkt_yinhan,.zhtop .bk .centertwo .bysy,.xlto,.tc01,.tc01 a,.tc03');
+  DD_belatedPNG.fix('.f_menu,.f_menu img,.service-img,.img,.gw_yxina');
+</script>
+<![endif]-->
+<link href="//image.kuwo.cn/website/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+<link rel="stylesheet" type="text/css" href="animate.css" tppabs="http://vip1.kuwo.cn/vip/added/_source/style/css/2016/animate.css" />
+<link rel="stylesheet" type="text/css" href="vipgw.css-20171211.css" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/css/vipgw.css?20171211" />
+<link rel="stylesheet" type="text/css" href="sliper.css-20160203001.css" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/css/sliper.css?20160203001" />
+
+<script type="text/javascript" src="jquery-1.8.3.min.js" tppabs="http://js.kuwo.cn/newvip/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="unslider-min.js" tppabs="http://vip1.kuwo.cn/vip/added/_source/js/plugin/unslider/unslider-min.js"></script>
+
+<script type="text/javascript" src="cookie.js" tppabs="http://js.kuwo.cn/cookie.js"></script>
+<script type="text/javascript" src ="loginbox2012.js-123245" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/loginbox2012.js?123245"></script>
+
+<script type="text/javascript" src="kuwoall.min.js-2016070502" tppabs="http://vip1.kuwo.cn/vip/added/_source/js/app/root/pro/kuwoall.min.js?2016070502"></script>
+
+<script type="text/javascript">
+	osUtils.flag.setPC();
+	utils.logTracePc('/vip2016/initall');
+  try{
+    if(typeof console != 'object'){
+      var console = {
+        "log": function(){}
+      };
+    }
+  }catch(e){}
+</script>
+<!-- <div id="l_outer_div" class="login2012_load">
+  <div class="l_loadtop" id="loginBox2012">
+    <h1 class="active">登录</h1>
+    <h1>注册</h1>
+  </div>
+  <div class="l_loadmiddle">
+    <div class="bound l_loadleft typeLogin undis">
+      <div class="l_set">
+        <p class="title">酷我账号登录</p>
+      </div>
+      <div class="l_set">
+        <div class="input"><input type="text" id="login_name" placeholder="酷我账号" /></div>
+      </div>
+      <div class="l_set">
+        <div class="input"><input type="password" id="login_psw" placeholder="密码" /></div>
+      </div>
+      <div class="l_check">
+        <input type="checkbox" id="login_useCookie" />
+        <label>自动登录</label  for="login_useCookie">
+      </div>
+      <div class="l_check">
+        <a href="javascript:;" class="loginBtn" id="loginBtn" style="">
+          登&nbsp;录
+        </a>
+      </div>
+    </div>
+    <div class="bound l_loadleft typeRegister ">
+      <div class="l_set">
+        <p class="title">酷我账号注册</p>
+      </div>
+      <div class="l_set">
+        <div class="input"><input type="text" id="register_phone" placeholder="手机号" style="width:140px;"/><a href="javascript:;" class="registerGetCode">获取验证码</a></div>
+      </div>
+      <div class="l_set">
+        <div class="input"><input type="password" id="register_code" placeholder="验证码" /></div>
+      </div>
+      <div class="l_set">
+        <div class="input"><input type="password" id="register_psw" placeholder="设置密码(6位以上)" /></div>
+      </div>
+      <div class="l_set">
+        <div class="input"><input type="password" id="register_psw2" placeholder="确认密码" /></div>
+      </div>
+      <input/ type="hidden" id="tmNum" value="">
+      <div class="l_check">
+        <input name="serviceAgree" class="command" type="checkbox" checked="checked" value="">同意
+        <a class="registerService" href="http://www.kuwo.cn/static/page/license/license.html" target="_blank">《酷我音乐用户服务协议》</a>
+        <a class="registerService" href="http://www.kuwo.cn/static/page/license/license_privacy.html" target="_blank">《隐私政策》</a>
+      </div>
+      <div class="l_check">
+        <a href="javascript:;" class="loginBtn" id="registerBtn" style="">
+          注&nbsp;册
+        </a>
+      </div>
+    </div>
+    <div class="bound l_loadright">
+        <div class="l_set">
+          <p class="title">其它账号登录</p>
+        </div>
+        <a href="javascript:;" class="otherloginBtn">
+          <i class="qqLogo"></i>
+          <strong class="login_qq" id="login3_qq">QQ帐号</strong>
+        </a>
+        <a href="javascript:;" class="otherloginBtn">
+          <i class="sinaLogo"></i>
+          <strong class="login_sina" id="login3_sina"\>新浪微博</strong>
+        </a>
+      <div class="tishi undis" id="login_tip"><p>登录成功！</p></div>
+    </div>
+  </div>
+</div> -->
+
+<script type="text/javascript" src="userinfo.js-20180718" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/userinfo.js?20180718"></script>
+<!-- <script type="text/javascript" src="/vip/added/vip_2016/js/product.js?2016080301"></script> -->
+<script type="text/javascript" src="pay.js-20180718" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/pay.js?20180718"></script>
+<script type="text/javascript" src="jquery.form.min.js" tppabs="http://vip1.kuwo.cn/vip/added/_source/js/plugin/jquery.form.min.js"></script>
+<script type="text/javascript" src="pay_super.js-20180814" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/pay_super.js?20180814"></script>
+<script type="text/javascript" src="coupon.js-20180306" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/coupon.js?20180306"></script>
+<script type="text/javascript" src="account.js-20170417" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/account.js?20170417"></script>
+<script type="text/javascript" src="serial.js-20170417" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/serial.js?20170417"></script>
+<script type="text/javascript" src="menu.js-20180718" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/menu.js?20180718"></script>
+<script type="text/javascript" src="question.js-201602030011" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/question.js?201602030011"></script>
+<script type="text/javascript" src="serialCode.js-180403" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/serialCode.js?180403"></script>
+<script type="text/javascript" src="super.js-20171220" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/super.js?20171220"></script>
+<script type="text/javascript" src="index.js-20180718" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/js/index.js?20180718"></script>
+
+
+
+
+
+
+</head>
+<body>
+<div id="topHeadDiv" class="topHeader">
+  <div class="top1200"> 
+  	<a href="index.jsp.htm" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/index.jsp" id="id_a_menu_index_2"  pageid="id_div_page_index" class="vipLogo f_menu"><img src="logo.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/logo.png"></a>
+    <div class="nava"> 
+    	<a id="id_a_menu_music_vip1_open9" pageid="id_div_page_vip_open" class="f_menu undis">客户端开通音乐包</a>
+    	<a id="id_a_menu_music_vip3_open4" pageid="id_div_page_vip_open" class="f_menu undis">客户端升级音乐包</a>
+    	<a id="id_a_menu_vip_open8" pageid="id_div_page_vip_open" class="f_menu undis">客户端开通VIP</a>
+    	<a id="id_a_menu_music_success" pageid="id_div_page_music_success" class="f_menu undis">VIP支付成功回调页面</a>
+    	<a id="id_a_menu_vip_success"  pageid="id_div_page_vip_success" class="f_menu undis">VIP支付成功回调页面</a>
+    	<a id="id_a_menu_song_success"  pageid="id_div_page_song_success" class="f_menu undis">SONG支付成功回调页面 </a>
+    	<a id="id_a_menu_album_success"  pageid="id_div_page_album_success" class="f_menu undis">ALBUM支付成功回调页面</a>
+      <a id="id_a_menu_serial_success"  pageid="id_div_serial_success_page" class="f_menu undis">兑换码成功页面</a>
+      <a id="id_a_menu_couponList"  pageid="id_div_couponList_page" class="f_menu undis">代金券列表页面</a>
+    	<a href="index.jsp.htm" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/index.jsp" id="id_a_menu_index"  pageid="id_div_page_index" class="f_menu">首页</a> 
+    	<a id="id_a_menu_vip" pageid="id_div_page_vip" class="f_menu">豪华VIP</a>
+    	<a id="id_a_menu_vip_4" pageid="id_div_page_vip" class="f_menu undis">首页VIP焦点图</a> 
+    	<a id="id_a_menu_music"  pageid="id_div_page_vipmusic" class="f_menu">音乐包</a>
+    	<a id="id_a_menu_music_4"  pageid="id_div_page_vipmusic" class="f_menu undis">首页音乐包焦点图</a> 
+		<a id="id_a_menu_serial" pageid="id_div_page_seial"  class="f_menu">激活码兑换</a>
+    	<a id="id_a_menu_question" pageid="id_div_page_question" class="f_menu" >常见问题</a> 
+    	<a id="id_a_menu_account" pageid="id_div_page_account" class="f_menu undis">我的账户</a>
+    </div>
+    <div id="logoutBtn" class="hloginRi" ><a class="hlogonzc">退出</a></div>
+    <div id="registerDiv" class="hloginRi undis"><a id="loginBtn" class="hlogonin f_loginBtn">登录</a></div>
+    <div id="loginDiv" class="nav_y">
+      <img id="id_a_menu_account_2" pageid="id_div_page_account" class="nav_yh f_userPif f_menu" style="cursor: pointer;" src="tx011.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/tx011.png" width="44" height="44">
+      <p id="id_a_menu_account_3" pageid="id_div_page_account" class="nav_yhm f_menu f_username" style="cursor: pointer;"></p>
+      <img id="id_a_menu_vip_3" pageid="id_div_page_vip" class="nav_yim f_vip_icon f_menu" style="cursor: pointer;" src="super-hui.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/super-hui.png" width="30" height="30" />
+      <img id="id_a_menu_music_3"  pageid="id_div_page_vipmusic" class="nav_yim f_music_icon f_menu" style="cursor: pointer;" src="ylbkt-hui1.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ylbkt-hui1.png" width="30" height="30" /> 
+     </div>
+  </div>
+</div>
+<!------------------------------------------------------include.jsp----------------------------------------------------------->
+
+<!-- 首页 -->
+<div id="id_div_page_index" class="main01 f_page undis">
+  <div class="pr-sections">
+    <!-- <div class="section ejbg-1">
+      <div class="text-wrap">
+        <div class="text-wra"><a class="" href=""></a><a class="" href=""></a><a class="cur" href=""></a><a class="" href=""></a><a class="" href=""></a></div>
+      </div>
+    </div> -->
+    <div class="banner">
+		    <ul>
+		        <li class="section ejbg-1" style="background: url('//image.kuwo.cn/newvip/vip_2016/banner02.jpg') #8933f4 no-repeat 50% 100%;"></li>
+		        <li onclick="bannerClick('id_a_menu_music_4')" class="section ejbg-1" style="background: url('http://image.kuwo.cn/newvip/vip_2016/banner03.jpg') #8933f4 no-repeat 50% 100%;"></li>
+		        <!-- <li onclick="bannerClick('id_a_menu_vip_4')" class="section ejbg-1" style="background: url('/vip/added/vip_2016/img/banner01.jpg') #8933f4 no-repeat 50% 100%;"></li> -->
+		    </ul>
+		    <ol class="dots">
+		    </ol>
+	  </div>
+  </div>
+  <p class="h10"></p>
+  <p class="h10"></p>
+
+  <div class="sycent"> 
+    <ul class="hfvp_nav">
+      <li class="hfvp_nav_pw25 tab" data-tab="super-box">
+        <p class="wxinz active"><span class="gw_tujia"></span>豪华VIP</p>
+      </li>
+      <li class="hfvp_nav_pw25 tab" data-tab="music-box">
+        <p class="wxinz">音乐包</p>
+      </li>
+      <li class="hfvp_nav_pw25 tab" data-tab="VIP-box" style="display:none;">
+        <p class="wxinz">普通VIP</p>
+      </li>
+    </ul>
+    <div class="sycentbgo">
+      <div class="super-box box">
+        <div class="gw_hhtexl"><img src="we_01.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/we_01.jpg"></div>
+        <div class="gw_htexr">
+          <p class="pone">豪华VIP</p>
+          <p class="ptwo">15 元/月</p>
+          
+          <p class="pthree" style="background:#f60"><a id="id_a_menu_super_open" pageid="id_div_page_super_open" class="f_menu">立即开通</a></p>
+          <!-- <p class="pthree"><a id="id_a_menu_super_open" pageid="id_div_page_super_open" class="f_menu">立即开通</a></p> -->
+          <p class="pfour">开通立赠<span class="spanone">付费音乐包</span></p>
+        </div>
+      </div>
+      <div class="music-box box undis">
+        <div class="gw_hhtexl"><img src="we_02.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/we_02.jpg"></div>
+        <div class="gw_htexr">
+          <p class="pone">音乐包</p>
+          <p class="ptwo">8 元/月</p>
+          <p class="pthree"><a id="id_a_menu_music_open2" pageid="id_div_page_super_open" class="f_menu">立即开通</a></p>
+          <p class="pfour">开通立享付费曲库</p>
+        </div>
+      </div>
+      <div class="VIP-box box undis">
+        <div class="gw_hhtexl"><img src="we_05.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/we_05.jpg"></div>
+        <div class="gw_htexr">
+          <p class="pone">普通VIP</p>
+          <p class="ptwo">10 元/月</p>
+          <p class="pthree"><a id="id_a_menu_VIP_open" pageid="id_div_page_super_open" class="f_menu">立即开通</a></p>
+          <p class="pfour">让音乐更精彩</span></p>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="super-box box">
+        <div class="courses_line1">
+          <div class="line"></div>
+          <div class="courses">豪华VIP特权</div>
+        </div>
+        <div class="xrw_phb">
+          <ul>
+            <li class="xborder class_btn_goJuxing"><img class="img" src="kwfx.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kwfx.png">
+              <div class="xgw_yfte">
+                <p class="xgw_yfsa">酷我聚星专属座驾</p>
+                <p class="xgw_yfxa">七日专属聚星座驾</p>
+              </div>
+            </li>
+             <li class="xborder class_btn_goHeadset"><img class="img" src="kwrj.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kwrj.png">
+              <div class="xgw_yfte">
+                <p class="xgw_yfsa">酷我耳机现金券</p>
+                <p class="xgw_yfxa">超划算酷我硬件折扣券</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="hfvp_hfgx">
+          <ul>
+            <li class="super-boxTab" data-open="super-box1"> <img src="zgvipbs.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zgvipbs.png">
+              <p class="pone">尊贵身份标识</p>
+              <p class="ptwo">钻石王冠全点亮</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box2"> <img src="mvxztq.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxztq.png">
+              <p class="pone">MV下载特权 </p>
+              <p class="ptwo">高清MV任意下</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box3"> <img src="jsxz.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxz.png">
+              <p class="pone">歌曲极速下载</p>
+              <p class="ptwo">飞一般的下载速度</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box4"> <img src="mgg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgg.png">
+              <p class="pone">免音频广告</p>
+              <p class="ptwo">屏蔽全部音频广告</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box5"> <img src="zskf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf.png">
+              <p class="pone">专属客服</p>
+              <p class="ptwo">会员客服专属服务</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box6"> <img src="ctffqk.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctffqk.png">
+              <p class="pone">畅听付费曲库</p>
+              <p class="ptwo">畅享高品质音乐</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box7"> <img src="dkhkxa.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhkxa.png">
+              <p class="pone">大咖好歌下载 </p>
+              <p class="ptwo">每月可下载300首</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box8"> <img src="u2.png" tppabs="http://image.kuwo.cn/newvip/mbvipm/v2/privilege/super/u2.png">
+              <p class="pone">专享三方权益</p>
+              <p class="ptwo">多样福利免费领</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box9"> <img src="zxwsyy.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyy.png">
+              <p class="pone">专享无损音质</p>
+              <p class="ptwo">原汁原味的黑胶音质</p>
+            </li>
+            <li class="super-boxTab" data-open="super-box10"> <img src="mxpf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mxpf.png">
+              <p class="pone">专属明星皮肤</p>
+              <p class="ptwo">个性化主题皮肤</p>
+            </li>
+          </ul>
+        </div>
+        <div class="gw_lbxina super-privilege super-box1">
+          <div class="biaoti"><img class="biaotiimg" src="zgvip.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zgvip.png">尊贵身份标识 </div>
+          <p class="texrw">独一无二的豪华VIP标识，彰显尊贵身份。您的图标将在酷我客户全平台展示，见证您为中国正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_022.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_022.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box2 undis">
+          <div class="biaoti"><img class="biaotiimg" src="mvxzb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxzb.png">MV下载特权 </div>
+          <p class="texrw">海量高清MV资源，谁说只能看不能拥有？豪华VIP独享高清MV下载，喜欢的MV就能拥有！正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！此特权在PC端适用。</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_011.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_011.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box3 undis">
+          <div class="biaoti"><img class="biaotiimg" src="jsxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxian.png">歌曲极速下载 </div>
+          <p class="texrw">网络不给力，边听歌边上网容易卡？VIP畅享本地网络优化， 智能管理本地网络，上网速度和音乐流畅两不误！</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_03.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_03.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box4 undis">
+          <div class="biaoti"><img class="biaotiimg" src="mgxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgxian.png">免音频广告 </div>
+          <p class="texrw">广告太烦人？去掉一切干扰，只为好音乐！VIP畅享广告屏蔽特权，我们将为您去掉全部广告，让您拥有最纯净的音乐体验！</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_044.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_044.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box5 undis">
+          <div class="biaoti"><img class="biaotiimg" src="zskf11.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf11.png">专属客服 </div>
+          <p class="texrw">为VIP用户提供专属客服，使用过程中遇到任何问题，可以拨打服务热线，或者加入我们的VIP用户群，我们将第一时间回复您。</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_05.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_05.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box6 undis">
+          <div class="biaoti"><img class="biaotiimg" src="ctxiao.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctxiao.png">畅听付费曲库 </div>
+          <p class="texrw">海量高品质音乐资源，无限畅听！听音乐还得是正版！</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_06.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_06.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box7 undis">
+          <div class="biaoti"><img class="biaotiimg" src="dkhgxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhgxian.png">大咖好歌下载 </div>
+          <p class="texrw">音乐界的大咖小咖都在这里了，开通音乐包和酷我一起引领音乐时尚！畅享每月300首的正版付费歌曲下载！（部分数字专辑需单独购买）</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_07.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_07.jpg"></p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box8 undis">
+          <div class="biaoti"><img class="biaotiimg" src="u26.png" tppabs="http://image.kuwo.cn/newvip/mbvipm/v2/privilege/super/u26.png">专享三方权益 </div>
+          <p class="texrw">多样生活福利免费领，生活福利优惠券请在手机端领取并使用。</p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box9 undis">
+          <div class="biaoti"><img class="biaotiimg" src="zxwsyyimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyyimg.png">专享无损音质 </div>
+          <p class="texrw">尊享无损音质（SQ)的试听及下载，100%保存声音细节。</p>
+        </div>
+        <div class="gw_lbxina super-privilege super-box10 undis">
+          <div class="biaoti"><img class="biaotiimg" src="mxpfimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mxpfimg.png">专属明星皮肤 </div>
+          <p class="texrw">超酷炫明星主题随便用，个性无限彰显，此特权仅支持手机端。</p>
+        </div>
+      </div>
+      <div class="music-box box undis">
+        <div class="courses_line1">
+          <div class="line"></div>
+          <div class="courses">音乐包特权</div>
+        </div>
+        <div class="hfvp_hfgx index-music-li-style">
+          <ul>
+            <li class="music-boxTab" data-open="music-box1"> <img src="ctffqk.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctffqk.png">
+              <p class="pone">畅听付费曲库</p>
+              <p class="ptwo">畅享高品质音乐</p>
+            </li>
+            <li class="music-boxTab" data-open="music-box2"> <img src="dkhkxa.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhkxa.png">
+              <p class="pone">大咖好歌下载 </p>
+              <p class="ptwo">每月可下载300首</p>
+            </li>
+            <li class="music-boxTab" data-open="music-box3"> <img src="ylb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ylb.png">
+              <p class="pone">尊贵身份标识 </p>
+              <p class="ptwo">点亮王冠标识</p>
+            </li>
+            <li class="music-boxTab" data-open="music-box4"> <img src="zxwsyy.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyy.png">
+              <p class="pone">专享无损音质</p>
+              <p class="ptwo">原汁原味的黑胶音质</p>
+            </li>
+            
+              
+              
+            
+            <li class="music-boxTab" data-open="music-box6"> <img src="zskf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf.png">
+              <p class="pone">专属客服</p>
+              <p class="ptwo">会员客服专属服务</p>
+            </li>
+          </ul>
+        </div>
+        <div class="gw_lbxina music-privilege music-box1">
+          <div class="biaoti"><img class="biaotiimg" src="ctxiao.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctxiao.png">畅听付费曲库 </div>
+          <p class="texrw">海量高品质音乐资源，无限畅听！听音乐还得是正版！</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_06.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_06.jpg"></p>
+        </div>
+        <div class="gw_lbxina music-privilege music-box2 undis">
+          <div class="biaoti"><img class="biaotiimg" src="dkhgxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhgxian.png">大咖好歌下载 </div>
+          <p class="texrw">音乐界的大咖小咖都在这里了，开通音乐包和酷我一起引领音乐时尚！畅享每月300首的正版付费歌曲下载！</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_07.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_07.jpg"></p>
+        </div>
+        <div class="gw_lbxina music-privilege music-box3 undis">
+          <div class="biaoti"><img class="biaotiimg" src="vipb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/vipb.png">尊贵身份标识 </div>
+          <p class="texrw">独一无二的豪华VIP标识，彰显尊贵身份。您的图标将在酷我客户全平台展示，见证您为中国正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！</p>
+        </div>
+        <div class="gw_lbxina music-privilege music-box4 undis">
+          <div class="biaoti"><img class="biaotiimg" src="zxwsyyimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyyimg.png">专享无损音质 </div>
+          <p class="texrw">尊享无损音质（SQ)的试听及下载，100%保存声音细节。</p>
+        </div>
+        <div class="gw_lbxina music-privilege music-box5 undis">
+          <div class="biaoti"><img class="biaotiimg" src="zsmxztimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zsmxztimg.png">明星专属开屏 </div>
+          <p class="texrw">专属开机问候语与定制明星开屏，尊贵身份一览无遗，此特权仅支持手机端。</p>
+        </div>
+        <div class="gw_lbxina music-privilege music-box6 undis">
+          <div class="biaoti"><img class="biaotiimg" src="zskf11.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf11.png">专属客服 </div>
+          <p class="texrw">为VIP用户提供专属客服，使用过程中遇到任何问题，可以拨打服务热线，或者加入我们的VIP用户群，我们将第一时间回复您。</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_05.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_05.jpg"></p>
+        </div>
+      </div>
+      <div class="VIP-box box undis">
+        <div class="courses_line1">
+          <div class="line"></div>
+          <div class="courses">VIP特权</div>
+        </div>
+        <div class="hfvp_hfgx">
+          <ul>
+            <li class="VIP-boxTab" data-open="VIP-box1"> <img src="vipbs2.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/vipbs2.png">
+              <p class="pone">尊贵身份标识 </p>
+              <p class="ptwo">VIP标识点亮</p>
+            </li>
+            <li class="VIP-boxTab" data-open="VIP-box2"> <img src="mvxztq.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxztq.png">
+              <p class="pone">MV下载特权 </p>
+              <p class="ptwo">无损歌曲下载无损</p>
+            </li>
+            <li class="VIP-boxTab" data-open="VIP-box3"> <img src="jsxz.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxz.png">
+              <p class="pone">歌曲极速下载</p>
+              <p class="ptwo">飞一般的下载速度</p>
+            </li>
+            <li class="VIP-boxTab" data-open="VIP-box4"> <img src="mgg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgg.png">
+              <p class="pone">音频免广告</p>
+              <p class="ptwo">屏蔽全部音频广告</p>
+            </li>
+          </ul>
+        </div>
+        <div class="gw_lbxina VIP-privilege VIP-box1">
+          <div class="biaoti"><img class="biaotiimg" src="vipbs2img.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/vipbs2img.png">尊贵皇冠标识 </div>
+          <p class="texrw">独一无二的豪华VIP标识，彰显尊贵身份。您的图标将在酷我客户全平台展示，见证您为中国正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！</p>
+          <p class="pcvl_tssimg"><img class="" src="vipxqimg.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/vipxqimg.jpg"></p>
+        </div>
+        <div class="gw_lbxina VIP-privilege VIP-box2 undis">
+          <div class="biaoti"><img class="biaotiimg" src="mvxzb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxzb.png">MV下载特权 </div>
+          <p class="texrw">海量高清MV资源，谁说只能看不能拥有？豪华VIP独享高清MV下载，喜欢的MV就能拥有！正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！此特权在PC端适用。</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_011.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_011.jpg"></p>
+        </div>
+        <div class="gw_lbxina VIP-privilege VIP-box3 undis">
+          <div class="biaoti"><img class="biaotiimg" src="jsxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxian.png">歌曲极速下载 </div>
+          <p class="texrw">网络不给力，边听歌边上网容易卡？VIP畅享本地网络优化， 智能管理本地网络，上网速度和音乐流畅两不误！此特权在PC端适用。</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_03.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_03.jpg"></p>
+        </div>
+        <div class="gw_lbxina VIP-privilege VIP-box4 undis">
+          <div class="biaoti"><img class="biaotiimg" src="mgxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgxian.png">音频免广告 </div>
+          <p class="texrw">广告太烦人？去掉一切干扰，只为好音乐！VIP畅享广告屏蔽特权，我们将为您去掉全部广告，让您拥有最纯净的音乐体验！此特权在PC端适用。</p>
+          <p class="pcvl_tssimg"><img class="" src="xq_044.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_044.jpg"></p>
+        </div>
+      </div>
+    </div>
+    <img src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg"> 
+  </div>
+  <p class="h10"></p>
+  
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<!-- 弹框 -->
+<div class="box-shadow undis"></div>
+<div class="box-tan undis">
+  <div class="tan-page">
+    <img class="tan-close closeBtn" src="close.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/close.png"/>
+    <p class="tan-text"></p>
+    <input id="tab-btn-default" class="tab-btn closeBtn" type="button" value="确定"/>
+    <a id="id_a_menu_super_open4" pageid="id_div_page_super_open" class="tab-btn undis f_menu">开通</a>
+    <a id="id_a_gotoJuxing" class="tab-btn undis">查看</a>
+  </div>
+</div>
+<!-- 刷新弹窗 -->
+<div class="box-tan2 undis">
+  <div class="tan-page2">
+    <p class="tan-text2"></p>
+    <a id="id_a_refresh" class="tab-btn2">确定</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+function bannerClick(menuId) {
+	Menu.persentMenu = menuId;
+	Menu.clickVip();
+}
+//音乐包/豪华vip/普通VIP 切换
+$(document).on('click', '.tab', function() {
+  $('.wxinz').removeClass('active');
+  $(this).children('.wxinz').addClass('active');
+  $('.box').hide();
+  $("." + $(this).attr('data-tab')).show();
+});
+//豪华VIP特权切换
+$(document).on('click', '.super-boxTab', function() {
+  $('.super-privilege').hide();
+  $("." + $(this).attr('data-open')).show();
+});
+//音乐包特权切换
+$(document).on('click', '.music-boxTab', function() {
+  $('.music-privilege').hide();
+  $("." + $(this).attr('data-open')).show();
+});
+//普通VIP特权切换
+$(document).on('click', '.VIP-boxTab', function() {
+  $('.VIP-privilege').hide();
+  $("." + $(this).attr('data-open')).show();
+});
+</script>
+
+
+<!-- 我的账户 -->
+<div id="id_div_page_account" class="main04 f_page undis">
+	<div class="twoHeader">
+		<div class="top1200">
+			<div class="">
+				<p class="lamp" style="margin-left: 615px;"></p>
+				<p class="font16_cf" style="margin-left: 580px;">
+					<span id="vipInfo" class="f_account_pType" style="cursor:pointer;">豪华VIP</span> 
+					<span id="musicInfo" class="f_account_pType " style="margin-left: 20px;cursor:pointer;">音乐包</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="w1200">
+		<div id="zhtop_music_wkt" class="zhtop undis f_account_pType_info">
+			<img class="imgtx f_userPif" src="tx01.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/tx01.png">
+			<p class="h10"></p>
+			<div class="bk">
+				<div class="left">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="pone">
+						<span class="f_username"></span>
+					</p>
+					<p class="h10"></p>
+					<p class="ptwo">您还不是音乐包用户，<br />开通后即可尊享超值特权！</p>
+				</div>
+				<div class="centerone">
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="h10"></p>
+					<a>
+						<img src="ctffqk.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctffqk.png">
+						<p class="h10"></p>
+						<p class="">畅听付费曲库</p> 
+					</a>
+					<a>
+						<img src="dkhkxa.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhkxa.png">
+						<p class="h10"></p>
+						<p class="">大咖好歌下载</p> 
+					</a>
+					<a>
+						<img src="ylb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ylb.png">
+						<p class="h10"></p>
+						<p class="">尊贵皇冠标识</p> 
+					</a>
+					<a style="display: none;">
+						<img src="ylb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ylb.png">
+						<p class="h10"></p>
+						<p class="undis">畅享高速下载</p> 
+					</a>
+				</div>
+				<div class="right03">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="butljktsm">
+						<a id="id_a_menu_music_open3" pageid="id_div_page_super_open" class="f_menu">立即开通</a>
+					</p>
+				</div>
+				<div class="right02 undis">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="">
+						音乐包连续包月服务低至&nbsp;4&nbsp;元<br /> /月每月最低获赠1张专辑券！
+					</p>
+					<p class="h10"></p>
+					<a class="red fr">立即开通</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="zhtop_music_ykt" class="zhtop undis f_account_pType_info">
+			<img class="imgtx f_userPif" src="tx01.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/tx01.png">
+			<p class="h10"></p>
+			<div class="bk">
+				<div class="left">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="pone">
+
+						<span class="f_username"></span>
+					</p>
+					<p class="h10"></p>
+					<p class="ptwo">
+<!-- 						您还不是音乐包用户，<br /> 开通后即可尊享超值特权！ -->
+					</p>
+				</div>
+				<div class="centertwo w508">
+					<p class="h10"></p>
+					<div class="bysy">
+						<div class="stbj">
+							<p class="h10"></p>
+							<p class="h10"></p>
+							<p class="h10"></p>
+							<span style="color: #838383; font-size: 16px;">本月剩余</span>
+							<span class="red f_music_remain" style="color: #ff0000; font-size: 20px"></span>
+							<span style="color: #ff0000; font-size: 20px">首</span>
+							
+							<p class="h10"></p>
+							<!-- <a id="id_a_menu_music_vip3_open2" pageid="id_div_page_vip_open" class="f_menu red12 pone">不够用？马上升级</a> -->
+						</div>
+					</div>
+					<div class="text">
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="">有效期至：<span class="f_music_expireDate"></span></p>
+					</div>
+				</div>
+
+				<div class="right01a">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="butljktsm">
+						<a id="id_a_menu_music_open2" pageid="id_div_page_super_open" class="f_menu">续 费</a>
+					</p>
+					<a class="undis hasAutoPay" style="position: relative;font-size: 15px;top: 6px;" href="javascript:if(confirm('http://vip1.kuwo.cn/vip/added/mobile/guide/introduction.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://vip1.kuwo.cn/vip/added/mobile/guide/introduction.html'" tppabs="http://vip1.kuwo.cn/vip/added/mobile/guide/introduction.html">您已开通连续包月&gt;&gt;</a>
+					<p class="h10"></p>
+<!-- 					<p class="red14 pone"><a id="id_a_menu_music_vip3_open3" pageid="id_div_page_vip_open" class="f_menu">不够用？马上升级</a></p> -->
+				</div>
+				<div class="right02 undis">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="">您已经开通自动续费服务，系统将在您的VIP会员到期前一天为您续费。</p>
+					<p class="h10"></p>
+					<a class="red fr">关闭连续包月</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="zhtop_vip_wkt" class="zhtop undis f_account_pType_info">
+			<img class="imgtx f_userPif" src="tx01.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/tx01.png">
+			<p class="h10"></p>
+			<div class="bk">
+				<div class="left">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="pone">
+
+						<span class="f_username"></span>
+					</p>
+					<p class="h10"></p>
+				</div>
+				<div class="centerthr">
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="h10"></p>
+					<a>
+						<img src="zgvipbs.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zgvipbs.png">
+						<p class="h10"></p>
+						<p>尊贵VIP标识</p> 
+					</a>
+					<a>
+						<img src="mvxztq.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxztq.png">
+						<p class="h10"></p>
+						<p>MV下载特权</p> 
+					</a>
+					<a>
+						<img src="jsxz.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxz.png">
+						<p class="h10"></p>
+						<p>极速下载</p> 
+					</a>
+					<a>
+						<img src="mgg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgg.png">
+						<p class="h10"></p>
+						<p>免广告</p> 
+					</a>
+					<a>
+						<img src="zskf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf.png">
+						<p class="h10"></p>
+						<p>专属客服</p> 
+					</a>
+				</div>
+				<div class="right01b">
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="butljktsm">
+						<a  id="id_a_menu_super_open3" pageid="id_div_page_super_open" class="f_menu">立即开通</a>
+					</p>
+				</div>
+			</div>
+			</div>
+
+			<div id="zhtop_vip_ykt" class="zhtop undis f_account_pType_info">
+				<img id="id_img_mppp" class="imgtx f_userPif" src="tx01.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/tx01.png">
+				<p class="h10"></p>
+				<div class="bk">
+					<div class="left">
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="pone">
+
+								<span class="f_username"></span>
+						</p>
+						<p class="h10"></p>
+					</div>
+					<div class="centerthr w_500">
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="font-16c6">有效期至：<span class="f_vip_expireDate"></span></p>
+					</div>
+					<div class="right01b">
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="h10"></p>
+						<p class="butljkt">
+							<a id="id_a_menu_super_open2" pageid="id_div_page_super_open" class="f_menu">续 费</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<div class="jyjl">
+					<p class="h10"></p>
+					<p class="h10"></p>
+
+			<p class="font18 undis">我的代金券</p>
+			<div id="id_div_serials_item" class="djhxz undis"></div>
+
+			<p class="font18">我的订单记录<span id="id_sp_myuid" style="font-size: 14px;margin-left: 5px;color: gray;" class="undis" ></span></p>
+					<p class="h10"></p>
+					<table id="orderTable" class="table undis">
+						<thead>
+							<tr class="tablebj1">
+								<th>类型</th>
+								<th>订单号</th>
+								<th>支付账户</th>
+								<th>状态</th>
+								<th>到期时间</th>
+								<!-- <th>交易金额</th> -->
+								<th>购买时间</th>
+							</tr>
+						</thead>
+						<tbody id="orderTbody"></tbody>
+					</table>
+
+					<p id="noOrder" class="zwjyjl undis">暂无交易记录</p>
+					<!-- 			<div class="jlfy"> -->
+					<!-- 				<a>上一页</a><a></a><a class="active">1</a><a>2</a><a>3</a><a>4&nbsp;.&nbsp;.&nbsp;.</a><a></a>共7页<a></a><a class="">下一页</a> -->
+					<!-- 			</div> -->
+					<p class="h10"></p>
+					<p class="h10"></p>
+				</div>
+
+		</div>
+		<p class="h10"></p>
+		<p class="h10"></p>
+	
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<p class="h10"></p>
+<p class="h5"></p>
+
+<!-- VIP -->
+<div id="id_div_page_vip" class="main02 f_page undis">
+  <p class="h10"></p>
+
+  <div class="pcvl_sycent">
+    <div class="pcvl_pa">
+      <div class="vip-strong vip-box">
+        <div class="">
+          <div class="pcvl_zt">
+            <img class="bannerimg" src="img-super.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/img-super.png"/>
+            <img class="pcvl_xsyh" src="img-xian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/img-xian.png" />
+            <div class="pcvl_ztr">
+              <p class="pone"><span class="mrl3">豪华</span><span class="mrl3">VIP</span></p>
+              <p class="ptwo"><span class="mrl3">15 元/月</span><!-- <span class="mrl3 spanone">15元/月</span> --></p>
+              <a href="javascript:void(0);" id="id_a_menu_super_open1" pageid="id_div_page_super_open" class="f_menu anone" data-open="vip">立即开通</a>
+              <p class="pthree"><span class="spanone mrl3">开通立赠</span><span class="spantwo mrl3 gotoMusic f_menu" id="id_a_menu_music1" pageid="id_div_page_vipmusic">付费音乐包</span></p>
+            </div>
+          </div>
+          <div class="pcvl_ztyh">
+            <p class="txian"><img class="f_userPif" data-user="img" src="def120.png" tppabs="http://image.kuwo.cn/vip/fans/pc/pub/def120.png" onerror="this.onerror=null;this.src='//image.kuwo.cn/vip/fans/pc/pub/def120.png';"></p>
+            <p class="pone"><span class="f_username" data-user="name"></span><img class="mrl3 undis" data-user="vip-logo" src="vzshi.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/vzshi.png" /></p>
+            <a href="javascript:void(0);" class="anone vip-login-btn" data-open="login">立即登录</a>
+            <p class="ptwo undis" data-user="vip-date"></p>
+          </div>
+          <p class="clear"></p>
+        </div>
+        <div class="pcvl_qlb">
+          <p class="pone">豪华VIP特权 </p>
+          <p class="ptwo" data-open="question">常见问题<span class="mrl3">></span></p>
+        </div>
+        <div class="pcvl_xkan">
+          <div class="xrw_phb" style="margin:-30px 0 20px 0">
+            <ul>
+              <li class="xborder class_btn_goJuxing"><img class="img" src="kwfx.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kwfx.png">
+                <div class="xgw_yfte">
+                  <p class="xgw_yfsa">酷我聚星专属座驾</p>
+                  <p class="xgw_yfxa">免费领取专属座驾</p>
+                </div>
+              </li>
+               <li class="xborder class_btn_goHeadset"><img class="img" src="kwrj.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kwrj.png">
+                <div class="xgw_yfte">
+                  <p class="xgw_yfsa">酷我耳机现金券</p>
+                  <p class="xgw_yfxa">超划算酷我硬件折扣券</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="hfvp_hftq">
+            <ul>
+              <li class="privilegeTab" data-boxName="privilege1">
+                <img src="zgvipbs-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/zgvipbs.png">
+                <p class="pone">尊贵身份标识</p>
+                <p class="ptwo">钻石王冠全点亮</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege2">
+                <img src="mvxatq.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/mvxatq.png">
+                <p class="pone">MV下载特权 </p>
+                <p class="ptwo">高清MV任意下</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege3">
+                <img src="jsxaz.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/jsxaz.png">
+                <p class="pone">歌曲极速下载</p>
+                <p class="ptwo">飞一般的下载速度</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege4">
+                <img src="mgg-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/mgg.png">
+                <p class="pone">免音频广告</p>
+                <p class="ptwo">屏蔽全部音频广告</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege5">
+                <img src="zskf-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/zskf.png">
+                <p class="pone">专属客服</p>
+                <p class="ptwo">会员客服专属服务</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege6">
+                <img src="ctffqk.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctffqk.png">
+                <p class="pone">畅听付费曲库</p>
+                <p class="ptwo">畅享高品质音乐</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege7">
+                <img src="dkhkxa.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhkxa.png">
+                <p class="pone">付费好歌下载</p>
+                <p class="ptwo">每月可下载300首</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege8">
+                <img src="u2.png" tppabs="http://image.kuwo.cn/newvip/mbvipm/v2/privilege/super/u2.png">
+                <p class="pone">专享三方权益</p>
+                <p class="ptwo">多样福利免费领</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege9">
+                <img src="zxwsyy.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyy.png">
+                <p class="pone">专享无损音质</p>
+                <p class="ptwo">原汁原味的黑胶音质</p>
+              </li>
+              <li class="privilegeTab" data-boxName="privilege10">
+                <img src="mxpf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mxpf.png">
+                <p class="pone">专属明星皮肤</p>
+                <p class="ptwo">个性化主题皮肤</p>
+              </li>
+            </ul>
+          </div>
+          <div class="privilege privilege1">
+            <div class="pcvl_lbjs"><img src="zgvxiao.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/zgvxiao.png">
+              <p class="pone">尊贵身份标识 </p>
+              <!-- <a href="javascript:void(0);" class="anone" data-open="vip">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">独一无二的豪华VIP标识，彰显尊贵身份。您的图标将在酷我客户全平台展示，见证您为中国正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_022.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_022.jpg"></p>
+            </div>
+          </div>
+          <div class="privilege privilege2 undis">
+            <div class="pcvl_lbjs"><img src="mvxzb-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/mvxzb.png">
+              <p class="pone">MV下载特权</p>
+              <!-- <a href="javascript:void(0);" class="anone" data-open="vip">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">海量高清MV资源，谁说只能看不能拥有？豪华VIP独享高清MV下载，喜欢的MV就能拥有！正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！此特权在PC端适用。</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_011.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_011.jpg"></p>
+            </div>
+          </div>
+          <div class="privilege privilege3 undis">
+            <div class="pcvl_lbjs"><img src="jsxian-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/jsxian.png">
+              <p class="pone">歌曲极速下载</p>
+              <!-- <a href="javascript:void(0);" class="anone" data-open="vip">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">网络不给力，边听歌边上网容易卡？VIP畅享本地网络优化， 智能管理本地网络，上网速度和音乐流畅两不误！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_03.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_03.jpg"></p>
+            </div>
+          </div>
+          <div class="privilege privilege4 undis">
+            <div class="pcvl_lbjs"><img src="mgxian-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/mgxian.png">
+              <p class="pone">免音频广告</p>
+              <!-- <a href="javascript:void(0);" class="anone" data-open="vip">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">广告太烦人？去掉一切干扰，只为好音乐！VIP畅享广告屏蔽特权，我们将为您去掉全部广告，让您拥有最纯净的音乐体验！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_044.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_044.jpg"></p>
+            </div>
+          </div>
+          <div class="privilege privilege5 undis">
+            <div class="pcvl_lbjs"><img src="zskf11-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/zskf11.png">
+              <p class="pone">专属客服</p>
+              <!--<a href="javascript:void(0);" class="anone">立即开通</a>--></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">为VIP用户提供专属客服，使用过程中遇到任何问题，可以拨打服务热线，或者加入我们的VIP用户群，我们将第一时间回复您。</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_05.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_05.jpg"></p>
+              <p class="pcvl_tes pcvl_kf">联系我们：<a href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" title="" class="anone">客服在线</a></p>
+              <p class="pcvl_tes">周一至周五 9:30-18:30</p>
+            </div>
+          </div>
+          <div class="privilege privilege6 undis">
+            <div class="pcvl_lbjs"><img src="ctxiao.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctxiao.png">
+              <p class="pone">畅听付费曲库</p>
+              <!--<a href="javascript:void(0);" class="anone">立即开通</a>--></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">海量高品质音乐资源，无限畅听！听音乐还得是正版！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_06.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_06.jpg"></p>
+            </div>
+          </div>
+          <div class="privilege privilege7 undis">
+            <div class="pcvl_lbjs"><img src="dkhgxian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhgxian.png">
+              <p class="pone">大咖好歌下载</p>
+              <!--<a href="javascript:void(0);" class="anone">立即开通</a>--></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">音乐界的大咖小咖都在这里了，开通音乐包和酷我一起引领音乐时尚！畅享每月300首的正版付费歌曲下载！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_07.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_07.jpg"></p>
+            </div>
+          </div>
+          <div class="privilege privilege8 undis">
+            <div class="pcvl_lbjs"><img src="u26.png" tppabs="http://image.kuwo.cn/newvip/mbvipm/v2/privilege/super/u26.png">
+              <p class="pone">专享三方权益</p>
+              <!--<a href="javascript:void(0);" class="anone">立即开通</a>--></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">多样生活福利免费领，生活福利优惠券请在手机端领取并使用。</p>
+            </div>
+          </div>
+          <div class="privilege privilege9 undis">
+            <div class="pcvl_lbjs"><img src="zxwsyyimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyyimg.png">
+              <p class="pone">专享无损音质</p>
+              <!--<a href="javascript:void(0);" class="anone">立即开通</a>--></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">尊享无损音质（SQ)的试听及下载，100%保存声音细节。</p>
+            </div>
+          </div>
+          <div class="privilege privilege10 undis">
+            <div class="pcvl_lbjs"><img src="mxpfimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mxpfimg.png">
+              <p class="pone">专属明星皮肤</p>
+              <!--<a href="javascript:void(0);" class="anone">立即开通</a>--></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">超酷炫明星主题随便用，个性无限彰显，此特权仅支持手机端。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="h10"></p>
+ 
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<!-- 音乐包 -->
+<div id="id_div_page_vipmusic" class="main02 f_page undis">
+  <p class="h10"></p>
+  <div class="pcvl_sycent">
+    <div class="pcvl_pa">
+      <div class="vip-music vip-box">
+        <div class="">
+          <div class="pcvl_zt">
+            <img class="bannerimg" src="img-music.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/img-music.png" />
+            <div class="pcvl_ztr">
+              <p class="pone"><span class="mrl3">音乐包</span></p>
+              <p class="ptwo"><span class="mrl3">8 元/月</span><!-- <span class="mrl3 spanone">15元/月</span> --></p>
+              <a href="javascript:void(0);" id="id_a_menu_music_open1" pageid="id_div_page_super_open" class="f_menu anone" data-open="music">立即开通</a>
+              <p class="pthree"><span class="spanone mrl3">开通立享付费曲库</span></p>
+            </div>
+          </div>
+          <div class="pcvl_ztyh">
+            <p class="txian"><img class="f_userPif" data-user="img" src="def120.png" tppabs="http://image.kuwo.cn/vip/fans/pc/pub/def120.png" onerror="this.onerror=null;this.src='//image.kuwo.cn/vip/fans/pc/pub/def120.png';"></p>
+            <p class="pone"><span class="f_username" data-user="name"></span><img class="mrl3 undis" data-user="music-logo" src="vzshi-music.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/vzshi-music.png" style="width:19px;"/></p>
+            <a href="javascript:void(0);" class="anone" data-open="login">立即登录</a>
+            <p class="ptwo undis" data-user="music-date"></p>
+          </div>
+          <p class="clear"></p>
+        </div>
+        <div class="pcvl_qlb">
+          <p class="pone">音乐包特权 </p>
+          <p class="ptwo" data-open="question">常见问题<span class="mrl3">></span></p>
+        </div>
+        <div class="pcvl_xkan">
+          <div class="hfvp_hftq musicInclude-li-style">
+           <ul>
+              <li class="privilegeMusicTab" data-boxName="privilegeMusic1"><img src="ctffqk-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/ctffqk.png">
+                <p class="pone">畅听付费曲库</p>
+                <p class="ptwo">高品质付费歌曲随便听</p>
+              </li>
+              <li class="privilegeMusicTab" data-boxName="privilegeMusic2"><img src="dkhkxa-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/dkhkxa.png">
+                <p class="pone">大咖好歌下载</p>
+                <p class="ptwo">免费下载付费歌曲</p>
+              </li>
+              <li class="privilegeMusicTab" data-boxName="privilegeMusic3"><img src="ylb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ylb.png">
+                <p class="pone">尊贵身份标识</p>
+                <p class="ptwo">点亮王冠标识</p>
+              </li>
+              <li class="privilegeMusicTab" data-boxName="privilegeMusic4"><img src="zxwsyy.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyy.png">
+                <p class="pone">专享无损音质</p>
+                <p class="ptwo">原汁原味的黑胶音质</p>
+              </li>
+              
+                
+                
+              
+              <li class="privilegeMusicTab" data-boxName="privilegeMusic6"><img src="zskf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf.png">
+                <p class="pone">专属客服</p>
+                <p class="ptwo">会员客服专属服务</p>
+              </li>
+            </ul>
+          </div>
+          <div class="privilegeMusic privilegeMusic1">
+            <div class="pcvl_lbjs"><img src="ctxiao-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/ctxiao.png">
+              <p class="pone">畅听付费曲库 </p>
+              <!-- <a href="javascript:void(0);" class="anone" data-open="music">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">海量高品质音乐资源，无限畅听！听音乐还得是正版！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_06.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_06.jpg"></p>
+            </div>
+          </div>
+          <div class="privilegeMusic privilegeMusic2 undis">
+            <div class="pcvl_lbjs"><img src="dkhgxian-1.png" tppabs="http://image.kuwo.cn/newvip/mbox/v1/dkhgxian.png">
+              <p class="pone">大咖好歌下载</p>
+              <!-- <a href="javascript:void(0);" class="anone music-login-btn" data-open="music">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">音乐界的大咖小咖都在这里了，开通音乐包和酷我一起引领音乐时尚！畅享每月300首的正版付费歌曲下载！</p>
+              <p class="pcvl_tssimg"><img class="" src="xq_07.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/xq_07.jpg"></p>
+            </div>
+          </div>
+          <div class="privilegeMusic privilegeMusic3 undis">
+            <div class="pcvl_lbjs"><img src="vipb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/vipb.png">
+              <p class="pone">尊贵身份标识</p>
+              <!-- <a href="javascript:void(0);" class="anone music-login-btn" data-open="music">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">独一无二的豪华VIP标识，彰显尊贵身份。您的图标将在酷我客户全平台展示，见证您为中国正版付费音乐贡献力量，呼吁好友一起支持偶像的正版音乐！</p>
+            </div>
+          </div>
+          <div class="privilegeMusic privilegeMusic4 undis">
+            <div class="pcvl_lbjs"><img src="zxwsyyimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyyimg.png">
+              <p class="pone">专享无损音质</p>
+              <!-- <a href="javascript:void(0);" class="anone music-login-btn" data-open="music">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">尊享无损音质（SQ)的试听及下载，100%保存声音细节。</p>
+            </div>
+          </div>
+          <div class="privilegeMusic privilegeMusic5 undis">
+            <div class="pcvl_lbjs"><img src="zsmxztimg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zsmxztimg.png">
+              <p class="pone">明星专属开屏</p>
+              <!-- <a href="javascript:void(0);" class="anone music-login-btn" data-open="music">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">专属开机问候语与定制明星开屏，尊贵身份一览无遗，此特权仅支持手机端。</p>
+            </div>
+          </div>
+          <div class="privilegeMusic privilegeMusic6 undis">
+            <div class="pcvl_lbjs"><img src="zskf11.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf11.png">
+              <p class="pone">专属客服</p>
+              <!-- <a href="javascript:void(0);" class="anone music-login-btn" data-open="music">立即开通</a> --></div>
+            <div class="pcvl_tem">
+              <p class="pcvl_tes">为VIP用户提供专属客服，使用过程中遇到任何问题，可以拨打服务热线，或者加入我们的VIP用户群，我们将第一时间回复您。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="h10"></p>
+
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<!-- VIP购买成功页 -->
+<div id="id_div_page_vip_success" class="main04 f_page undis">
+  <div class="w1200">
+    <p class="font-20">开通付费音乐包，畅听付费音乐，支持偶像正版音乐！</p>
+  </div>
+  <p class="h5"></p>
+  <p class="h10"></p>
+  <div class="sycent"> <img  src="kw04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw04.jpg"/>
+    <div class="sycentbgo">
+      <div class="mane">
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-30red"><img class="img_tone" src="bata_02.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/bata_02.png">VIP特权，支付成功</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">
+        	<span class="mr50">支付金额：null元</span>
+        	<span class="mr50">开通时长：null个月</span>
+        	<span>有效期至：null</span>
+        </p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="border"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <div class="ktzy"><img class="img_ttwo" src="bata_05.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/bata_05.png">
+          <p style="color:red;" class="font-24">如果VIP没有生效，请稍后5分钟重新登录尝试！<br/>
+            <span style="color:#ff8a00;font-size:14px;" class="font-16c6">老版本音乐盒用户请到<a href="javascript:if(confirm('http://www.kuwo.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.kuwo.cn/'" tppabs="http://www.kuwo.cn/" target="blank">kuwo.cn</a>下载最新版享受全新VIP特权服务！</span></p>
+        </div>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <div class="">
+          <div class="fl ml70">
+            <p class=" font-16 center">旧版</p>
+            <p class="h10"></p>
+            <img class="" src="sl_01.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_01.jpg" width="475"></div>
+          <div class="fl ml70">
+            <p class=" font-16 center">新版</p>
+            <p class="h10"></p>
+            <img class="" src="sl_02.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_02.jpg" width="451"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <img  src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg"/> </div>
+  <p class="h10"></p>
+  
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<!-- 音乐包购买成功页 -->
+<div id="id_div_page_music_success" class="main04 f_page undis">
+  <div class="w1200">
+    <p class="font-20">开通付费音乐包，畅听付费音乐，支持偶像正版音乐！</p>
+  </div>
+  <p class="h5"></p>
+  <p class="h10"></p>
+  <div class="sycent"> <img  src="kw04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw04.jpg"/>
+    <div class="sycentbgo">
+      <div class="mane">
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-30red"><img class="img_tone" src="bata_02.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/bata_02.png">
+        		音乐包，	支付成功</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">
+        	<span class="mr50">支付金额：null元</span>
+        	<span class="mr50">开通时长：null个月</span>
+        	<span>音乐包有效期至：null</span>
+        	
+        </p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="border"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-24 center">开通后可以在哪里看到付费专享的歌曲 ? </p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <div class="">
+          <div class="fl ml70">
+            <p class=" font-16 center">1.在曲库里，所有带有付费标志的歌曲都可以听啦！</p>
+            <p class="h10"></p>
+            <img class="" src="sl_04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_04.jpg" ></div>
+          <div class="fl ml70">
+            <p class=" font-16 center">2.从首页进入付费专区，里面的付费歌曲可以免费享用啦！</p>
+            <p class="h10"></p>
+            <img class="" src="sl_03.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_03.jpg"></div>
+        </div>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="border"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-24 center">在哪里可以看到购买过的歌曲？</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">点击用户头像进入我的列表，在音乐消费记录中可以找到自己买过的歌曲和专辑</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="center"><img src="sl_05.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_05.jpg"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <img  src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg"/> </div>
+  <p class="h10"></p>
+  
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+
+<!-- 购买页面 -->
+<div id="id_div_page_vip_open" class="main04 f_page undis">
+	<p class="h10"></p>
+	<div class="w1200">
+		<p id="id_p_op_desc" class="font-20">开通付费音乐包，畅听付费音乐，支持偶像正版音乐！</p>
+	</div>
+	<p class="h5"></p>
+	<p class="h10"></p>
+	<div class="sycent">
+		<img src="kw04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw04.jpg" />
+		<div class="sycentbgo">
+			<div class="mane">
+				<p class="h10"></p>
+				<p class="font-16">开通账号：<span id="openUser" class="f_username"></span>
+				<span id="id_sp_redisc2"  style="color: #ff8a00;font-size: 14px;margin-left: 5px;"></span>
+				</p>
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="font-16">要开通的服务：</p>
+				
+					
+					
+					
+				
+				<div class="ylb_an1 ">
+					<a id="product_vip_1" class="f_pType f_pcombo1 undis" pType="vip_1">
+						<div class="ktywimgone"><p class="hkt_biao hkt_ylb"></p></div>
+						<div class="ktywp">
+							<p class="font-24">音乐包</p>
+							<p class="h5"></p>
+							<p class="font-16">包月任听，下载300首付费歌曲</p>
+							<p class="font-14c6">（享受指定付费音乐试听、下载特权， 支持偶像正版音乐！）</p>
+						</div> </a>
+				</div>
+
+				<div class="ylb_an1 ">
+					<a id="product_vip_2" class="f_pType f_pcombo2 active undis" pType="vip_2">
+						<div class="ktywimgone"><p class="hkt_biao hkt_hhylb"></p></div>
+						<div class="ktywp">
+							<p class="font-24">豪华音乐包</p>
+							<p class="h5"></p>
+							<p class="font-16">包月任听，下载500首付费歌曲</p>
+							<p class="font-14c6">（享受指定付费音乐试听、下载特权， 支持偶像正版音乐！）</p>
+						</div> 
+					</a>
+				</div>
+
+				<div class="ylb_an1">
+					<a id="product_vip_4" class="active f_pType f_pcombo4 undis" pType="vip_4">
+						<div class="ktywimgone"><p class="hkt_biao hkt_vip"></p></div>
+						<div class="ktywp">
+							<p class="font-24">VIP</p>
+							<p class="h10"></p>
+							<p class="font-14c6">（尊贵身份，高清MV随意下载，畅 享无限高速传输，再没有广告烦扰，让你畅享最纯净的音乐体验。）</p>
+						</div> 
+					</a>
+				</div>
+				
+				<div class="ylb_an1">
+					<a id="product_vip_4_vip_1" class="f_pType f_pcombo1 f_pcombo4 undis" pType="vip_4_vip_1">
+						<div class="ktywimg"><p class="hkt_biao hkt_vipylb"></p></div>
+						<div class="ktywp">
+							<p class="font-24">VIP+音乐包</p>
+							<p class="h5"></p>
+							<p class="font-16">包月任听，下载300首付费歌曲</p>
+							<p id="vip_vip_4_vip_1_tips" class="f_pcombo4 font-14c6 undis f_zuhe_tips">（音乐包可享受：指定付费音乐试听、 下载特权，支持偶像正版音乐！）</p>
+							<p id="music_vip_4_vip_1_tips" class="f_pcombo1 font-14c6 undis f_zuhe_tips">（VIP可享受：尊贵身份，高清 MV随意下载，畅享无限高速传输，免广告烦扰，让你畅享最纯 净的音乐体验。）</p>
+						</div> 
+					</a>
+				</div>
+
+				<div class="ylb_an1">
+					<a id="product_vip_4_vip_2" class="f_pType f_pcombo2 undis" pType="vip_4_vip_2">
+						<div class="ktywimg"><p class="hkt_biao hkt_viphhylb"></p></div>
+						<div class="ktywp">
+							<p class="font-24">VIP+豪华音乐包</p>
+							<p class="font-14c6">（VIP可享受：尊贵身份，高清 MV随意下载，畅享无限高速传输，免广告烦扰，让你畅享最纯 净的音乐体验。）</p>
+						</div> 
+					</a>
+				</div>
+
+				<div class="ylb_an1 ">
+					<a id="product_vip_3" class="f_pType undis" pType="vip_3">
+						<div class="ktywimgtwo"><p class="hkt_biao hkt_sjylb"></p></div>
+						<div class="ktywpone">
+							<p class="h10"></p>
+							<p class="h5"></p>
+							<p class="font-24">升级为豪华音乐包</p>
+							<p class="h5"></p>
+							<p class="font-16">（本月下载量300首升级到500首）</p>
+						</div> </a>
+				</div>
+
+
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="font-16">开通时长：</p>
+				<div class="ylb_an2">
+					<a id="id_a_month_1" class="active f_month" month="1">
+						<p class="h10"></p>
+						<p class="font-16">1个月</p>
+						<p class="font-24red">￥<span id="id_div_month1" ></span></p> 
+					</a>
+				</div>
+				<div class="ylb_an2 ">
+					<a id="id_a_month_3" class="f_month" month="3">
+						<p class="h10"></p>
+						<p class="font-16">3个月</p>
+						<p class="font-24red">￥<span id="id_div_month3" ></span></p> 
+					</a>
+				</div>
+				<div class="ylb_an2 ">
+					<a id="id_a_month_6" class="f_month" month="6">
+						<p class="hkt_bata hkt_bata2"></p>
+						<p class="h10"></p>
+						<p class="font-16">半年包
+						<span id="eightDisFlag" class="f_pcombo4  f_vipdesc red undis">（八折）</span>
+						</p>
+						<p  class="font-24red">￥<span id="id_div_month6" ></span></p> 
+					</a>
+				</div>
+				<div class="ylb_an2 ">
+					<a id="id_a_month_12" class="f_month" month="12">
+						<p class="hkt_bata hkt_bata2"></p>
+						<p class="h10"></p>
+						<p class="font-16">一年包
+						<span id="fiveDisFlag" class="f_pcombo4 f_vipdesc red undis">（五折）</span>
+						</p>
+						<p class="font-24red">￥<span id="id_div_month12" ></span></p> 
+					</a>
+				</div>
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="font-16">支付方式：</p>
+				<div class="ylb_an2"><a id="a_pyType_wx" class="f_payType active" payType="wx" payTypeId="31"><p class="h10"></p><p class="hkt_zfysyh hkt_vxzf"></p></a></div>
+				<div class="ylb_an2"><a class="f_payType" payType="alipay" payTypeId="4"><p class="h10"></p><p class="hkt_zfysyh hkt_zfb"></p> </a></div>
+				<div class="ylb_an2"><a class="f_payType" payType="bank" payTypeId="7"><p class="h10"></p><p class="hkt_zfysyh hkt_wyzf"></p></a></div>
+				<div class="ylb_an2"><a class="f_payType" payType="kwb" payTypeId="1"><p class="h10"></p><p class="hkt_zfysyh hkt_kwb"></p> </a></div>
+				<div class="ylb_an2"><a class="f_payType undis" payType="phone" payTypeId="6"><p class="h10"></p><p class="hkt_zfysyh hkt_sjczk"></p> </a></div>
+				
+				
+				
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<div id="bank" class="stbk undis f_payDiv">
+				<p class="xlto" style="margin-left: 460px;"></p>
+				<div class="stbkmk">
+					<div class="ylb_an3"> <a bankid="ICBCB2C" class="active f_bank_type"><p class="hkt_yinhan hkt_zggsyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="ABC" class="f_bank_type"><p class="hkt_yinhan hkt_zglyyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="BOCB2C" class="f_bank_type"><p class="hkt_yinhan hkt_zgyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="CCB" class="f_bank_type"><p class="hkt_yinhan hkt_zgjsyh"></p> </a> </div>
+					<p class="h10"></p>
+					<div class="ylb_an3"> <a bankid="CMB" class="f_bank_type"><p class="hkt_yinhan hkt_zsyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="COMM" class="f_bank_type"><p class="hkt_yinhan hkt_jtyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="GDB" class="f_bank_type"><p class="hkt_yinhan hkt_gfyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="CMBC" class="f_bank_type"><p class="hkt_yinhan hkt_zgmsyh"></p> </a> </div>
+					<p class="h10"></p>
+					<div class="ylb_an3"> <a bankid="SPABANK" class="f_bank_type"><p class="hkt_yinhan hkt_payh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="CEBBANK" class="f_bank_type"><p class="hkt_yinhan hkt_zggdyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="CIB" class="f_bank_type"><p class="hkt_yinhan hkt_xyyh"></p> </a> </div>
+					<div class="ylb_an3"> <a bankid="POSTGC" class="f_bank_type"><p class="hkt_yinhan hkt_zgyzyh"></p> </a> </div>
+				</div>
+				<p class="clear"></p>
+				</div>
+
+				<div id="phone" class="stbk undis f_payDiv">
+		        <p class="xlto" style="margin-left:865px;"></p>
+				<div class="stbkmk">
+					<div class="ylb_an3"> <a class="f_phone_type active" money="10"><p class="line72">10元</p> </a> </div>
+					<div class="ylb_an3"> <a class="f_phone_type" money="20"><p class="line72">20元</p> </a> </div>
+					<div class="ylb_an3"> <a class="f_phone_type" money="30"><p class="line72">30元</p> </a> </div>
+					<div class="ylb_an3"> <a class="f_phone_type" money="50"><p class="line72">50元</p> </a> </div>
+					<div class="ylb_an3"> <a class="f_phone_type" money="100"><p class="line72">100元</p> </a> </div>
+					<p class="h10"></p>
+					<div class="ylb_an3"> <a class="f_phone_type" money="300"><p class="line72">300元</p> </a> </div>
+					<div class="ylb_an3"> <a class="f_phone_type" money="500"><p class="line72">500元</p> </a> </div>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<div>
+						<p class=" font-16 mt5 fl">充值卡号码：</p>
+						<input class="chktext" name="" type="text" />
+					</div>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<div>
+						<p class=" font-16 mt5 fl">充值卡密码：</p>
+						<input class="chktext" name="" type="text" />
+					</div>
+					<p class="h10"></p>
+					<p class="h10"></p>
+					<p class="font_16ff6600">重要提示：&nbsp;&nbsp;&nbsp;&nbsp;所选充值金额与充值卡面额必须一致。剩余额兑换为酷我币存放在酷我平台可供用户下次购买</p>
+				</div>
+				<p class="clear"></p>
+				</div>
+		
+				<!--  -->
+				<div id="id_div_cb_autpPay" class="undis f_atuopay" style="cursor: pointer;">
+		          <p id="id_p_cb_icon" class="lxby_go01"></p>
+		          <p class="lxby_pone">连续包月</p>
+				  <a id="protocol" style="display: inline-block;position:relative;left:4px;top:6px;" href="javascript:if(confirm('http://vip1.kuwo.cn/vip/added/mobile/guide/introduction.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://vip1.kuwo.cn/vip/added/mobile/guide/introduction.html'" tppabs="http://vip1.kuwo.cn/vip/added/mobile/guide/introduction.html">连续包月协议</a>
+		        </div>
+		        <!--  -->
+				
+				<!-- 
+				<p class="h10"></p>
+				<p class="font-16">选择代金券：</p>
+				<div class="djhmi">
+					<input id="serialkey" class="djhmipt" placeholder="请输入激活码（!区分大小写）" type="text"> 
+					<p id="addSerialBtn" class="djhmtj">添加</p>
+					<p class="clear"></p>
+				</div>
+				<div id="id_div_serials_item_open" class="djxz">
+				</div>
+				<p class="h10"></p>
+				<p id="noSerialKeyMsg" class="djmy">您还没有可用的代金券</p>
+				 -->
+				 
+				<p class="h10"></p>
+				<p class="h10"></p>	
+
+				<p class="font-16">
+					支付金额：<span id="cashSpan" class="font-24red"></span>
+					<span id="cashSpanSrc" class="" style="margin-left: 10px;text-decoration: line-through;font-size: 18px;"></span>
+				</p>
+				<p class="h10"></p>
+				<p id="id_p_paydesc" style="font-size: 13px;color: #ff8a00;" class="unids"></p>
+				
+				<div id="kwb" class="undis f_payDiv"> 
+					<p class="h10"></p>
+					<p class="font-16">
+						酷我币余额：<span id="mykwb" class="font-24red"></span>
+					</p>
+					<p class="h10"></p>
+				</div>
+				
+				<p class="h10"></p>
+				<p class="h10"></p>
+				<div class="">
+					<p class="butljktl">
+						<a id="payBtn" class="active">立即支付</a>
+						<a id="payBtn_alias" style="background-color:gray;cursor: default;" class="undis">请稍后...</a>
+					</p>
+<!-- 					<input class="chkbox" type="checkbox" checked="checked"><span class="jstk">接受酷我音乐包服务条款</span> -->
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<img src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg" />
+	</div>
+	<p class="h10"></p>
+	
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+	
+	  <form action="javascript:if(confirm('https://pay.kuwo.cn/pay/dopay?service=newvip&payType=&yh=ICBCB2C&cash=&kwb=&customerid=&userId=&userName=&sessionId=&goodsUnit=&cardType=&cardNo=&cardPwd=&src=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://pay.kuwo.cn/pay/dopay?service=newvip&payType=&yh=ICBCB2C&cash=&kwb=&customerid=&userId=&userName=&sessionId=&goodsUnit=&cardType=&cardNo=&cardPwd=&src='" tppabs="https://pay.kuwo.cn/pay/dopay?service=newvip&payType=&yh=ICBCB2C&cash=&kwb=&customerid=&userId=&userName=&sessionId=&goodsUnit=&cardType=&cardNo=&cardPwd=&src=" method="post" id="form1"  style="display: none;">
+       	<input type="hidden" name="service" id="service" value="newvip">
+       	<input type="hidden" name="payType" id="payType" value="">
+       	<input type="hidden" name="yh" id="yh" value="ICBCB2C">
+       	<input type="hidden" name="cash" id="cash" value=""><!-- 要充值金额 -->
+       	<input type="hidden" name="kwb" id="id_pay_kwb" ><!-- 实际消费金额 -->
+       	<input type="hidden" name="customerid" id="customerid" value="">
+       	<input type="hidden" name="userId" id="userId" value="">
+       	<input type="hidden" name="userName" id="userName" value="">
+       	<input type="hidden" name="sessionId" id="sessionId" value="">
+       	<input type="hidden" name="goodsUnit" id="goodsUnit" value="">
+       	<input type="hidden" name="cardType" id="cardType" value="">
+       	<input type="hidden" name="cardNo" id="cardNo" value="">
+       	<input type="hidden" name="cardPwd" id="cardPwd" value="">
+       	<input type="hidden" name="src" id="id_ip_cnt" value="">
+      </form>
+      
+      <input type="hidden" name="vip_json" id="id_vip_json" value="">
+      <input type="hidden" id="id_ip_serial"  value=""/>
+      <input type="hidden" id="id_ip_discount"  value=""/>
+</div>
+
+
+<!-- 购买页面 豪华VIP、音乐包 -->
+<div id="id_div_page_super_open" class="main04 f_page undis">
+	<p class="h10"></p>
+	<div class="sycent"> 
+		<img src="kw04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw04.jpg">
+		<div class="sycentbgo">
+		  <div class="gw_zfant">开通豪华VIP，立赠<span class="spanone">音乐包</span></div>
+		  <div class="gw_dlzk">
+		    <p class="pone">要开通的账号: <span id="openSuperUser" class="f_username"></span></p>
+		  </div>
+		  <p class="clear"></p>
+		  <div class="pop_button" style="display:none">
+		  	<p class="pop_button_left">无法加载二维码</p>
+		  	<p class="pop_button_left">请更换默认浏览器或者升级酷我音乐盒</p>
+		  	<button class="pop_button_btn_1" onclick="Index.btnClose()">知道了</button><button class="pop_button_btn_2" onclick="Index.btnUpdate()">升级酷我音乐盒</button>
+		  </div>
+		  <div class="gw_ktrfw">要开通的服务：</div>
+	      <div class="chose-service">
+	          <ul>
+	            <li class="chose-border active payBtnType relative" id="payBtnTypeSuper">
+	            	<img class="service-img" src="tjian.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/tjian.png"/>
+	                <p class="service-title">豪华VIP</p>
+	                <p class="service-text color-ff6600" id="superInfo">立赠音乐包</p>
+	            </li>
+	             <li class="chose-border payBtnType relative" id="payBtnTypeMusic">
+	                <p class="service-title">音乐包</p>
+	                <p class="service-text">专享付费曲库</p>
+	            </li>
+	             <li class="chose-border payBtnType relative" id="payBtnTypeVIP">
+	                <p class="service-title">普通VIP</p>
+	                <p class="service-text">让音乐更精彩</p>
+	            </li>
+	          </ul>
+	          <a href = "javascript:void(0);" class="other-service" id="otherService" type="this">其他特权服务？</a>
+	      </div>
+		  <div class="gw_ktrfw">要开通的时长：</div>
+		  <div class="gwylbz superTabBox">
+		    <div class="gwylb_an2"> 
+		    	<a id="id_a_month_1" class="f_month active" month="1" price="15">
+		    		
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="gw_font_18">1个月</p>
+					<p class="gw_font_14">15元/月</p>
+					
+				</a> 
+		    </div>
+		    <div class="gwylb_an2 "> 
+		    	<a id="id_a_month_3" class="f_month" month="3" price="40">
+		    		
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="gw_font_18">3个月</p>
+					<p class="gw_font_14">13.3元/月</p>
+					
+				</a> 
+		    </div>
+		    <div class="gwylb_an2 "> 
+		    	<a id="id_a_month_6" class="f_month" month="6" price="75">
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="gw_font_18">6个月</p>
+					<p class="gw_font_14">12.5元/月</p>
+				</a> 
+		    </div>
+		    <div class="gwylb_an2 "> 
+		    	<a id="id_a_month_12" class="f_month" month="12" price="135">
+		    		
+		    		<!-- <img class="img-half-price" src="//image.kuwo.cn/newvip/mbox/v1/price-45.jpg"/> -->
+		    		
+					<img style="display:none;position: absolute;width: 62px;height:auto;top:-9px;right: -1px;" class="activity-show" src="1509679516446_.png" tppabs="http://img3.kwcdn.kuwo.cn/star/upload/14/14/1509679516446_.png"/>
+					<img class="img-half-price2" src="bata-hot.jpg" tppabs="http://image.kuwo.cn/newvip/mbox/v1/bata-hot.jpg"/>
+					<p class="h10"></p>
+					<p class="h5"></p>
+					<p class="gw_font_18">12个月</p>
+					<p class="gw_font_14">11.3元/月</p>
+					
+				</a> 
+		    </div>
+		  </div>
+		  <div class="clear"></div>
+
+	      <!-- 代金券 -->
+	      <div class="coupon-box undis" id="id_div_couponBox">
+	        <div class="coupon-title">代金券: </div>
+	        <ul>
+	          <li><span class="check-box"></span>省1元</li>
+	          <li class="chose"><span class="check-box"></span>省1元</li>
+	          <li><span class="check-box"></span>省1元</li>
+	          <li><span class="check-box"></span>省1元</li>
+	        </ul>
+	        <div class="clear"></div>
+	        <p class="h10"></p>
+	      </div>
+		  <ul class="hfvp_navzf">
+		    <li class="hfvp_navzf_pw25">
+		      <p class="wxinz paySuperType active" data-boxName="paySuperBox1" payType="wx" payTypeId="0">微信支付</p>
+		    </li>
+		    <li class="hfvp_navzf_pw25">
+		      <p class="wxinz paySuperType" data-boxName="paySuperBox2" payType="zfb" payTypeId="0">支付宝支付</p>
+		    </li>
+		    <li class="hfvp_navzf_pw25">
+		      <p class="wxinz paySuperType" data-boxName="paySuperBox3" payType="bank" payTypeId="7">银行卡支付</p>
+		    </li>
+		    <li class="hfvp_navzf_pw25">
+		      <p class="wxinz paySuperType" data-boxName="paySuperBox4" payType="kwb" payTypeId="1">酷我币支付</p>
+		    </li>
+		  </ul>
+		  <div class="clear"></div>
+		  <p class="gw_yfj">应付金额：<span class="gw_yfjje superPrice">15</span>元</p>
+		  <div class="rw_phb paySuperBox paySuperBox1">
+		    <ul>
+		      <li>
+	      		<div id="id_paysuper_code1" class="code-img relative">
+	      			<div class="errorTips"><span class="errorTips-text"></span></div>
+	      			<div class="loading undis">
+	      				<img class="loading-img" src="loading.gif" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/loading.gif"/>
+	      				<img class="loading-refresh undis" src="refresh.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/refresh.png"/>
+	      			</div>
+			      	<img class="img-default undis" id="id_pay_img1" src="img-default.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/img-default.png" />
+					<img class="img-default payImgCode undis" id="payImgCode_1" src=""/><!--onerror="MusicIndex.img()"-->
+			      	<!-- <img class="img-default" id="id_pay_img1" src="./img/img-default.png" onerror="imgOnError(this,1)" /> -->
+	      		</div>
+				<img class="img" data-from="wx" src="wxin.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/wxin.png">
+	      		<p class="clear"></p>
+		        <p class="gw_yfsa">扫描二维码轻松支付</p>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="rw_phb paySuperBox paySuperBox2 undis">
+		    <ul>
+		      <li>
+	      		<div id="id_paysuper_code2" class="code-img relative">
+	      			<div class="loading undis">
+	      				<img class="loading-img" src="loading.gif" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/loading.gif"/>
+	      				<img class="loading-refresh undis" src="refresh.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/refresh.png"/>
+	      			</div>
+	      			<div class="errorTips"><span class="errorTips-text"></span></div>
+			      	<img class="img-default undis" id="id_pay_img2" style="display:inline-block" src="img-default.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/img-default.png" />
+					<img class="img-default payImgCode undis" id="payImgCode_2"  src=""/>
+			      	<!-- <img class="img-default" id="id_pay_img2" src="./img/img-default.png" onerror="imgOnError(this,1)" /> -->
+	      		</div>
+				<img class="img" data-from="zfb" src="zfb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zfb.png">
+	      		<p class="clear"></p>
+		        <p class="gw_yfsa">扫描二维码轻松支付</p>
+		      </li>
+		    </ul>
+		  </div>
+	 	  <div class="gwylbz gw_yfsfkt"><a id="id_autopay_btn" class="gw_yxina">是否开通连续包月</a><a target="_BLANK" href="javascript:if(confirm('http://vip1.kuwo.cn/vip/added/mbox/agreementService.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://vip1.kuwo.cn/vip/added/mbox/agreementService.html'" tppabs="http://vip1.kuwo.cn/vip/added/mbox/agreementService.html">《会员服务协议》</a><a target="_BLANK" href="javascript:if(confirm('http://vip1.kuwo.cn/vip/added/mbox/agreement.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://vip1.kuwo.cn/vip/added/mbox/agreement.html'" tppabs="http://vip1.kuwo.cn/vip/added/mbox/agreement.html">《连续包月服务协议》</a></div>
+		  <div class="rw_phb paySuperBox paySuperBox3 undis">
+		    <ul>
+		      <li>
+				<div id="id_superbank" class="stbk f_payDiv">
+					<p class="h10"></p>
+					<div class="stbkmk" style="margin:0 auto; width:80%;">
+						<div class="ylb_an3"> <a bankid="ICBCB2C" class="active f_bank_type_super"><p class="hkt_yinhan hkt_zggsyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="ABC" class="f_bank_type_super"><p class="hkt_yinhan hkt_zglyyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="BOCB2C" class="f_bank_type_super"><p class="hkt_yinhan hkt_zgyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="CCB" class="f_bank_type_super"><p class="hkt_yinhan hkt_zgjsyh"></p> </a> </div>
+						<p class="h10"></p>
+						<div class="ylb_an3"> <a bankid="CMB" class="f_bank_type_super"><p class="hkt_yinhan hkt_zsyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="COMM" class="f_bank_type_super"><p class="hkt_yinhan hkt_jtyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="GDB" class="f_bank_type_super"><p class="hkt_yinhan hkt_gfyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="CMBC" class="f_bank_type_super"><p class="hkt_yinhan hkt_zgmsyh"></p> </a> </div>
+						<p class="h10"></p>
+						<div class="ylb_an3"> <a bankid="SPABANK" class="f_bank_type_super"><p class="hkt_yinhan hkt_payh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="CEBBANK" class="f_bank_type_super"><p class="hkt_yinhan hkt_zggdyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="CIB" class="f_bank_type_super"><p class="hkt_yinhan hkt_xyyh"></p> </a> </div>
+						<div class="ylb_an3"> <a bankid="POSTGC" class="f_bank_type_super"><p class="hkt_yinhan hkt_zgyzyh"></p> </a> </div>
+					</div>
+					<p class="clear"></p>
+				</div>
+				<p class="butljktl" style="width: 180px;text-align: center;height: 50px;margin: 10px auto;">
+					<a class="active payBtnSuper" data-from="">立即支付</a>
+				</p>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="rw_phb paySuperBox paySuperBox4 undis">
+		    <ul>
+		      <li>
+				<div id="super_kwb" class="f_payDiv"> 
+					<p class="h10"></p>
+					<p class="font-16">
+						酷我币余额：<span id="super_mykwb" class="font-24red color-ff6600"></span>
+					</p>
+					<p class="h10"></p>
+				</div>
+				<p class="butljktl">
+					<a class="active payBtnSuper" data-from="">立即支付</a>
+				</p>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="gwylbz gw_yfjsmin">会员权益说明<br/>
+			1、支持在PC端、安卓端、Iphone端登录使用。<br/>
+			2、限时特惠:开通豪华VIP可免费获赠等时长的音乐包会员<br/>
+
+		  </div>
+		  <div class="clear"></div>
+		</div>
+		<img src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg"> 
+	</div>
+	<p class="h10"></p>
+	<p class="h10"></p>
+	
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+	
+	  <form action="javascript:if(confirm('https://pay.kuwo.cn/pay/dopay?service=newvip&payType=&yh=ICBCB2C&cash=&kwb=&customerid=&userId=&userName=&sessionId=&src=&month=OPEN_VIP&act=download&clientAct=false&isRedirect=147&qrcodeWidth=4&qrPayMode=&payorderid=&vipType=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://pay.kuwo.cn/pay/dopay?service=newvip&payType=&yh=ICBCB2C&cash=&kwb=&customerid=&userId=&userName=&sessionId=&src=&month=OPEN_VIP&act=download&clientAct=false&isRedirect=147&qrcodeWidth=4&qrPayMode=&payorderid=&vipType='" tppabs="https://pay.kuwo.cn/pay/dopay?service=newvip&payType=&yh=ICBCB2C&cash=&kwb=&customerid=&userId=&userName=&sessionId=&src=&month=OPEN_VIP&act=download&clientAct=false&isRedirect=147&qrcodeWidth=4&qrPayMode=&payorderid=&vipType=" method="post" id="form_super"  style="display: none;">
+       	<input type="hidden" name="service" id="service_super" value="newvip">
+       	<input type="hidden" name="payType" id="superPayType" value="">
+       	<input type="hidden" name="yh" id="yh_super" value="ICBCB2C">
+       	<input type="hidden" name="cash" id="cash_super" value=""><!-- 要充值金额 -->
+       	<input type="hidden" name="kwb" id="id_pay_kwb_super" ><!-- 实际消费金额 -->
+       	<input type="hidden" name="customerid" id="customerid_super" value="">
+       	<input type="hidden" name="userId" id="userId_super" value="">
+       	<input type="hidden" name="userName" id="userName_super" value="">
+       	<input type="hidden" name="sessionId" id="sessionId_super" value="">
+
+       	<input type="hidden" name="src" id="id_ip_cnt_super" value="">
+
+  		<input type="hidden" name="month" id="id_ip_months" value="">
+  		<input type="hidden" name="act" id="id_ip_act" value="OPEN_VIP">
+  		<input type="hidden" name="clientAct" id="id_ip_clientAct" value="download">
+  		<input type="hidden" name="isRedirect"  value="false">
+	    <input type="hidden" name="qrcodeWidth"  value="147">
+	    <input type="hidden" name="qrPayMode"  value="4">
+  		<input type="hidden" name="payorderid"  id="id_ip_payorderid">
+  		<input type="hidden" name="vipType" id="id_ip_vipType" value="">
+      </form>
+      
+      <input type="hidden" name="vip_json" id="id_super_json" value="">
+      <input type="hidden" id="id_ip_serial_super"  value=""/>
+      <input type="hidden" id="id_ip_discount_super"  value=""/>
+</div>
+
+
+<!-- 常见问题 -->
+<div id="id_div_page_question" class="main04 f_page undis">
+  <div class="jsyc"> <img src="wt01.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/wt01.png"/>
+    <div class="sycentbgop">
+      
+      <div class="cjwtleft">
+        <div class="cjwttab">
+        	<a id="vipService" class="active">豪华VIP服务</a>
+        	<a id="musicService">音乐包服务</a>
+        </div>
+        <div class="pone">
+          <p class="h10"></p>
+          <p class="h10"></p>
+          <p class="h10"></p>
+          <p class="h10"></p>
+          <p class="h5"></p>
+          <div id="vipQuestionTitle" class="cjwtt">
+            <ul>
+              <li><a href="#id_div_vip_p_p16" qaid="id_div_vip_p_p16" class="f_btn_qa">付费策略调整</a></li>
+              <li><a href="#id_div_vip_p_p1" qaid="id_div_vip_p_p1" class="f_btn_qa">充值成功，但还不是VIP,该怎么办？</a></li>
+              <li><a href="#id_div_vip_p_p2" qaid="id_div_vip_p_p2" class="f_btn_qa">开通豪华VIP有哪几种方式？</a> </li>
+              <li><a href="#id_div_vip_p_p3" qaid="id_div_vip_p_p3" class="f_btn_qa">如何查看酷我VIP是否开通成功？</a></li>
+              <li><a href="#id_div_vip_p_p4" qaid="id_div_vip_p_p4" class="f_btn_qa">利用第三方登录的账号，为什么会出现一个类似“136004746qq”的账号？</a> </li>
+              <li><a href="#id_div_vip_p_p5" qaid="id_div_vip_p_p5" class="f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+              <li><a href="#id_div_vip_p_p6" qaid="id_div_vip_p_p6" class="f_btn_qa">原来的开通的VIP在新版中还能用么？</a></li>
+              <li><a href="#id_div_vip_p_p7" qaid="id_div_vip_p_p7" class="f_btn_qa">如何查询VIP服务的到期时间？ </a></li>
+              <li><a href="#id_div_vip_p_p8" qaid="id_div_vip_p_p8" class="f_btn_qa">如何计算一个月的周期？</a></li>
+              <li><a href="#id_div_vip_p_p9" qaid="id_div_vip_p_p9" class="f_btn_qa">开通了3个月会员，使用一个月后剩下的2个月可以送人吗？ </a></li>
+              <li><a href="#id_div_vip_p_p10" qaid="id_div_vip_p_p10" class="f_btn_qa">为什么手机充值成功，但没有开通会员？ </a></li>
+              <li><a href="#id_div_vip_p_p11" qaid="id_div_vip_p_p11" class="f_btn_qa">在使用银行卡时“支付被拒绝”一般是什么原因造成的？ </a></li>
+              <li><a href="#id_div_vip_p_p12" qaid="id_div_vip_p_p12" class="f_btn_qa">银行页面提示“该页无法显示”或空白页，怎么办？</a></li>
+              <li><a href="#id_div_vip_p_p13" qaid="id_div_vip_p_p13" class="f_btn_qa">充值过程中遇到“网络错误”或者“网页已经过期”怎么办？ </a></li>
+              <li><a href="#id_div_vip_p_p14" qaid="id_div_vip_p_p14" class="f_btn_qa">充值支付时无法输入银行卡号、密码怎么办？ </a></li>
+              <li><a href="#id_div_vip_p_p15" qaid="id_div_vip_p_p15" class="f_btn_qa">开通VIP后能在海外使用酷我音乐么？ </a></li>
+            </ul>
+          </div>
+          
+          <div id="musicQuestionTitle" class="cjwtt undis">
+            <ul>
+              <li><a href="#id_div_vip_p_p16" qaid="id_div_vip_p_p16" class="f_btn_qa">付费策略调整</a></li>
+              <li><a href="#id_div_p_p1" qaid="id_div_p_p1" class="f_btn_qa">音乐包提供哪些服务？</a></li>
+              <li><a href="#id_div_p_p2" qaid="id_div_p_p2" class="f_btn_qa">音乐包怎样计算有效期？</a> </li>
+              <li><a href="#id_div_p_p3" qaid="id_div_p_p3" class="f_btn_qa">音乐包的有效下载量是多少？</a></li>
+              <li><a href="#id_div_p_p4" qaid="id_div_p_p4" class="f_btn_qa">下载已购买的歌曲还扣除额度吗？</a> </li>
+              <li><a href="#id_div_p_p5" qaid="id_div_p_p5" class="f_btn_qa">音乐包过期了还可以下载之前下载过的歌曲吗？ </a></li>
+              <li><a href="#id_div_p_p6" qaid="id_div_p_p6" class="f_btn_qa">单曲购买的歌曲，可以一直反复下载吗？ </a></li>
+              <li><a href="#id_div_p_p7" qaid="id_div_p_p7" class="f_btn_qa">提示无版权的歌曲可以使用音乐包播放下载吗？ </a></li>
+              <li><a href="#id_div_p_p8" qaid="id_div_p_p8" class="f_btn_qa">为什么有的专辑买完音乐包还是听不了？ </a></li>
+              <li><a href="#id_div_p_p9" qaid="id_div_p_p9" class="f_btn_qa">音乐包免流量吗？ </a></li>
+              <li><a href="#id_div_p_p10" qaid="id_div_p_p10" class="f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？ </a></li>
+            </ul>
+          </div>
+          
+          <p class="h10"></p>
+          <p class="h10"></p>
+          <p class="h10"></p>
+          <p class="h5"></p>
+          <p class="cjwtlx">联系我们</p>
+          <p class="h10"></p>
+          <a class="f_customService hkt_btnc" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+          <p class="h10"></p>
+          <p class="font18ae">周一至周五 9:30--18:30</p>
+        </div>
+      </div>
+      
+
+      <div id="questionRight" class="cjwtright">
+      	
+          
+          
+        
+        <div id="id_div_vip_p_p16" class="pone f_qaas">
+          <p class="ptwo">会员下载付费歌曲的策略调整</p>
+          <p class="pthree">
+            为支持正版音乐,会员下载权益调整为在会员有效期内,仅能在客户端内下载歌曲并离线播放,不支持歌曲导出到第三方设备播放。
+            <br>
+            如想下载.mp3文件,请单曲形式（2元/首）购买付费歌曲。
+            <br>
+            会员过期后,已下载的付费歌曲将不再支持离线播放,但歌曲文件会继续保留,重新开通会员后可继续离线播放。
+    </p>
+        </div>
+        <div id="id_div_vip_p_p17" class="pone f_qaas">
+          <p class="ptwo">为什么会员下载的付费歌曲在第三方设备无法播放？</p>
+          <p class="pthree">支持正版音乐,支持版权方,会员下载的歌曲为加密格式,不支持付费歌曲导出到第三方设备播放。</p>
+        </div>
+        <div id="id_div_vip_p_p18" class="pone f_qaas">
+            <p class="ptwo">如何将.kwm格式的文件转成.mp3文件?</p>
+            <p class="pthree">
+                (1)点击“下载管理”中的导出歌曲,2元/首购买后,下载该歌曲的.MP3格式
+                <br>
+                <img src="pic111.png" tppabs="http://image.kuwo.cn/elseImg/pic111.png" style="display:block; width: 90%; margin-top: 8px;">
+                <br>
+                <img src="pic222.png" tppabs="http://image.kuwo.cn/elseImg/pic222.png" style="display:block; width: 65%;">
+                <br>
+                (2)打开“本地音乐”导入歌曲按钮找到“导出歌曲”并点击
+                <br>
+                <img src="pic333.png" tppabs="http://image.kuwo.cn/elseImg/pic333.png" style="display:block; width: 90%; margin-top: 8px;">
+            </p>
+          </div>
+      	<div id="id_div_vip_p_p1" class="pone f_qaas">
+          <p class="ptwo">充值成功，但还不是VIP,该怎么办？</p>
+          <p class="pthree">请退出酷我账号重新登录，试一下</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p2" class="pone f_qaas">
+          <p class="ptwo">开通豪华VIP有哪几种方式？</p>
+          <p class="pthree">目前酷我VIP支持网上银行、移动手机短信充值、支付宝、神州行卡、酷我币等多种开通方式。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p3" class="pone f_qaas">
+          <p class="ptwo">如何查看酷我VIP是否开通成功？</p>
+          <p class="pthree">登录酷我VIP官网首页，点击“我的账户”，在账户查询页面可以看到目前是否开通成功的状态，以及好友为你开通的记录。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p4" class="pone f_qaas">
+          <p class="ptwo">利用第三方登录的账号，为什么会出现一个类似“1360047465428qq”的账号？</p>
+          <p class="pthree">这个是由第三方账号登录所对应的酷我账号，每次登录时选择登录第三方账号就好了，对充值等都不受影响。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p5" class="pone f_qaas">
+          <p class="ptwo">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</p>
+          <p class="pthree">现在开通豪华VIP赠送音乐包，所以买了豪华VIP就有了所有特权哦。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p6" class="pone f_qaas">
+          <p class="ptwo">原来的开通的VIP在新版中还能用么？</p>
+          <p class="pthree">可以，VIP特权在新版中依然可以使用</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p7" class="pone f_qaas">
+          <p class="ptwo">如何查询VIP服务的到期时间？</p>
+          <p class="pthree">登录酷我VIP官网首页，点击“我的账户”，在账户查询页面可以看到目前业务的开通状态，以及距离到期时间的提醒。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p8" class="pone f_qaas">
+          <p class="ptwo">如何计算一个月的周期？</p>
+          <p class="pthree">服务按31天/月计算。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p9" class="pone f_qaas">
+          <p class="ptwo">开通了3个月会员，使用一个月后剩下的2个月可以送人吗？</p>
+          <p class="pthree">不可以。</p>
+        </div>
+        
+        
+          
+          
+        
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p11" class="pone f_qaas">
+		        <p class="ptwo">在使用银行卡时“支付被拒绝”一般是什么原因造成的？</p>
+		        <p class="pthree">a. 所持银行卡不在该银行支持的地域范围之内；</p>
+				<p class="pthree">b. 银行卡尚未开通网上支付功能；</p>
+				<p class="pthree">c. 银行卡已过期、作废、挂失；</p>
+				<p class="pthree">d. 银行卡内余额不足；</p>
+				<p class="pthree">e. 输入银行卡号或密码不符；</p>
+				<p class="pthree">f. 证件号码不符；</p>
+				<p class="pthree">j. 银行系统数据传输出现异常；</p>
+				<p class="pthree">k. 网络中断；</p>
+				<p class="pthree">l. 订单金额与支付金额不符。</p>
+				<p class="pthree">如果上述建议均无法帮助您解决问题，建议您拨打相应银行客服电话寻求帮助。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p12" class="pone f_qaas">
+          <p class="ptwo">银行页面提示“该页无法显示”或空白页，怎么办？</p>
+            <p class="pthree">a. 使用IE浏览器。点击IE的“工具”栏—“internet选项”—“安全”—将安全中的各项设置恢复到默认级别。</p>
+			<p class="pthree">b. 将您电脑上安装的雅虎助手等拦截功能暂时关闭，暂时关闭防火墙，重新安装支付宝的安全控件。</p>
+			<p class="pthree">c. 将正版杀毒软件升级并杀毒，但是不要使用卡巴斯基、木马清道夫、瑞星杀毒软件等工具。</p>
+			<p class="pthree">d. 将证券软件等占用内存较大的软件卸载。</p>
+			<p class="pthree">e. 打开IE浏览器的“工具”栏—“Internet选项”—“常规”，点击删除临时文件和删除cookies。</p>
+			<p class="pthree">f. 点击IE浏览器的“工具”栏—“Internet选项”—“安全”—“受信任的站点”中把原来加入的站点都删掉，然后把https://www. alipay.com和您使用的网上银行的网址加入进去。如遇工行不能链接，请打开IE浏览器—“工具” —“Internet选项”—“安全” —“受信任站点”—“站点”，建议您删除http://www.icbc.com.cn和https://mybank.icbc.com.cn，然后在受信任站点中添加https://www.icbc.com.cn。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p13" class="pone f_qaas">
+          <p class="ptwo">充值过程中遇到“网络错误”或者“网页已经过期”怎么办？</p>
+          <p class="pthree">少数用户会由于网速等原因，在使用银行卡购买过程中，可能会遇到“网页错误”或者“网页已过期”的情况，这时您应当先核实自 己的网上银行账户余额，切记不要进行反复提交或者刷新的操作，否则可能会造成多次重复付款。</p>
+        </div>
+        <p class="h10"></p>
+        
+        <div id="id_div_vip_p_p14" class="pone f_qaas">
+          <p class="ptwo">充值支付时无法输入银行卡号、密码怎么办？</p>
+          <p class="pthree">某些银行为了防止木马或者黑客软件窃取您的卡号和密码等信息，会禁止您的键盘输入卡号和密码，请您按照银行的提示，使用银行 为您提供的方式输入信息或者安装银行需要的安全插件。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_vip_p_p15" class="pone f_qaas">
+          <p class="ptwo">开通VIP后能在海外使用酷我音乐么？</p>
+          <p class="pthree">不可以，非常抱歉，由于版权原因，酷我音乐不提供海外服务。</p>
+        </div>
+        <p class="h10"></p>
+<!--       ============================================= -->
+        <div id="id_div_p_p1" class="pone f_qaas">
+          <p class="ptwo">音乐包提供哪些服务？</p>
+          <p class="pthree">购买音乐包可享受付费歌曲无上限畅听，每月300首付费音乐下载和下载加速等特权。周杰伦、范玮琪、taylor swift、bigbang等音乐大咖的最新付费歌曲已入驻酷我曲库，五万余首超高品付费歌曲任你挑哦？</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p2" class="pone f_qaas">
+          <p class="ptwo">音乐包怎样计算有效期？</p>
+          <p class="pthree">开通音乐包当日起，一个月的有效期为31天，在第31天23：59：59过期 </p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p3" class="pone f_qaas">
+          <p class="ptwo">音乐包的有效下载量是多少？</p>
+          <p class="pthree">音乐包在有效期内，每个月可下载300首付费音乐，豪华音乐包可下载500首，普通音乐包下载到达300首后，可购买扩容包，升级到豪华音乐包，继续享用音乐包特权</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p4" class="pone f_qaas">
+          <p class="ptwo">下载已购买的歌曲还扣除额度吗？</p>
+          <p class="pthree">只要在音乐包有效期间内，已购买的付费歌曲再次下载时，不会扣除下载额度。</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p5" class="pone f_qaas">
+          <p class="ptwo">音乐包过期了还可以下载之前下载过的歌曲吗？</p>
+          <p class="pthree">不可以，只有在音乐包有效期内，可以享受无限下载特权，音乐包过期后，不能享受此特权</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p6" class="pone f_qaas">
+          <p class="ptwo">单曲购买的歌曲，可以一直反复下载吗？</p>
+          <p class="pthree">可以，通过单曲购买或购买的专辑内的歌曲，可以永久享受下载特权</p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p7" class="pone f_qaas">
+          <p class="ptwo">提示无版权的歌曲可以使用音乐包播放下载吗？</p>
+          <p class="pthree">音乐包无法试听下载置灰且显示“暂不提供该歌曲服务”的歌曲。可搜索歌名查找现在可以正常购买的付费歌曲。 </p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p8" class="pone f_qaas">
+          <p class="ptwo">为什么有的专辑买完音乐包还是听不了 </p>
+          <p class="pthree">部分仅专辑购买的歌曲，是不支持音乐包播放下载的。如韩庚《三庚》迷你数字专辑、苏打绿《冬 未了》、鹿晗《Reloaded 重启》等…… </p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p9" class="pone f_qaas">
+          <p class="ptwo">音乐包免流量吗？ </p>
+          <p class="pthree">音乐包不提供免流量服务。联通，电信用户可以单独开通流量包。 </p>
+        </div>
+        <p class="h10"></p>
+        <div id="id_div_p_p10" class="pone f_qaas">
+          <p id="tt" class="ptwo">海外用户可以使用音乐包下载付费歌曲吗？ </p>
+          <p class="pthree">非常抱歉，音乐包仅对大陆地区用户提供服务，海外用户是无法使用的 </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <img  src="wt03.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/wt03.png"/> </div>
+<a href="#topHeadDiv" class="fh"></a>
+</div>
+
+<!-- 音乐包购买成功页 -->
+<div id="id_div_page_song_success" class="main04 f_page undis">
+  <div class="w1200">
+    <p class="font-20">单曲购买</p>
+  </div>
+  <p class="h5"></p>
+  <p class="h10"></p>
+  <div class="sycent"> <img  src="kw04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw04.jpg"/>
+    <div class="sycentbgo">
+      <div class="mane">
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-30red"><img class="img_tone" src="bata_02.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/bata_02.png">
+        	<span id="pay_success_song_name"></span>
+        	
+        	，支付成功</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">
+        	<span class="mr50">支付金额：null元</span>
+        	<span class="mr50">购买数量：1</span>
+        </p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="border"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-24 center">在哪里可以看到购买过的歌曲？</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">点击用户头像进入我的列表，在音乐消费记录中可以找到自己买过的歌曲和专辑</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="center"><img src="sl_05.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_05.jpg"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <img  src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg"/> </div>
+  <p class="h10"></p>
+  
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<script type="text/javascript">
+	var song = eval("("+"null"+")");
+	if(song) {
+		var songName = song.abslist[0].SONGNAME;
+		$('#pay_success_song_name').text(songName);
+	}
+</script>
+
+<!-- 音乐包购买成功页 -->
+<div id="id_div_page_album_success" class="main04 f_page undis">
+  <div class="w1200">
+    <p class="font-20">专辑购买</p>
+  </div>
+  <p class="h5"></p>
+  <p class="h10"></p>
+  <div class="sycent"> <img  src="kw04.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw04.jpg"/>
+    <div class="sycentbgo">
+      <div class="mane">
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-30red"><img class="img_tone" src="bata_02.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/bata_02.png">
+        	<span id="pay_success_album_name"></span>
+        	
+        	，支付成功</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">
+        	<span class="mr50">支付金额：null元</span>
+        	<span class="mr50">购买数量：1</span>
+        </p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="border"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="font-24 center">在哪里可以看到购买过的专辑？</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class=" font-16 center">点击用户头像进入我的列表，在音乐消费记录中可以找到自己买过的歌曲和专辑</p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+        <p class="center"><img src="sl_05.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/sl_05.jpg"></p>
+        <p class="h10"></p>
+        <p class="h10"></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <img  src="kw06.jpg" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kw06.jpg"/> </div>
+  <p class="h10"></p>
+  
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<script type="text/javascript">
+	var album = eval("(null)");
+	if(album) {
+		var albumName = album.abslist[0].ALBUM;
+		$('#pay_success_album_name').text(albumName);
+	}
+</script>
+
+
+
+<div id="id_div_page_seial"  class="f_page undis">
+
+	<div id="id_div_serial_login" class="kcpage undis">
+	   	<div class="kcwrap">
+	       	<div class="pagecenter">
+	               <ul class="kcmain">
+	                   <li class="keycode">
+	                   		<input id="id_ip_serialCodeT"  type="text" placeholder="请输入激活码（!区分大小写）"/>
+	                   		<div id="id_div_serialDesc"  class="error undis" ></div>
+	                   		<input id="id_ip_serialCode" type="hidden" value=""/>
+	                   </li>
+	                   <li class="verify">
+	                       <div class="verifycode">
+	                           <input id="id_ip_validatecode" type="text" placeholder="请输入验证码"/>
+	                       </div>
+	                       <div class="verifyimg">
+	                       	<img id="id_img_validate" src=""/>
+	                       </div>
+	                       <div id="id_img_val_rf" class="refresh"></div>
+	                       <div id="id_div_validateDesc"  class="error undis" ></div>
+	                   </li>
+	                   <li class="btnwrap">
+	                       <button id="id_btn_exchange" type="button" class="btn">激&nbsp;活</button>
+	                   </li>
+	               </ul>
+	               <div class="txt">
+	                   <p>1.激活码是酷我音乐为用户兑换音乐服务所需的凭证码，包括但不限于酷我VIP，音乐包服务，优惠券等服务</p>
+	                   <p>2.每个激活码只能兑换/激活一次，并且只能为一个账号使用，请牢记当前登录账号。</p>
+	                   <p>3.激活码是唯一的识别凭证，请妥善保管激活码并在有效期内使用。</p>
+	                   <p>4.请在PC上使用酷我音乐盒的用户至<a target="_BLANK" href="javascript:if(confirm('http://kuwo.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://kuwo.cn/'" tppabs="http://kuwo.cn/" style="color:rgba(17, 125, 198, 1);">酷我官网</a>更新最新版音乐盒。</p>
+	                   <p>5.以上条例最终解释权归酷我所有。</p>
+	               </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="id_div_serial_unlogin" class="notlogin">
+	 	<div class="step">
+	    	<h2 class="steptit">激活码兑换流程</h2>
+	        <div class="stepimg">
+	        	<img src="newstep.jpg" tppabs="http://image.kuwo.cn/newvip/index2016/v2/newstep.jpg" width="1199px" height="46px"/>
+	        </div>
+	    </div>
+	    <div class="hintwrap">
+	    	<p class="hint">亲，请先 <span class="blue f_loginBtn">登录</span>，然后再激活</p>
+	    </div>
+	 </div>
+</div>
+
+
+<div id="id_div_dg_msg" class="maskwrap undis">
+   	<div class="mask"></div>
+       <div class="maskcenter">
+       	<div class="masktit"><span>恭喜</span><a class="close"></a></div>
+           <div class="maskmain">
+           	<p id="id_p_dg_desc" class="masktxt">您已兑换成功！</p>
+           	<p class="masktxt1">请您至<a target="_BLANK" href="javascript:if(confirm('http://kuwo.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://kuwo.cn/'" tppabs="http://kuwo.cn/">kuwo.cn</a>下载最新版音乐盒后登录当前账号即可使用</p>
+               <div class="maskbtn"> 
+               	<button id="id_btn_dg_cf" type="button" class="mbtn">朕已阅</button>
+               </div>
+         </div>
+     </div>
+</div>
+
+
+<!-- VIP -->
+<div id="id_div_serial_success_page" class="main02 f_page undis">
+  <p class="h10"></p>
+
+  <div class="pcvl_sycent">
+    <div class="pcvl_pa">
+      <div class="success-page">
+        <div class="success-img undis"><img src=""/></div>
+        <div class="success-text undis"></div>
+        <div class="superSuccess undis">
+          <div class="courses_line1">
+            <div class="line"></div>
+            <div class="courses">豪华VIP特权</div>
+          </div>
+          <div class="xrw_phb">
+            <ul>
+              <li class="xborder"><img class="img" src="kwfx.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kwfx.png">
+                <div class="xgw_yfte">
+                  <p class="xgw_yfsa">酷我聚星专属座驾</p>
+                  <p class="xgw_yfxa">免费领取专属座驾</p>
+                </div>
+              </li>
+               <li class="xborder"><img class="img" src="kwrj.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/kwrj.png">
+                <div class="xgw_yfte">
+                  <p class="xgw_yfsa">酷我耳机现金券</p>
+                  <p class="xgw_yfxa">超划算酷我硬件折扣券</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="hfvp_hfgx">
+            <ul>
+              <li class="super-boxTab" > <img src="zgvipbs.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zgvipbs.png">
+                <p class="pone">尊贵身份标识</p>
+                <p class="ptwo">钻石王冠全点亮</p>
+              </li>
+              <li class="super-boxTab" > <img src="mvxztq.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxztq.png">
+                <p class="pone">MV下载特权 </p>
+                <p class="ptwo">高清MV任意下</p>
+              </li>
+              <li class="super-boxTab" > <img src="jsxz.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxz.png">
+                <p class="pone">歌曲极速下载</p>
+                <p class="ptwo">飞一般的下载速度</p>
+              </li>
+              <li class="super-boxTab" > <img src="mgg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgg.png">
+                <p class="pone">免音频广告</p>
+                <p class="ptwo">屏蔽全部音频广告</p>
+              </li>
+              <li class="super-boxTab" > <img src="zskf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf.png">
+                <p class="pone">专属客服</p>
+                <p class="ptwo">会员客服专属服务</p>
+              </li>
+              <li class="super-boxTab" > <img src="ctffqk.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctffqk.png">
+                <p class="pone">畅听付费曲库</p>
+                <p class="ptwo">畅享高品质音乐</p>
+              </li>
+              <li class="super-boxTab" > <img src="dkhkxa.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhkxa.png">
+                <p class="pone">大咖好歌下载 </p>
+                <p class="ptwo">每月可下载300首</p>
+              </li>
+              <li class="super-boxTab" > <img src="zsmxzt.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zsmxzt.png">
+                <p class="pone">明星专属开屏</p>
+                <p class="ptwo">定制版启动页面</p>
+              </li>
+              <li class="super-boxTab" > <img src="zxwsyy.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyy.png">
+                <p class="pone">专享无损音质</p>
+                <p class="ptwo">原汁原味的黑胶音质</p>
+              </li>
+              <li class="super-boxTab" > <img src="mxpf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mxpf.png">
+                <p class="pone">专属明星皮肤</p>
+                <p class="ptwo">个性化主题皮肤</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="musicSuccess undis">
+          <div class="courses_line1">
+            <div class="line"></div>
+            <div class="courses">音乐包特权</div>
+          </div>
+          <div class="hfvp_hfgx index-music-li-style">
+            <ul>
+              <li class="music-boxTab" data-open="music-box1"> <img src="ctffqk.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ctffqk.png">
+                <p class="pone">畅听付费曲库</p>
+                <p class="ptwo">畅享高品质音乐</p>
+              </li>
+              <li class="music-boxTab" data-open="music-box2"> <img src="dkhkxa.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/dkhkxa.png">
+                <p class="pone">大咖好歌下载 </p>
+                <p class="ptwo">每月可下载300首</p>
+              </li>
+              <li class="music-boxTab" data-open="music-box3"> <img src="ylb.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/ylb.png">
+                <p class="pone">尊贵身份标识 </p>
+                <p class="ptwo">点亮王冠标识</p>
+              </li>
+              <li class="music-boxTab" data-open="music-box4"> <img src="zxwsyy.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zxwsyy.png">
+                <p class="pone">专享无损音质</p>
+                <p class="ptwo">原汁原味的黑胶音质</p>
+              </li>
+              <li class="music-boxTab" data-open="music-box5"> <img src="zsmxzt.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zsmxzt.png">
+                <p class="pone">明星专属开屏</p>
+                <p class="ptwo">定制版启动页面</p>
+              </li>
+              <li class="music-boxTab" data-open="music-box6"> <img src="zskf.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/zskf.png">
+                <p class="pone">专属客服</p>
+                <p class="ptwo">会员客服专属服务</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="VIPSuccess undis">
+          <div class="courses_line1">
+            <div class="line"></div>
+            <div class="courses">VIP特权</div>
+          </div>
+          <div class="hfvp_hfgx">
+            <ul>
+              <li class="VIP-boxTab" data-open="VIP-box1"> <img src="vipbs2.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/vipbs2.png">
+                <p class="pone">尊贵身份标识 </p>
+                <p class="ptwo">VIP标识点亮</p>
+              </li>
+              <li class="VIP-boxTab" data-open="VIP-box2"> <img src="mvxztq.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mvxztq.png">
+                <p class="pone">MV下载特权 </p>
+                <p class="ptwo">无损歌曲下载无损</p>
+              </li>
+              <li class="VIP-boxTab" data-open="VIP-box3"> <img src="jsxz.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/jsxz.png">
+                <p class="pone">歌曲极速下载</p>
+                <p class="ptwo">飞一般的下载速度</p>
+              </li>
+              <li class="VIP-boxTab" data-open="VIP-box4"> <img src="mgg.png" tppabs="http://vip1.kuwo.cn/vip/added/vip_2016/img/mgg.png">
+                <p class="pone">音频免广告</p>
+                <p class="ptwo">屏蔽全部音频广告</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <p class="h10"></p>
+ 
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<!-- VIP -->
+<div id="id_div_couponList_page" class="main02 f_page undis">
+  <p class="h10"></p>
+
+  <div class="pcvl_sycent">
+    <div class="pcvl_pa">
+      <div class="djj_jzwk">
+        <p class="djj_bten couponListTitle">我的代金券</p>
+        <div id="couponListData">
+          <!-- <div class="djj_wk">
+            <div class="djj_sk">
+              <p class="djj_jei"><span class="spanpone">￥</span><span class="spanptwo">5</span></p>
+              <div class="djj_jsi">
+                <p class="pone">购买豪华VIP享优惠</p>
+                <p class="ptwo">您好幸运，仅3%老用户享受优惠！</p>
+              </div>
+              <img class="djj_zaszs" src="img/zs.png" /> 
+            </div>
+            <p class="clear"></p>
+            <span class="djj_anone">立即使用</span>
+          </div> -->
+          <!-- <div class="djj_wkf">
+            <div class="djj_sk">
+              <p class="djj_jei"><span class="spanpone">￥</span><span class="spanptwo">5</span></p>
+              <div class="djj_jsi">
+                <p class="pone">购买豪华VIP享优惠</p>
+                <p class="ptwo">您好幸运，仅3%老用户享受优惠！</p>
+              </div>
+              <img class="djj_zaszs" src="img/ygq.png" />
+            </div>
+            <p class="clear"></p>
+            <span class="djj_antwo">立即使用</span>
+          </div> -->
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <p class="h10"></p>
+ 
+<!-- 底部 -->
+  <div class="pr-sections">
+    <div class="section foot-1 ">
+		<div class="text-wrap">
+			<div class="text-wleft">
+				<p class="">常见问题<span id="id_a_menu_question_2" pageid="id_div_page_question" class="ckqb f_menu"><a>查看更多&gt;&gt;</a></span>
+				</p>
+				<div class="text-wlef">
+					<ul>
+						  <li class="w_420"><a href="#id_div_vip_p_p5" id="id_a_menu_question_3" qaid="id_div_vip_p_p5" pageid="id_div_page_question" class="f_menu f_btn_qa">开通豪华VIP之后，下载付费音乐还需要开通音乐包吗？</a></li>
+			              <li class="w_420"><a href="#id_div_vip_p_p6" id="id_a_menu_question_4" qaid="id_div_vip_p_p6" pageid="id_div_page_question" class="f_menu f_btn_qa">现在的VIP不含付费歌曲试听下载了，那之前开通的怎么办？</a></li>
+			              <li class="w_300"><a href="#id_div_p_p1" id="id_a_menu_question_5" qaid="id_div_p_p1" pageid="id_div_page_question" class="f_menu f_btn_qa">音乐包提供哪些服务？</a></li>
+			              <li class="w_420"><a href="#id_div_p_p10" id="id_a_menu_question_6" qaid="id_div_p_p10" pageid="id_div_page_question" class="f_menu f_btn_qa">海外用户可以使用音乐包下载付费歌曲吗？</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text-wright">
+				<p class="">联系我们</p>
+				<p class="h10"></p>
+				<p class="h5"></p>
+				<a class="f_customService hkt_btn" href="javascript:if(confirm('http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a='" tppabs="http://crm2.qq.com/page/portalpage/wpa.php?uin=800111350&cref=undefined&ref=undefined&pt=undefined&f=1&ty=1&ap=&as=&aty=&a=" target="_blank" class="kf_btn" title=""></a>
+				<p class="h10"></p>
+				<p class="kfsj">周一至周五 9:30--18:30</p>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<!------------------------------------------------------include.jsp------------------------------------------------------------>
+<script type="text/javascript">
+var callbackFlag = 'null';
+</script>
+</body>
+</html>
