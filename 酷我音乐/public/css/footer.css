@@ -1,0 +1,21 @@
+
+/*footer下面p元素*/
+div.footer_bj{
+    background:#181818;
+    height:250px;
+}
+div p.p2{
+    font-size:14px;
+    color:#999999;
+    text-align:center;
+    cursor: pointer;
+}
+div p.p2:nth-child(1){
+    padding-top:20px;
+}
+div p.p2:nth-child(5){
+    padding-bottom:30px;
+}
+.ke-tu{
+    height:650px;
+}

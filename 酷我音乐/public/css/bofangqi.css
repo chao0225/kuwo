@@ -1,0 +1,180 @@
+/* 底部播放条icon */
+.playbar a>i{
+    display: inline-block;
+    background-image: url('../img/playbar.png');
+    width : 25px;
+    height : 25px;
+    vertical-align: middle;
+    margin-right:3px;
+  }
+  .playbar .pb_btns .pre_icon {
+    background-position: 0px -130px;
+    width: 28px;
+    height: 28px;
+  }
+  .playbar .pb_btns .pre_icon:hover {
+    background-position: -30px -130px;
+  }
+  .playbar .pb_btns .pau_icon {
+    background-position: 0px -204px;
+    width: 36px;
+    height: 36px;
+  }
+  .playbar .pb_btns .pau_icon:hover{
+    background-position: -40px -204px;
+  }
+  .playbar .pb_btns .play_icon{
+    background-position: 0px -165px;
+    width: 36px;
+    height: 36px;
+  }
+  .playbar .pb_btns .play_icon:hover{
+    background-position: -40px -165px;
+  }
+  .playbar .pb_btns .nxt_icon {
+    width: 28px;
+    height: 28px;
+    background-position: -80px -130px;
+  }
+  .playbar .pb_btns .nxt_icon:hover {
+    background-position: -110px -130px;
+  }
+  .playbar .pb_ctrls .coll_icon{
+    background-position: -88px -163px;
+  }
+  .playbar .pb_ctrls .coll_icon:hover {
+    background-position: -88px -189px;
+  }
+  .playbar .pb_ctrls .share_icon {
+    background-position: -114px -163px;
+  }
+  
+  .playbar .pb_ctrls .share_icon:hover {
+    background-position: -114px -189px;
+  }
+  .playbar .pb_ctrls .vol_icon {
+    background-position: -2px -248px;
+  }
+  
+  .playbar .pb_ctrls .vol_icon:hover {
+    background-position: -31px -248px;
+  }
+  .playbar .pb_ctrls .loop_icon {
+    background-position: -3px -344px;
+  }
+  
+  .playbar .pb_ctrls .loop_icon:hover {
+    background-position: -33px -344px;
+  }
+  .playbar .pb_ctrls .plist_icon {
+    background-position: -42px -68px;
+    width:59px;
+    height:27px;
+  }
+  
+  .playbar .pb_ctrls .plist_icon:hover {
+    background-position: -42px -98px;
+  }
+  
+  .playbar .pb_play{
+    display:flex;
+    flex-wrap: wrap;
+    width:680px;
+  }
+  /* 歌名歌手 */
+  .playbar .pb_play>.mu_title{
+    width:100%;
+    height:28px;
+    line-height: 28px;
+    font-size:0.9em;
+  }
+  .playbar .pb_play>.mu_title>.mu_name{
+    color: #e8e8e8;
+    margin-right:10px;
+  }
+  .playbar .pb_play>.mu_title>.musician {
+    color: #9b9b9b;
+  }
+  .playbar .pb_play>.pb_con {
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  /* 进度条 */
+  .playbar .pb_play>.pb_con>.pb_tbar{
+    width: 80%;
+    height: 9px;
+    background-image: linear-gradient(to bottom, rbga(0, 0, 0, 0.6), rbga(0, 0, 0, 0.8));
+    box-shadow: 0px 0 1px 1px #000 inset;
+    border-radius: 5px;
+    border-bottom: 1px solid rgba(194, 190, 190, 0.45);
+    margin-right:10px;
+  }
+  .playbar .pb_play>.pb_con .pb_cbar{
+    width: 0;
+    border-top: 1px solid #f00;
+    background: #c70b0c;
+    height: 9px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .playbar .pb_play>.pb_con>.pb_dot{
+    background-image: url(../img/iconall.png);
+    display: inline-block;
+    width: 22px;
+    height: 24px;
+    background-position: 0 -250px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+  }
+  .playbar .pb_play>.pb_con>.pb_dot:hover{
+    background-position: 0 -280px;
+  }
+  .playbar .pb_play>.pb_con>.duration {
+    width:20%;
+    height: 10px;
+    line-height: 10px;
+    color: #a1a1a1;
+    font-size: 0.7em;
+  }
+  .playbar .pb_play>.pb_con>.duration>.ttime {
+    color: #797979;
+  }
+  /* 锁定 */
+  .playbar_bg .pb_lock i{
+    background-image: url(../img/playbar.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 15px;
+    height: 17px;
+    margin-left: 17px;
+  }
+  .playbar_bg .pb_lock .lock_icon{
+    background-position: -100px -380px;
+  }
+  .playbar_bg .pb_lock .lock_icon:hover{
+    background-position: -100px -400px;
+  }
+  .playbar_bg .pb_lock .unlock_icon{
+    background-position: -81px -380px;
+  }
+  .playbar_bg .pb_lock .unlock_icon:hover{
+    background-position: -81px -400px;
+  }
+  
+  
+  .playbar_bg .pb_lock{
+    background-image: url(../img/lock.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -14px;
+    right: 15px;
+    width: 52px;
+    height: 67px;
+    background-position: 0 0;
+  }
+  /* audio */
+  #aud{
+    display:none;
+  }

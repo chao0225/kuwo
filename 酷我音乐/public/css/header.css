@@ -1,0 +1,183 @@
+
+/*header.css*/
+
+
+div.header_bg{
+    background:#181818;
+    padding-left:2%;
+    margin:auto;
+    margin-bottom:0;
+}
+
+.my_lineheight{
+    height:50px;
+    line-height:50px;
+    font-size:17px;
+    color:#ddd;
+    display:block;
+}
+.my_lineheight:hover{
+    text-decoration:none;
+    color:white;
+}
+/*col-md-3 中间的部分*/
+.my_lineheight-1{
+    height:50px;
+    line-height:50px;
+    font-size:15px;
+    color:#D1D1D1;
+    display:block;
+}
+.my_lineheight-1:hover{
+    text-decoration:none;
+
+}
+/*col-md-4 右边的部分*/
+.a1,.a3{
+    position:relative;
+	padding-left:7px;
+	transition: all 0.7s ease-out;
+}
+.a3{
+	padding:0 20px 0 25px;
+}
+.a2{
+    color:white;
+    font-size:15px;
+    line-height:60px;
+}
+.a1:hover,.a3:hover{
+    border-top: 2px solid #fff;
+}
+
+.a20{
+    line-height:50px;
+}
+.a4{
+    color:white;
+    font-size:16px;
+    line-height:50px;
+}
+div.my_bk-1{
+    width:100px;
+    background:rgba(0,0,0,.8);
+    position:absolute;
+    left:-10px;
+    top:48px;
+    z-index:100;
+    text-align:center;
+    height:200px;
+    overflow: hidden;
+    transform: scaleY(0);
+    opacity: 0;
+    transform-origin: center 0;
+	    transition: all 0.4s ease-out;
+}
+div.my_bk-1 a{
+	display:inline-block;
+	width:100%;
+	height:50px;
+    font-size:14px;
+	transition: all 0.4s ease-out;
+	border-bottom: 1px solid #282828;
+}
+
+div.my_bk-1 a:hover{
+	background:#000;
+	padding-left: 25px;
+}
+li.a1:hover div.my_bk-1{
+    
+    transition: transform 0.4s ease,
+    opacity 0.4s ease;
+    border-radius:0 0 5% 5%;
+    transform: scaleY(1);
+    opacity: 1;
+}
+/*右边的  登录*/
+
+div.my_bk-2{
+    width:200px;
+    background:rgba(0,0,0,.7);
+    position:absolute;
+    left:-15px;
+    top:48px;
+    z-index:100;
+    text-align: center;
+	overflow: hidden;
+	height:152px;
+    opacity: 0;
+	transition: all 0.4s ease-out;
+	border-radius:0 0 5% 5%;
+	  transform: scaleY(0);
+}
+div.my_bk-2 a{
+    font-size:17px;
+    text-decoration: none; 
+    color:#ddd;
+	transition: all 0.5s ease-out;
+	border-bottom: 1px solid #282828;
+	display:inline-block;
+	width:100%;
+	height:50px;
+}
+div.my_bk-2 a:last-child{
+	border-bottom:0;
+}
+div.my_bk-2 a:hover{
+    color:#fff;
+	background:#000;
+	padding-left: 35px;
+}
+li.a3:hover div.my_bk-2{
+	opacity: 1;
+	transform: scaleY(1);
+}
+li .my_bk-2 a i{
+    background: url(../img/loginIcon.png) no-repeat -133px -10px;
+    width: 23px;
+    height: 23px;
+    display:inline-block;
+    margin: 10px 5px 0 0;
+}
+li .my_bk-2 a:nth-child(2) i{
+    background: url(../img/loginIcon.png) no-repeat -189px -10px;
+}
+li .my_bk-2 a:nth-child(3) i{
+    background: url(../img/loginIcon.png) no-repeat -47px -10px;
+}
+li .my_bk-2 a:last-child span{
+    margin-right:15px;
+	
+}
+
+/*搜索框*/
+li.a5 input{
+    height:25px;
+    color:#757575;
+    font-size:12px;
+    background:#333333;
+    border-radius:40% 0 0 40%;
+    padding-left:10px;
+    outline:none;
+}
+.ul-1{
+    height:50px;
+    line-height:50px;
+    margin-bottom:0;
+}
+li.a5{
+    width:180px;
+    height:25px;
+   display:inline-block;
+    background: url(../img/searchBoxBg.png) no-repeat;
+    position:relative;
+    top:13px;
+    line-height:0;
+}
+li.a5 i{
+    height:25px;
+    width:25px;
+    float:right;
+    cursor: pointer;
+}
